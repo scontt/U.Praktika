@@ -7,10 +7,12 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using практика.Connection;
+using практика.cs;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace практика
@@ -24,8 +26,8 @@ namespace практика
         public SignIn()
         {
             InitializeComponent();
-            roleComboBox.Items.AddRange(new string[] { "Администратор", "Пользователь" });
             signInButton.Enabled = false;
+            passwordTextBox.UseSystemPasswordChar = true;
         }
 
         private void SignIn_FormClosed(object sender, FormClosedEventArgs e)
@@ -69,31 +71,21 @@ namespace практика
 
         private void signInButton_Click(object sender, EventArgs e)
         {
-            //byte admin;
-            //var email = Hash.HashValue(emailTextBox.Text);
-            //var password = Hash.HashValue(passwordTextBox.Text);
-            string email;
-            string password;
-            int id = 0, admin = 0;
+            string login = Cryptography.Encrypt(loginTextBox.Text);
+            string password = Cryptography.Encrypt(passwordTextBox.Text);
+            int id = 0;
+            int admin = 0;
             DataTable dataTable = new DataTable();
             DataRow row;
 
-            //if (roleComboBox.Text == "Администратор") admin = 1;
-            //else if (roleComboBox.Text == "Пользователь") admin = 0;
-            //else
-            //{
-            //    MessageBox.Show("Роль не выбрана", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
             string query = "select Email, Password, Admin, ID from Users " +
-                "where Email = @email and Password = @password";
+                "where Login = @Login and Password = @Password";
             SqlConnection conn = new SqlConnection(connectonString);
 
             SqlCommand cmd = new SqlCommand(query, conn);
-            //cmd.Parameters.Add(new SqlParameter("@email", email));
-            //cmd.Parameters.Add(new SqlParameter("@password", password));
-            //cmd.Parameters.Add(new SqlParameter("@admin", admin));
+
+            cmd.Parameters.Add(new SqlParameter("@Login", login));
+            cmd.Parameters.Add(new SqlParameter("@Password", password));
 
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
             dataAdapter.Fill(dataTable);
@@ -108,7 +100,6 @@ namespace практика
             if(dataTable.Rows.Count == 1 && tries < 3)
             {
                 Hide();
-                //roleComboBox.Text == "Администратор"
                 if (admin == 1)
                 {
                     AdminForm adminForm = new AdminForm(id);
@@ -123,7 +114,8 @@ namespace практика
             }
             else if (tries == 3)
             {
-                MessageBox.Show("Превышено максимальное количество попыток входа\nПошел нахуй");
+                MessageBox.Show("Превышено максимальное количество попыток входа\nПошел нахуй", "Пидор", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 Application.Exit();
             }
             else
@@ -131,7 +123,6 @@ namespace практика
                 MessageBox.Show($"Неверный email или пароль\nОсталось попыток: {3 - tries}");
                 tries++;
             }
-
         }
     }
 }

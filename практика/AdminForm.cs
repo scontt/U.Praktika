@@ -19,8 +19,10 @@ namespace практика
         static readonly string connectionString = DataBase.ConnectionString;
         string name = string.Empty;
         string sex = string.Empty;
+        int id;
         SqlConnection con = new SqlConnection(connectionString);
         DataTable dataTable = new DataTable();
+        DataRow row;
 
         public AdminForm()
         {
@@ -30,6 +32,9 @@ namespace практика
         {
             InitializeComponent();
 
+            this.id = id;
+
+            #region Приветствие
             int hour = DateTime.Now.Hour;
             string greetingText = string.Empty;
 
@@ -38,7 +43,7 @@ namespace практика
             else if (hour >= 12 && hour < 18) greetingText = "Добрый день, ";
             else if (hour >= 18 && hour < 24) greetingText = "Добрый вечер, ";
 
-            string query = "select Name, Sex from Users where ID = @ID";
+            string query = "select FirstName, Sex from Users where ID = @ID";
 
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.Add(new SqlParameter("@ID", id));
@@ -50,7 +55,7 @@ namespace практика
             if (dataTable.Rows.Count == 1)
             {
                 row = dataTable.Rows[0];
-                name = row["Name"].ToString();
+                name = row["FirstName"].ToString();
                 sex = row["Sex"].ToString();
             }
 
@@ -58,11 +63,100 @@ namespace практика
             sb.Append(name);
 
             greetingLabel.Text = sb.ToString();
+            #endregion
         }
 
         private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region Профиль
+
+            if (tabControl1.SelectedIndex == 6)
+            {
+                dataTable.Clear();
+                SqlDataAdapter dataAdapter;
+                string query = "select * from Users where ID = @ID";
+                SqlCommand command = new SqlCommand(query, con);
+
+                command.Parameters.Add(new SqlParameter("@ID", id));
+
+                dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(dataTable);
+                row = dataTable.Rows[0];
+
+                loginLabel.Text = Cryptography.Decrypt(row["Login"].ToString());
+                passwordLabel.Text = Cryptography.Decrypt(row["Password"].ToString());
+                firstNameLable.Text = row["FirstName"].ToString();
+                secondNameLable.Text = row["SecondName"].ToString();
+                sexLabel.Text = row["Sex"].ToString();
+                phoneLabel.Text = row["Phone"].ToString();
+                emailLabel.Text = Cryptography.Decrypt(row["Email"].ToString());
+                addressLabel.Text = row["Address"].ToString();
+                passportLabel.Text = row["Passport"].ToString();
+
+                loginTextBox.Text = Cryptography.Decrypt(row["Login"].ToString());
+                passwordTextBox.Text = Cryptography.Decrypt(row["Password"].ToString());
+                firstNameTextBox.Text = row["FirstName"].ToString();
+                secondNameTextBox.Text = row["SecondName"].ToString();
+                sexTextBox.Text = row["Sex"].ToString();
+                phoneTextBox.Text = row["Phone"].ToString();
+                emailTextBox.Text = Cryptography.Decrypt(row["Email"].ToString());
+                addressTextBox.Text = row["Address"].ToString();
+                passportTextBox.Text = row["Passport"].ToString();
+            }
+
+            #endregion
+        }
+
+        private void changeProfileButton_Click(object sender, EventArgs e)
+        {
+            string login = Cryptography.Encrypt(loginTextBox.Text);
+            string email = Cryptography.Encrypt(emailTextBox.Text);
+            string password = Cryptography.Encrypt(passwordTextBox.Text);
+            string query = "update Users set " +
+                "Login = @Login, " +
+                "Password = @Password, " +
+                "FirstName = @FirstName, " +
+                "SecondName = @SecondName, " +
+                "Sex = @Sex, " +
+                "Phone = @Phone, " +
+                "Email = @Email, " +
+                "Passport = @Passport, " +
+                "Address = @Address " +
+                "where ID = @ID";
+
+            SqlCommand command = new SqlCommand(query, con);
+
+            command.Parameters.Add(new SqlParameter("@Login", login));
+            command.Parameters.Add(new SqlParameter("@Password", password));
+            command.Parameters.Add(new SqlParameter("@FirstName", firstNameTextBox.Text));
+            command.Parameters.Add(new SqlParameter("@SecondName", secondNameTextBox.Text));
+            command.Parameters.Add(new SqlParameter("@Sex", sexTextBox.Text));
+            command.Parameters.Add(new SqlParameter("@Phone", phoneTextBox.Text));
+            command.Parameters.Add(new SqlParameter("@Email", email));
+            command.Parameters.Add(new SqlParameter("@Passport", passportTextBox.Text));
+            command.Parameters.Add(new SqlParameter("@Address", addressTextBox.Text));
+            command.Parameters.Add(new SqlParameter("@ID", id));
+
+            try
+            {
+                con.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+            finally
+            {
+                con.Close();
+                tabControl1_SelectedIndexChanged(sender, e);
+            }
         }
     }
 }

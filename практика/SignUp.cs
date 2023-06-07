@@ -34,6 +34,7 @@ namespace практика
             int admin;
             string email;
             string password;
+            string login;
             if (roleComboBox.Text == "Администратор") admin = 1;
             else if (roleComboBox.Text == "Пользователь") admin = 0;
             else
@@ -76,6 +77,7 @@ namespace практика
                     passwordTextBox.Text.Length != 0 || confirmPasswordTextBox.Text.Length != 0 || phoneTextBox.Text.Length != 0 ||
                     passportTextBox.Text.Length != 0 || addressTextBox.Text.Length != 0)
             {
+                login = Cryptography.Encrypt(loginTextBox.Text);
                 email = Cryptography.Encrypt(emailTextBox.Text);
                 password = Cryptography.Encrypt(passwordTextBox.Text);
             }
@@ -91,18 +93,8 @@ namespace практика
                 string query = "insert into Users(Login, Name, Phone, Email, Passport, Address, Password, Admin, Sex) " +
                     "values(@Login, @Name, @Phone, @Email, @Passport, @Address, @Password, @Admin, @Sex)";
 
-                //if (emailTextBox.Text != "")
-                //{
-                //    if (Regex.IsMatch(emailTextBox.Text, pattern, RegexOptions.IgnoreCase))
-                //    {
-                //        email = Hash.HashValue(emailTextBox.Text);
-                //    }
-                //    else { MessageBox.Show("Некорректный email"); return; }
-                //}
-                //var password = Hash.HashValue(passwordTextBox.Text);
-
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.Add(new SqlParameter("@Login", loginTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@Login", login));
                 cmd.Parameters.Add(new SqlParameter("@Name", name));
                 cmd.Parameters.Add(new SqlParameter("@Phone", phoneTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@Email", email));
