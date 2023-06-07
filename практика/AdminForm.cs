@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using практика.Connection;
+using практика.cs;
 
 namespace практика
 {
-    public partial class MainForm : Form
+    public partial class AdminForm : Form
     {
         static readonly string connectionString = DataBase.ConnectionString;
         string name = string.Empty;
@@ -21,12 +22,11 @@ namespace практика
         SqlConnection con = new SqlConnection(connectionString);
         DataTable dataTable = new DataTable();
 
-        public MainForm()
+        public AdminForm()
         {
             InitializeComponent();
         }
-
-        public MainForm(int id)
+        public AdminForm(int id)
         {
             InitializeComponent();
 
@@ -60,7 +60,7 @@ namespace практика
             greetingLabel.Text = sb.ToString();
         }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }

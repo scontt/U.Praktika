@@ -19,16 +19,11 @@ namespace практика
     {
         int cap = 0;
         int tries = 0;
-        string server = "(localdb)\\MSSQLLocalDB";
-        string db = "agency";
-        string connectonString;
-
-        DataBase connection = new DataBase();
+        readonly string connectonString = DataBase.ConnectionString;
 
         public SignIn()
         {
             InitializeComponent();
-            connectonString = connection.Connect(server, db);
             roleComboBox.Items.AddRange(new string[] { "Администратор", "Пользователь" });
             signInButton.Enabled = false;
         }
@@ -74,36 +69,56 @@ namespace практика
 
         private void signInButton_Click(object sender, EventArgs e)
         {
-            byte admin;
-            var email = Hash.HashValue(emailTextBox.Text);
-            var password = Hash.HashValue(passwordTextBox.Text);
+            //byte admin;
+            //var email = Hash.HashValue(emailTextBox.Text);
+            //var password = Hash.HashValue(passwordTextBox.Text);
+            string email;
+            string password;
+            int id = 0, admin = 0;
             DataTable dataTable = new DataTable();
+            DataRow row;
 
-            if (roleComboBox.Text == "Администратор") admin = 1;
-            else if (roleComboBox.Text == "Пользователь") admin = 0;
-            else
-            {
-                MessageBox.Show("Роль не выбрана", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (roleComboBox.Text == "Администратор") admin = 1;
+            //else if (roleComboBox.Text == "Пользователь") admin = 0;
+            //else
+            //{
+            //    MessageBox.Show("Роль не выбрана", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            string query = "select Email, Password, Admin from Users " +
-                "where Email = @email and Password = @password and Admin = @admin";
+            string query = "select Email, Password, Admin, ID from Users " +
+                "where Email = @email and Password = @password";
             SqlConnection conn = new SqlConnection(connectonString);
 
             SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.Add(new SqlParameter("@email", email));
-            cmd.Parameters.Add(new SqlParameter("@password", password));
-            cmd.Parameters.Add(new SqlParameter("@admin", admin));
+            //cmd.Parameters.Add(new SqlParameter("@email", email));
+            //cmd.Parameters.Add(new SqlParameter("@password", password));
+            //cmd.Parameters.Add(new SqlParameter("@admin", admin));
 
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
             dataAdapter.Fill(dataTable);
 
+            if (dataTable.Rows.Count == 1)
+            {
+                row = dataTable.Rows[0];
+                admin = Convert.ToInt32(row["Admin"]);
+                id = Convert.ToInt32(row["ID"]);
+            }
+
             if(dataTable.Rows.Count == 1 && tries < 3)
             {
                 Hide();
-                MainForm mainForm = new MainForm();
-                mainForm.ShowDialog();
+                //roleComboBox.Text == "Администратор"
+                if (admin == 1)
+                {
+                    AdminForm adminForm = new AdminForm(id);
+                    adminForm.ShowDialog();
+                }
+                else
+                {
+                    MainForm mainForm = new MainForm(id);
+                    mainForm.ShowDialog();
+                }
                 tries++;
             }
             else if (tries == 3)

@@ -11,9 +11,15 @@ namespace практика.Connection
     {
         string connection = string.Empty;
 
+        static string server = "(localdb)\\MSSQLLocalDB";
+        static string db = "agency";
+
         public string ServerName { get; set; }
         public string DataBaseName { get; set; }
-        public string Connection { get; set; }
+        /// <summary>
+        /// Содержит строку подключения к локальной базе данных
+        /// </summary>
+        public static string ConnectionString { get; } = $"Server={server};Database={db};Trusted_Connection=True;Integrated Security=true;Column Encryption Setting=enabled";
 
         /// <summary>
         /// Создает строку подключения к базе данных
@@ -25,7 +31,7 @@ namespace практика.Connection
         {
             ServerName = server;
             DataBaseName = database;
-            connection = $"Server={ServerName};Database={DataBaseName};Trusted_Connection=True;Initial Catalog=Clinic;Integrated Security=true;Column Encryption Setting=enabled";
+            connection = $"Server={ServerName};Database={DataBaseName};Trusted_Connection=True;Integrated Security=true;Column Encryption Setting=enabled";
             return connection;
         }
     }
