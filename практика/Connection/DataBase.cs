@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace практика.Connection
 
         static string server = "(localdb)\\MSSQLLocalDB";
         static string db = "agency";
+        static DataSet agency = new DataSet("Agency");
 
         public string ServerName { get; set; }
         public string DataBaseName { get; set; }

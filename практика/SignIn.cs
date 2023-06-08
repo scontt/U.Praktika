@@ -100,21 +100,14 @@ namespace практика
             if(dataTable.Rows.Count == 1 && tries < 3)
             {
                 Hide();
-                if (admin == 1)
-                {
-                    AdminForm adminForm = new AdminForm(id);
-                    adminForm.ShowDialog();
-                }
-                else
-                {
-                    MainForm mainForm = new MainForm(id);
-                    mainForm.ShowDialog();
-                }
+                MainForm mainForm = new MainForm(id);
+                mainForm.ShowDialog();
+
                 tries++;
             }
             else if (tries == 3)
             {
-                MessageBox.Show("Превышено максимальное количество попыток входа\nПошел нахуй", "Пидор", 
+                MessageBox.Show("Превышено максимальное количество попыток входа", "Ошибка", 
                     MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 Application.Exit();
             }

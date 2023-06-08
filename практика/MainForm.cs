@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,17 +12,23 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using практика.Connection;
 using практика.cs;
+using практика.db;
 
 namespace практика
 {
     public partial class MainForm : Form
     {
         static readonly string connectionString = DataBase.ConnectionString;
+        string eventName = string.Empty;
+        DateTime eventTime, eventDate;
         string name = string.Empty;
         string sex = string.Empty;
-        int id;
+        int id, admin = 0;
+        DateTime eventDateTime;
+        SqlDataAdapter dataAdapter;
         SqlConnection con = new SqlConnection(connectionString);
-        DataTable dataTable = new DataTable();
+        //DataTable dataTable = new DataTable();
+        DataSet agency = new DataSet();
         DataRow row;
 
         public MainForm()
@@ -35,6 +42,26 @@ namespace практика
 
             this.id = id;
 
+            #region dataset
+
+            agency.Tables.Add("User");
+
+            //DataColumn ID = agency.Tables["Users"].Columns.Add("ID", typeof(Int32));
+            agency.Tables["User"].Columns.Add("ID", typeof(Int32));
+            agency.Tables["User"].Columns.Add("FirstName", typeof(String));
+            agency.Tables["User"].Columns.Add("Phone", typeof(String));
+            agency.Tables["User"].Columns.Add("Passport", typeof(String));
+            agency.Tables["User"].Columns.Add("Address", typeof(String));
+            agency.Tables["User"].Columns.Add("Admin", typeof(Byte));
+            agency.Tables["User"].Columns.Add("Email", typeof(String));
+            agency.Tables["User"].Columns.Add("Password", typeof(String));
+            agency.Tables["User"].Columns.Add("Sex", typeof(String));
+            agency.Tables["User"].Columns.Add("Login", typeof(String));
+            agency.Tables["User"].Columns.Add("SecondName", typeof(String));
+
+            #endregion
+
+
             #region Главная
             int hour = DateTime.Now.Hour;
             string greetingText = string.Empty;
@@ -44,20 +71,20 @@ namespace практика
             else if (hour >= 12 && hour < 18) greetingText = "Добрый день, ";
             else if (hour >= 18 && hour < 24) greetingText = "Добрый вечер, ";
 
-            string query = "select FirstName, Sex from Users where ID = @ID";
+            string query = "select * from Users where ID = @ID";
 
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.Add(new SqlParameter("@ID", id));
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-
-            dataAdapter.Fill(dataTable);
+            dataAdapter.Fill(agency.Tables["User"]);
 
             DataRow row;
-            if (dataTable.Rows.Count == 1)
+            if (agency.Tables["User"].Rows.Count == 1)
             {
-                row = dataTable.Rows[0];
+                row = agency.Tables["User"].Rows[0];
                 name = row["FirstName"].ToString();
                 sex = row["Sex"].ToString();
+                admin = Convert.ToInt32(row["Admin"]);
             }
 
             var sb = new StringBuilder(greetingText);
@@ -65,6 +92,30 @@ namespace практика
 
             greetingLabel.Text = sb.ToString();
             #endregion
+
+            #region Мероприятие
+
+            DataTable eventDT = new DataTable();
+            query = "select * from EventsT order by ID desc";
+
+            cmd = new SqlCommand(query, con);
+
+            dataAdapter = new SqlDataAdapter(cmd);
+            dataAdapter.Fill(eventDT);
+
+            row = eventDT.Rows[0];
+
+            eventDateTime = Convert.ToDateTime(row["EventDate"]);
+            eventName = row["Name"].ToString();
+
+            #endregion
+
+
+            if (admin == 0)
+            {
+                tabControl1.TabPages.Remove(rentorsPage);
+                tabControl1.TabPages.Remove(landsPage);
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -76,18 +127,10 @@ namespace практика
         {
             #region Профиль
 
-            if (tabControl1.SelectedIndex == 6) 
+            int profile = admin == 0? 4 : 6;
+            if (tabControl1.SelectedIndex == profile)
             {
-                dataTable.Clear();
-                SqlDataAdapter dataAdapter;
-                string query = "select * from Users where ID = @ID";
-                SqlCommand command = new SqlCommand(query, con);
-
-                command.Parameters.Add(new SqlParameter("@ID", id));
-
-                dataAdapter = new SqlDataAdapter(command);
-                dataAdapter.Fill(dataTable);
-                row = dataTable.Rows[0];
+                row = agency.Tables["User"].Rows[0];
 
                 loginLabel.Text = Cryptography.Decrypt(row["Login"].ToString());
                 passwordLabel.Text = Cryptography.Decrypt(row["Password"].ToString());
@@ -163,6 +206,20 @@ namespace практика
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+            double days = eventDateTime.Subtract(currentTime).TotalDays; // разность дней события от текущей даты
+            double hours = eventDateTime.Subtract(currentTime).TotalHours; // разность часов события от текущего времени
+            double mins = eventDateTime.Subtract(currentTime).TotalMinutes; // разность минут события от текущего времени
+            int daysInt = (int)days; // количество дней
+            int hoursInt = (int)hours - (daysInt * 24); // количество часов
+            int minsInt = (int)mins - (int)hours * 60; // количество минут
+            
+            eventStatusLabel.Text = "Осталось " + daysInt.ToString() + " дней, " + hoursInt.ToString() + " часов, " + minsInt.ToString()
+            + " минут до события " + eventName;
         }
     }
 }
