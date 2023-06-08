@@ -83,6 +83,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.eventStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.usersPage = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.mainPage.SuspendLayout();
             this.accountPage.SuspendLayout();
@@ -99,6 +100,7 @@
             this.tabControl1.Controls.Add(this.requestPage);
             this.tabControl1.Controls.Add(this.officesPage);
             this.tabControl1.Controls.Add(this.accountPage);
+            this.tabControl1.Controls.Add(this.usersPage);
             this.tabControl1.Location = new System.Drawing.Point(2, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -111,7 +113,7 @@
             this.mainPage.Controls.Add(this.greetingLabel);
             this.mainPage.Location = new System.Drawing.Point(4, 22);
             this.mainPage.Name = "mainPage";
-            this.mainPage.Size = new System.Drawing.Size(1020, 583);
+            this.mainPage.Size = new System.Drawing.Size(1020, 555);
             this.mainPage.TabIndex = 6;
             this.mainPage.Text = "Главная";
             this.mainPage.UseVisualStyleBackColor = true;
@@ -131,7 +133,7 @@
             this.flatsPage.Location = new System.Drawing.Point(4, 22);
             this.flatsPage.Name = "flatsPage";
             this.flatsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.flatsPage.Size = new System.Drawing.Size(1020, 583);
+            this.flatsPage.Size = new System.Drawing.Size(1020, 555);
             this.flatsPage.TabIndex = 0;
             this.flatsPage.Text = "Картотека квартир";
             this.flatsPage.UseVisualStyleBackColor = true;
@@ -150,7 +152,7 @@
             // 
             this.landsPage.Location = new System.Drawing.Point(4, 22);
             this.landsPage.Name = "landsPage";
-            this.landsPage.Size = new System.Drawing.Size(1020, 583);
+            this.landsPage.Size = new System.Drawing.Size(1020, 555);
             this.landsPage.TabIndex = 2;
             this.landsPage.Text = "Список арендодателей";
             this.landsPage.UseVisualStyleBackColor = true;
@@ -159,7 +161,7 @@
             // 
             this.requestPage.Location = new System.Drawing.Point(4, 22);
             this.requestPage.Name = "requestPage";
-            this.requestPage.Size = new System.Drawing.Size(1020, 583);
+            this.requestPage.Size = new System.Drawing.Size(1020, 555);
             this.requestPage.TabIndex = 3;
             this.requestPage.Text = "Заявки";
             this.requestPage.UseVisualStyleBackColor = true;
@@ -168,7 +170,7 @@
             // 
             this.officesPage.Location = new System.Drawing.Point(4, 22);
             this.officesPage.Name = "officesPage";
-            this.officesPage.Size = new System.Drawing.Size(1020, 583);
+            this.officesPage.Size = new System.Drawing.Size(1020, 555);
             this.officesPage.TabIndex = 4;
             this.officesPage.Text = "Офисы";
             this.officesPage.UseVisualStyleBackColor = true;
@@ -635,6 +637,15 @@
             this.eventStatusLabel.Size = new System.Drawing.Size(96, 17);
             this.eventStatusLabel.Text = "eventStatusLabel";
             // 
+            // usersPage
+            // 
+            this.usersPage.Location = new System.Drawing.Point(4, 22);
+            this.usersPage.Name = "usersPage";
+            this.usersPage.Size = new System.Drawing.Size(1020, 555);
+            this.usersPage.TabIndex = 7;
+            this.usersPage.Text = "Пользователи";
+            this.usersPage.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -715,6 +726,7 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel eventStatusLabel;
+        private System.Windows.Forms.TabPage usersPage;
     }
 }
 

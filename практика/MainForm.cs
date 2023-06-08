@@ -115,6 +115,7 @@ namespace практика
             {
                 tabControl1.TabPages.Remove(rentorsPage);
                 tabControl1.TabPages.Remove(landsPage);
+                tabControl1.TabPages.Remove(usersPage);
             }
         }
 
