@@ -113,8 +113,7 @@ namespace практика
 
             if (admin == 0)
             {
-                tabControl1.TabPages.Remove(rentorsPage);
-                tabControl1.TabPages.Remove(landsPage);
+               
                 tabControl1.TabPages.Remove(usersPage);
             }
         }
@@ -209,6 +208,44 @@ namespace практика
            
 
            
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void officesPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+    
+            // Включаем поддержку сценариев
+            webBrowser2.ScriptErrorsSuppressed = false;
+
+            // Устанавливаем URL-адрес для отображения карты (например, Google Maps)
+            webBrowser2.Url = new Uri("https://www.google.com/maps");
+        }
+
+        private void webBrowser2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            // В коде формы
+
+            // Создаем элемент WebBrowser
+            WebBrowser webBrowser = new WebBrowser();
+
+            // Устанавливаем URL-адрес для отображения карты (например, Google Maps)
+            webBrowser.Url = new Uri("https://www.google.com/maps");
+
+            // Устанавливаем размер и положение элемента WebBrowser на форме
+            webBrowser.Size = new Size(800, 600);
+            webBrowser.Location = new Point(100, 100);
+
+            // Добавляем элемент WebBrowser на форму
+            this.Controls.Add(webBrowser);
         }
 
         private void exitButton_Click(object sender, EventArgs e)
