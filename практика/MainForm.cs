@@ -10,6 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 using практика.Connection;
 using практика.cs;
 using практика.db;
@@ -31,9 +35,12 @@ namespace практика
         DataSet agency = new DataSet();
         DataRow row;
 
+        //GMapControl gMapControl1; // Добавляем поле для элемента управления картой
+
         public MainForm()
         {
             InitializeComponent();
+           // InitializeMap(); // Вызываем метод для инициализации карты
         }
 
         public MainForm(int id)
@@ -41,6 +48,7 @@ namespace практика
             InitializeComponent();
 
             this.id = id;
+           // InitializeMap(); // Вызываем метод для инициализации карты
 
             #region dataset
 
@@ -117,6 +125,40 @@ namespace практика
                 tabControl1.TabPages.Remove(usersPage);
             }
         }
+       /* private void InitializeMap()
+        {
+            gMapControl1 = new GMapControl(); // Создаем элемент управления картой
+            gMapControl1.Dock = DockStyle.Fill; // Занимает все доступное пространство на форме
+
+            // Устанавливка провайдера карт (Google Maps)
+            GMaps.Instance.Mode = AccessMode.ServerOnly;
+            gMapControl1.MapProvider = GMapProviders.GoogleMap;
+
+            // Установка центра карты в г. Красноярск
+            gMapControl1.Position = new PointLatLng(56.0153, 92.8932);
+            gMapControl1.MinZoom = 2; // Минимальный зум
+            gMapControl1.MaxZoom = 16; // Максимальный зум
+            gMapControl1.Zoom = 11; // Какой используется зум при открытии
+            gMapControl1.ShowCenter = false; // Показывать или скрывать красный крестик в центре
+            gMapControl1.ShowTileGridLines = false; // Показывать или скрывать тайлы
+            gMapControl1.CanDragMap = true;
+            gMapControl1.MouseWheelZoomEnabled = true;
+
+            // Добавляем элемент управления картой на форму
+            tabPage1.Controls.Add(gMapControl1);
+        }
+        private void AddMapMarkers()
+        {
+            GMapOverlay markersOverlay = new GMapOverlay("markers"); // Создаем новый слой маркеров
+
+            // Создаем маркер с координатами
+            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(56.0153, 92.8932), GMarkerGoogleType.red);
+            markersOverlay.Markers.Add(marker); // Добавляем маркер на слой
+
+            // Добавляем слой маркеров на карту
+            gMapControl1.Overlays.Add(markersOverlay);
+        }*/
+
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -223,29 +265,10 @@ namespace практика
         private void MainForm_Load(object sender, EventArgs e)
         {
     
-            // Включаем поддержку сценариев
-            webBrowser2.ScriptErrorsSuppressed = false;
-
-            // Устанавливаем URL-адрес для отображения карты (например, Google Maps)
-            webBrowser2.Url = new Uri("https://www.google.com/maps");
         }
 
         private void webBrowser2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            // В коде формы
-
-            // Создаем элемент WebBrowser
-            WebBrowser webBrowser = new WebBrowser();
-
-            // Устанавливаем URL-адрес для отображения карты (например, Google Maps)
-            webBrowser.Url = new Uri("https://www.google.com/maps");
-
-            // Устанавливаем размер и положение элемента WebBrowser на форме
-            webBrowser.Size = new Size(800, 600);
-            webBrowser.Location = new Point(100, 100);
-
-            // Добавляем элемент WebBrowser на форму
-            this.Controls.Add(webBrowser);
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -267,4 +290,5 @@ namespace практика
             + " минут до события " + eventName;
         }
     }
+
 }

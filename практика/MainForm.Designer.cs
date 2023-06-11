@@ -78,6 +78,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.officesPage = new System.Windows.Forms.TabPage();
+            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.requestPage = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonpriob = new System.Windows.Forms.Button();
@@ -97,8 +99,7 @@
             this.mainPage = new System.Windows.Forms.TabPage();
             this.greetingLabel = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.statusStrip1.SuspendLayout();
             this.usersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -660,6 +661,25 @@
             this.officesPage.UseVisualStyleBackColor = true;
             this.officesPage.Click += new System.EventHandler(this.officesPage_Click);
             // 
+            // webBrowser2
+            // 
+            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser2.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser2.Name = "webBrowser2";
+            this.webBrowser2.Size = new System.Drawing.Size(1363, 728);
+            this.webBrowser2.TabIndex = 1;
+            this.webBrowser2.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser2_DocumentCompleted);
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(1363, 728);
+            this.webBrowser1.TabIndex = 0;
+            // 
             // requestPage
             // 
             this.requestPage.Controls.Add(this.label2);
@@ -850,6 +870,7 @@
             this.tabControl1.Controls.Add(this.officesPage);
             this.tabControl1.Controls.Add(this.accountPage);
             this.tabControl1.Controls.Add(this.usersPage);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(3, -2);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl1.Name = "tabControl1";
@@ -858,24 +879,15 @@
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // webBrowser1
+            // tabPage1
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1363, 728);
-            this.webBrowser1.TabIndex = 0;
-            // 
-            // webBrowser2
-            // 
-            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser2.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser2.Name = "webBrowser2";
-            this.webBrowser2.Size = new System.Drawing.Size(1363, 728);
-            this.webBrowser2.TabIndex = 1;
-            this.webBrowser2.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser2_DocumentCompleted);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1363, 728);
+            this.tabPage1.TabIndex = 8;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -988,6 +1000,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.WebBrowser webBrowser2;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
 
