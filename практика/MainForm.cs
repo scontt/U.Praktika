@@ -10,10 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using GMap.NET;
-using GMap.NET.MapProviders;
-using GMap.NET.WindowsForms;
-using GMap.NET.WindowsForms.Markers;
 using практика.Connection;
 using практика.cs;
 using практика.db;
@@ -86,6 +82,7 @@ namespace практика
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
             dataAdapter.Fill(agency.Tables["User"]);
 
+
             DataRow row;
             if (agency.Tables["User"].Rows.Count == 1)
             {
@@ -123,7 +120,9 @@ namespace практика
             {
                
                 tabControl1.TabPages.Remove(usersPage);
+
             }
+
         }
        /* private void InitializeGMapControl()
         {
@@ -263,6 +262,11 @@ namespace практика
             Purchase purchase = new Purchase();
             purchase.ShowDialog();
             Show();
+        }
+
+        private void mainPage_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void exitButton_Click(object sender, EventArgs e)

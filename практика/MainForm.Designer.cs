@@ -78,7 +78,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.officesPage = new System.Windows.Forms.TabPage();
-            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.requestPage = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonpriob = new System.Windows.Forms.Button();
@@ -103,7 +102,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.accountPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.officesPage.SuspendLayout();
             this.requestPage.SuspendLayout();
             this.flatsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -648,7 +646,6 @@
             // 
             // officesPage
             // 
-            this.officesPage.Controls.Add(this.gMapControl1);
             this.officesPage.Location = new System.Drawing.Point(4, 26);
             this.officesPage.Margin = new System.Windows.Forms.Padding(5);
             this.officesPage.Name = "officesPage";
@@ -657,32 +654,6 @@
             this.officesPage.Text = "Офисы";
             this.officesPage.UseVisualStyleBackColor = true;
             this.officesPage.Click += new System.EventHandler(this.officesPage_Click);
-            // 
-            // gMapControl1
-            // 
-            this.gMapControl1.Bearing = 0F;
-            this.gMapControl1.CanDragMap = true;
-            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Navy;
-            this.gMapControl1.GrayScaleMode = false;
-            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.gMapControl1.LevelsKeepInMemmory = 5;
-            this.gMapControl1.Location = new System.Drawing.Point(19, 23);
-            this.gMapControl1.MarkersEnabled = true;
-            this.gMapControl1.MaxZoom = 2;
-            this.gMapControl1.MinZoom = 2;
-            this.gMapControl1.MouseWheelZoomEnabled = true;
-            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.gMapControl1.Name = "gMapControl1";
-            this.gMapControl1.NegativeMode = false;
-            this.gMapControl1.PolygonsEnabled = true;
-            this.gMapControl1.RetryLoadTile = 0;
-            this.gMapControl1.RoutesEnabled = true;
-            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.gMapControl1.ShowTileGridLines = false;
-            this.gMapControl1.Size = new System.Drawing.Size(937, 616);
-            this.gMapControl1.TabIndex = 0;
-            this.gMapControl1.Zoom = 0D;
             // 
             // requestPage
             // 
@@ -855,6 +826,7 @@
             this.mainPage.TabIndex = 6;
             this.mainPage.Text = "Главная";
             this.mainPage.UseVisualStyleBackColor = true;
+            this.mainPage.Click += new System.EventHandler(this.mainPage_Click);
             // 
             // greetingLabel
             // 
@@ -904,7 +876,6 @@
             this.accountPage.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.officesPage.ResumeLayout(false);
             this.requestPage.ResumeLayout(false);
             this.requestPage.PerformLayout();
             this.flatsPage.ResumeLayout(false);
@@ -992,7 +963,6 @@
         private System.Windows.Forms.Label labelinform3;
         private System.Windows.Forms.Label labelinform1;
         private System.Windows.Forms.Label labelinform;
-        private GMap.NET.WindowsForms.GMapControl gMapControl1;
     }
 }
 
