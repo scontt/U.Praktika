@@ -230,9 +230,12 @@ namespace практика
 
         private void buttonprod_Click(object sender, EventArgs e)
         {
-           
+            Hide();
+            Sale sale = new Sale();
+            sale.ShowDialog();
+            Show();
 
-           
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -252,6 +255,14 @@ namespace практика
 
         private void webBrowser2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+        }
+
+        private void buttonpriob_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Purchase purchase = new Purchase();
+            purchase.ShowDialog();
+            Show();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
