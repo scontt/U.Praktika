@@ -14,6 +14,7 @@ using практика.Connection;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
 using практика.cs;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
 namespace практика
 {
@@ -87,13 +88,32 @@ namespace практика
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(connectonString))
+            string query = "select Login from Users " +
+                "where Login = @Login";
+            SqlConnection conn = new SqlConnection(connectonString);
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.Add(new SqlParameter("@Login", login));
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            if (dataTable.Rows.Count > 0)
+            {
+                MessageBox.Show("Пользователь с таким логином уже зарегестрирован", "Ошибка", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (conn = new SqlConnection(connectonString))
             {
                 string name = firstNameTextBox.Text + " " + lastNameTextbox.Text;
-                string query = "insert into Users(Login, Name, Phone, Email, Passport, Address, Password, Admin, Sex) " +
+                query = "insert into Users(Login, Name, Phone, Email, Passport, Address, Password, Admin, Sex) " +
                     "values(@Login, @Name, @Phone, @Email, @Passport, @Address, @Password, @Admin, @Sex)";
 
-                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd = new SqlCommand(query, conn);
                 cmd.Parameters.Add(new SqlParameter("@Login", login));
                 cmd.Parameters.Add(new SqlParameter("@Name", name));
                 cmd.Parameters.Add(new SqlParameter("@Phone", phoneTextBox.Text));

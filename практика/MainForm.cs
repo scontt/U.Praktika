@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Net.Cache;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,19 +20,19 @@ namespace практика
     public partial class MainForm : Form
     {
         static readonly string connectionString = DataBase.ConnectionString;
+
         string eventName = string.Empty;
-        DateTime eventTime, eventDate;
+        string query;
         string name = string.Empty;
         string sex = string.Empty;
-        int id, admin = 0;
+        string eventTime = string.Empty;
+        int id, eventId, admin = 0;
         DateTime eventDateTime;
         SqlDataAdapter dataAdapter;
         SqlConnection con = new SqlConnection(connectionString);
         //DataTable dataTable = new DataTable();
         DataSet agency = new DataSet();
         DataRow row;
-       
-
 
         public MainForm()
         {
@@ -65,7 +66,6 @@ namespace практика
 
             #endregion
 
-
             #region Главная
             int hour = DateTime.Now.Hour;
             string greetingText = string.Empty;
@@ -75,7 +75,7 @@ namespace практика
             else if (hour >= 12 && hour < 18) greetingText = "Добрый день, ";
             else if (hour >= 18 && hour < 24) greetingText = "Добрый вечер, ";
 
-            string query = "select * from Users where ID = @ID";
+            query = "select * from Users where ID = @ID";
 
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.Add(new SqlParameter("@ID", id));
@@ -99,28 +99,41 @@ namespace практика
             #endregion
 
             #region Мероприятие
+            
+            row = Event.GetLastEvent();
 
-            DataTable eventDT = new DataTable();
-            query = "select * from EventsT order by ID desc";
-
-            cmd = new SqlCommand(query, con);
-
-            dataAdapter = new SqlDataAdapter(cmd);
-            dataAdapter.Fill(eventDT);
-
-            row = eventDT.Rows[0];
-
+            eventId = Convert.ToInt32(row["ID"]);
             eventDateTime = Convert.ToDateTime(row["EventDate"]);
             eventName = row["Name"].ToString();
 
             #endregion
 
-
-            if (admin == 0)
+            if (admin == 0) tabControl1.TabPages.Remove(usersPage);
+            else
             {
-               
-                tabControl1.TabPages.Remove(usersPage);
+                agency.Tables.Add("AllUsers");
 
+                agency.Tables["AllUsers"].Columns.Add("ID", typeof(Int32));
+                agency.Tables["AllUsers"].Columns.Add("FirstName", typeof(String));
+                agency.Tables["AllUsers"].Columns.Add("Phone", typeof(String));
+                agency.Tables["AllUsers"].Columns.Add("Passport", typeof(String));
+                agency.Tables["AllUsers"].Columns.Add("Address", typeof(String));
+                agency.Tables["AllUsers"].Columns.Add("Admin", typeof(Byte));
+                agency.Tables["AllUsers"].Columns.Add("Email", typeof(String));
+                agency.Tables["AllUsers"].Columns.Add("Password", typeof(String));
+                agency.Tables["AllUsers"].Columns.Add("Sex", typeof(String));
+                agency.Tables["AllUsers"].Columns.Add("Login", typeof(String));
+                agency.Tables["AllUsers"].Columns.Add("SecondName", typeof(String));
+
+                query = "select * from Users where ID <> @ID";
+
+                cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("@ID", id));
+
+                dataAdapter = new SqlDataAdapter(cmd);
+                dataAdapter.Fill(agency.Tables["AllUsers"]);
+
+                dataGridView1.DataSource = agency.Tables["AllUsers"];
             }
 
         }
@@ -151,8 +164,7 @@ namespace практика
         {
             #region Профиль
 
-            int profile = admin == 0? 4 : 6;
-            if (tabControl1.SelectedIndex == profile)
+            if (tabControl1.SelectedIndex == 4)
             {
                 row = agency.Tables["User"].Rows[0];
 
@@ -223,6 +235,7 @@ namespace практика
             finally
             {
                 con.Close();
+                UpdateUserTable();
                 tabControl1_SelectedIndexChanged(sender, e);
             }
         }
@@ -233,27 +246,11 @@ namespace практика
             Sale sale = new Sale();
             sale.ShowDialog();
             Show();
-
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void officesPage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-    
         }
 
         private void webBrowser2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+
         }
 
         private void buttonpriob_Click(object sender, EventArgs e)
@@ -264,9 +261,68 @@ namespace практика
             Show();
         }
 
-        private void mainPage_Click(object sender, EventArgs e)
+        private void editEventButton_Click(object sender, EventArgs e)
         {
+            if(eventNameTextBox.Text.Length != 0 || eventDateTextBox.Text.Length != 0 ||
+                eventTypeTextBox.Text.Length != 0 || eventDescriptionRichTextBox.Text.Length != 0)
+            {
+                query = "update EventsT set " +
+                    "Name = @Name, " +
+                    "Description = @Description, " +
+                    "Type = @Type, " +
+                    "EventDate = @EventDate " +
+                    "where ID = @ID";
 
+                try
+                {
+                    DateTime eventDate = Convert.ToDateTime(eventDateTextBox.Text);
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.Add(new SqlParameter("@Name", eventNameTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@Description", eventDescriptionRichTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@Type", eventTypeTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@EventDate", eventDate));
+                    cmd.Parameters.Add(new SqlParameter("@ID", eventId));
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Мероприятие успешно изменено", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+                finally 
+                {
+                    con.Close();
+                    updateEvent(sender, e);
+                }
+            }
+        }
+
+        private void scheduleEventButton_Click(object sender, EventArgs e)
+        {
+            if (eventNameTextBox.Text.Length != 0 || eventDateTextBox.Text.Length != 0 ||
+                eventTypeTextBox.Text.Length != 0 || eventDescriptionRichTextBox.Text.Length != 0)
+            {
+                query = "insert into EventsT(Name, Description, Type, EventDate) " +
+                    "values(@Name, @Description, @Type, @Date)";
+
+                using(con = new SqlConnection(connectionString))
+                {
+                    DateTime eventDate = Convert.ToDateTime(eventDateTextBox.Text);
+
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.Add(new SqlParameter("@Name", eventNameTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@Description", eventDescriptionRichTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@Type", eventTypeTextBox.Text));
+                    cmd.Parameters.Add(new SqlParameter("@Date", eventDate));
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Мероприятие успешно запланировано", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    updateEvent(sender, e);
+                }
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -283,9 +339,28 @@ namespace практика
             int daysInt = (int)days; // количество дней
             int hoursInt = (int)hours - (daysInt * 24); // количество часов
             int minsInt = (int)mins - (int)hours * 60; // количество минут
-            
+            eventTime = $"{daysInt} дней {hoursInt} часов {minsInt} минут";
             eventStatusLabel.Text = "Осталось " + daysInt.ToString() + " дней, " + hoursInt.ToString() + " часов, " + minsInt.ToString()
             + " минут до события " + eventName;
+
+            eventNameLabel.Text = $"{eventName} начнется через {eventTime}";
+        }
+
+        private void updateEvent(object sender, EventArgs e)
+        {
+            row = Event.GetLastEvent();
+            eventName = row["Name"].ToString();
+            eventDateTime = Convert.ToDateTime(row["EventDate"]);
+        }
+
+        private void UpdateUserTable()
+        {
+            query = "select * from Users where ID = @ID";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.Add(new SqlParameter("@ID", id));
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+            agency.Tables["User"].Clear();
+            dataAdapter.Fill(agency.Tables["User"]);
         }
     }
 
