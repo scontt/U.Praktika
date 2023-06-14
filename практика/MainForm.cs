@@ -249,27 +249,6 @@ namespace практика
             }
         }
 
-        private void buttonprod_Click(object sender, EventArgs e)
-        {
-            Hide();
-            Sale sale = new Sale();
-            sale.ShowDialog();
-            Show();
-        }
-
-        private void webBrowser2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
-        }
-
-        private void buttonpriob_Click(object sender, EventArgs e)
-        {
-            Hide();
-            Purchase purchase = new Purchase();
-            purchase.ShowDialog();
-            Show();
-        }
-
         private void editEventButton_Click(object sender, EventArgs e)
         {
             if(eventNameTextBox.Text.Length != 0 || eventDateTextBox.Text.Length != 0 ||
@@ -342,12 +321,12 @@ namespace практика
         private void timer_Tick(object sender, EventArgs e)
         {
             DateTime currentTime = DateTime.Now;
-            double days = eventDateTime.Subtract(currentTime).TotalDays; // разность дней события от текущей даты
-            double hours = eventDateTime.Subtract(currentTime).TotalHours; // разность часов события от текущего времени
-            double mins = eventDateTime.Subtract(currentTime).TotalMinutes; // разность минут события от текущего времени
-            int daysInt = (int)days; // количество дней
-            int hoursInt = (int)hours - (daysInt * 24); // количество часов
-            int minsInt = (int)mins - (int)hours * 60; // количество минут
+            double days = eventDateTime.Subtract(currentTime).TotalDays;
+            double hours = eventDateTime.Subtract(currentTime).TotalHours;
+            double mins = eventDateTime.Subtract(currentTime).TotalMinutes;
+            int daysInt = (int)days;
+            int hoursInt = (int)hours - (daysInt * 24);
+            int minsInt = (int)mins - (int)hours * 60;
             eventTime = $"{daysInt} дней {hoursInt} часов {minsInt} минут";
             eventStatusLabel.Text = "Осталось " + daysInt.ToString() + " дней, " + hoursInt.ToString() + " часов, " + minsInt.ToString()
             + " минут до события " + eventName;
@@ -355,9 +334,18 @@ namespace практика
             eventNameLabel.Text = $"{eventName} начнется через {eventTime}";
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void sellButton_Click(object sender, EventArgs e)
         {
+            Sell sell = new Sell(id);
+            sell.ShowDialog();
+            Show();
+        }
 
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+            Purchase purchase = new Purchase();
+            purchase.ShowDialog();
+            Show();
         }
 
         private void updateEvent(object sender, EventArgs e)
