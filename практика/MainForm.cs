@@ -37,7 +37,7 @@ namespace практика
         public MainForm()
         {
             InitializeComponent();
-           // InitializeGMapControl();
+            // InitializeGMapControl();
         }
 
         public MainForm(int id)
@@ -45,13 +45,13 @@ namespace практика
             InitializeComponent();
 
             this.id = id;
-           // InitializeGMapControl();
+            // InitializeGMapControl();
 
             #region dataset
 
             agency.Tables.Add("User");
 
-           
+
             agency.Tables["User"].Columns.Add("ID", typeof(Int32));
             agency.Tables["User"].Columns.Add("FirstName", typeof(String));
             agency.Tables["User"].Columns.Add("Phone", typeof(String));
@@ -82,7 +82,6 @@ namespace практика
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
             dataAdapter.Fill(agency.Tables["User"]);
 
-
             DataRow row;
             if (agency.Tables["User"].Rows.Count == 1)
             {
@@ -93,13 +92,23 @@ namespace практика
             }
 
             var sb = new StringBuilder(greetingText);
+
+            if (sex == "Мужской")
+            {
+                sb.Append("уважаемый ");
+            }
+            else if (sex == "Женский")
+            {
+                sb.Append("уважаемая ");
+            }
+
             sb.Append(name);
 
             greetingLabel.Text = sb.ToString();
             #endregion
 
             #region Мероприятие
-            
+
             row = Event.GetLastEvent();
 
             eventId = Convert.ToInt32(row["ID"]);
@@ -344,6 +353,11 @@ namespace практика
             + " минут до события " + eventName;
 
             eventNameLabel.Text = $"{eventName} начнется через {eventTime}";
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void updateEvent(object sender, EventArgs e)

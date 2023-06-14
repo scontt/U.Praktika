@@ -137,26 +137,26 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eventStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 776);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 772);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(963, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(963, 26);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // eventStatusLabel
             // 
             this.eventStatusLabel.Name = "eventStatusLabel";
-            this.eventStatusLabel.Size = new System.Drawing.Size(96, 17);
+            this.eventStatusLabel.Size = new System.Drawing.Size(121, 20);
             this.eventStatusLabel.Text = "eventStatusLabel";
             // 
             // usersPage
             // 
             this.usersPage.Controls.Add(this.dataGridView1);
-            this.usersPage.Location = new System.Drawing.Point(4, 24);
+            this.usersPage.Location = new System.Drawing.Point(4, 26);
             this.usersPage.Margin = new System.Windows.Forms.Padding(5);
             this.usersPage.Name = "usersPage";
-            this.usersPage.Size = new System.Drawing.Size(1363, 730);
+            this.usersPage.Size = new System.Drawing.Size(1363, 728);
             this.usersPage.TabIndex = 7;
             this.usersPage.Text = "Пользователи";
             this.usersPage.UseVisualStyleBackColor = true;
@@ -197,10 +197,10 @@
             this.accountPage.Controls.Add(this.label15);
             this.accountPage.Controls.Add(this.label13);
             this.accountPage.Controls.Add(this.label14);
-            this.accountPage.Location = new System.Drawing.Point(4, 24);
+            this.accountPage.Location = new System.Drawing.Point(4, 26);
             this.accountPage.Margin = new System.Windows.Forms.Padding(5);
             this.accountPage.Name = "accountPage";
-            this.accountPage.Size = new System.Drawing.Size(1363, 730);
+            this.accountPage.Size = new System.Drawing.Size(1363, 728);
             this.accountPage.TabIndex = 5;
             this.accountPage.Text = "Профиль";
             this.accountPage.UseVisualStyleBackColor = true;
@@ -270,7 +270,7 @@
             this.passportTextBox.Location = new System.Drawing.Point(681, 544);
             this.passportTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.passportTextBox.Name = "passportTextBox";
-            this.passportTextBox.Size = new System.Drawing.Size(205, 29);
+            this.passportTextBox.Size = new System.Drawing.Size(205, 34);
             this.passportTextBox.TabIndex = 3;
             // 
             // addressTextBox
@@ -279,7 +279,7 @@
             this.addressTextBox.Location = new System.Drawing.Point(491, 470);
             this.addressTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(395, 29);
+            this.addressTextBox.Size = new System.Drawing.Size(395, 34);
             this.addressTextBox.TabIndex = 3;
             // 
             // emailTextBox
@@ -288,7 +288,7 @@
             this.emailTextBox.Location = new System.Drawing.Point(489, 400);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(395, 29);
+            this.emailTextBox.Size = new System.Drawing.Size(395, 34);
             this.emailTextBox.TabIndex = 3;
             // 
             // phoneTextBox
@@ -297,7 +297,7 @@
             this.phoneTextBox.Location = new System.Drawing.Point(491, 326);
             this.phoneTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(395, 29);
+            this.phoneTextBox.Size = new System.Drawing.Size(395, 34);
             this.phoneTextBox.TabIndex = 3;
             // 
             // sexTextBox
@@ -306,7 +306,7 @@
             this.sexTextBox.Location = new System.Drawing.Point(491, 545);
             this.sexTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.sexTextBox.Name = "sexTextBox";
-            this.sexTextBox.Size = new System.Drawing.Size(180, 29);
+            this.sexTextBox.Size = new System.Drawing.Size(180, 34);
             this.sexTextBox.TabIndex = 3;
             // 
             // secondNameTextBox
@@ -315,7 +315,7 @@
             this.secondNameTextBox.Location = new System.Drawing.Point(491, 248);
             this.secondNameTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.secondNameTextBox.Name = "secondNameTextBox";
-            this.secondNameTextBox.Size = new System.Drawing.Size(395, 29);
+            this.secondNameTextBox.Size = new System.Drawing.Size(395, 34);
             this.secondNameTextBox.TabIndex = 3;
             // 
             // firstNameTextBox
@@ -324,7 +324,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(491, 178);
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(395, 29);
+            this.firstNameTextBox.Size = new System.Drawing.Size(395, 34);
             this.firstNameTextBox.TabIndex = 3;
             // 
             // passwordTextBox
@@ -333,7 +333,7 @@
             this.passwordTextBox.Location = new System.Drawing.Point(491, 107);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(395, 29);
+            this.passwordTextBox.Size = new System.Drawing.Size(395, 34);
             this.passwordTextBox.TabIndex = 3;
             // 
             // loginTextBox
@@ -342,7 +342,7 @@
             this.loginTextBox.Location = new System.Drawing.Point(491, 34);
             this.loginTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(395, 29);
+            this.loginTextBox.Size = new System.Drawing.Size(395, 34);
             this.loginTextBox.TabIndex = 3;
             // 
             // label28
@@ -352,7 +352,7 @@
             this.label28.Location = new System.Drawing.Point(679, 511);
             this.label28.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(169, 20);
+            this.label28.Size = new System.Drawing.Size(207, 25);
             this.label28.TabIndex = 0;
             this.label28.Text = "Паспортные данные:";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -364,7 +364,7 @@
             this.label26.Location = new System.Drawing.Point(485, 442);
             this.label26.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(61, 20);
+            this.label26.Size = new System.Drawing.Size(75, 25);
             this.label26.TabIndex = 0;
             this.label26.Text = "Адрес:";
             // 
@@ -404,7 +404,7 @@
             this.passportLabel.Location = new System.Drawing.Point(197, 469);
             this.passportLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.passportLabel.Name = "passportLabel";
-            this.passportLabel.Size = new System.Drawing.Size(148, 25);
+            this.passportLabel.Size = new System.Drawing.Size(185, 31);
             this.passportLabel.TabIndex = 1;
             this.passportLabel.Text = "passportLabel";
             // 
@@ -414,7 +414,7 @@
             this.label27.Location = new System.Drawing.Point(8, 437);
             this.label27.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(135, 50);
+            this.label27.Size = new System.Drawing.Size(169, 62);
             this.label27.TabIndex = 0;
             this.label27.Text = "Паспортные\r\nданные:";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -425,7 +425,7 @@
             this.addressLabel.Location = new System.Drawing.Point(197, 382);
             this.addressLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(142, 25);
+            this.addressLabel.Size = new System.Drawing.Size(177, 31);
             this.addressLabel.TabIndex = 1;
             this.addressLabel.Text = "addressLabel";
             // 
@@ -435,7 +435,7 @@
             this.emailLabel.Location = new System.Drawing.Point(197, 333);
             this.emailLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(116, 25);
+            this.emailLabel.Size = new System.Drawing.Size(144, 31);
             this.emailLabel.TabIndex = 1;
             this.emailLabel.Text = "emailLabel";
             // 
@@ -445,7 +445,7 @@
             this.phoneLabel.Location = new System.Drawing.Point(197, 288);
             this.phoneLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(125, 25);
+            this.phoneLabel.Size = new System.Drawing.Size(155, 31);
             this.phoneLabel.TabIndex = 1;
             this.phoneLabel.Text = "phoneLabel";
             // 
@@ -455,7 +455,7 @@
             this.sexLabel.Location = new System.Drawing.Point(197, 245);
             this.sexLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.sexLabel.Name = "sexLabel";
-            this.sexLabel.Size = new System.Drawing.Size(99, 25);
+            this.sexLabel.Size = new System.Drawing.Size(122, 31);
             this.sexLabel.TabIndex = 1;
             this.sexLabel.Text = "sexLabel";
             // 
@@ -465,7 +465,7 @@
             this.secondNameLable.Location = new System.Drawing.Point(197, 195);
             this.secondNameLable.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.secondNameLable.Name = "secondNameLable";
-            this.secondNameLable.Size = new System.Drawing.Size(191, 25);
+            this.secondNameLable.Size = new System.Drawing.Size(240, 31);
             this.secondNameLable.TabIndex = 1;
             this.secondNameLable.Text = "secondNameLable";
             // 
@@ -475,7 +475,7 @@
             this.firstNameLable.Location = new System.Drawing.Point(197, 146);
             this.firstNameLable.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.firstNameLable.Name = "firstNameLable";
-            this.firstNameLable.Size = new System.Drawing.Size(156, 25);
+            this.firstNameLable.Size = new System.Drawing.Size(197, 31);
             this.firstNameLable.TabIndex = 1;
             this.firstNameLable.Text = "firstNameLable";
             // 
@@ -485,7 +485,7 @@
             this.passwordLabel.Location = new System.Drawing.Point(197, 95);
             this.passwordLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(157, 25);
+            this.passwordLabel.Size = new System.Drawing.Size(197, 31);
             this.passwordLabel.TabIndex = 1;
             this.passwordLabel.Text = "passwordLabel";
             // 
@@ -495,7 +495,7 @@
             this.loginLabel.Location = new System.Drawing.Point(197, 51);
             this.loginLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(111, 25);
+            this.loginLabel.Size = new System.Drawing.Size(137, 31);
             this.loginLabel.TabIndex = 1;
             this.loginLabel.Text = "loginLabel";
             // 
@@ -505,7 +505,7 @@
             this.label25.Location = new System.Drawing.Point(8, 382);
             this.label25.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(79, 25);
+            this.label25.Size = new System.Drawing.Size(100, 31);
             this.label25.TabIndex = 0;
             this.label25.Text = "Адрес:";
             // 
@@ -515,7 +515,7 @@
             this.label23.Location = new System.Drawing.Point(8, 333);
             this.label23.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(78, 25);
+            this.label23.Size = new System.Drawing.Size(98, 31);
             this.label23.TabIndex = 0;
             this.label23.Text = "E-mail:";
             // 
@@ -525,7 +525,7 @@
             this.label21.Location = new System.Drawing.Point(8, 288);
             this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(108, 25);
+            this.label21.Size = new System.Drawing.Size(136, 31);
             this.label21.TabIndex = 0;
             this.label21.Text = "Телефон:";
             // 
@@ -535,7 +535,7 @@
             this.label16.Location = new System.Drawing.Point(8, 245);
             this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(57, 25);
+            this.label16.Size = new System.Drawing.Size(72, 31);
             this.label16.TabIndex = 0;
             this.label16.Text = "Пол:";
             // 
@@ -545,7 +545,7 @@
             this.label17.Location = new System.Drawing.Point(8, 195);
             this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(110, 25);
+            this.label17.Size = new System.Drawing.Size(139, 31);
             this.label17.TabIndex = 0;
             this.label17.Text = "Фамилия:";
             // 
@@ -555,7 +555,7 @@
             this.label18.Location = new System.Drawing.Point(8, 146);
             this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(59, 25);
+            this.label18.Size = new System.Drawing.Size(76, 31);
             this.label18.TabIndex = 0;
             this.label18.Text = "Имя:";
             // 
@@ -565,7 +565,7 @@
             this.label19.Location = new System.Drawing.Point(8, 95);
             this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(92, 25);
+            this.label19.Size = new System.Drawing.Size(116, 31);
             this.label19.TabIndex = 0;
             this.label19.Text = "Пароль:";
             // 
@@ -575,7 +575,7 @@
             this.label20.Location = new System.Drawing.Point(8, 51);
             this.label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(77, 25);
+            this.label20.Size = new System.Drawing.Size(96, 31);
             this.label20.TabIndex = 0;
             this.label20.Text = "Логин:";
             // 
@@ -586,7 +586,7 @@
             this.label24.Location = new System.Drawing.Point(485, 368);
             this.label24.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(57, 20);
+            this.label24.Size = new System.Drawing.Size(73, 25);
             this.label24.TabIndex = 0;
             this.label24.Text = "E-mail:";
             // 
@@ -597,7 +597,7 @@
             this.label1.Location = new System.Drawing.Point(485, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 20);
+            this.label1.Size = new System.Drawing.Size(74, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Логин:";
             // 
@@ -608,7 +608,7 @@
             this.label22.Location = new System.Drawing.Point(485, 297);
             this.label22.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(83, 20);
+            this.label22.Size = new System.Drawing.Size(105, 25);
             this.label22.TabIndex = 0;
             this.label22.Text = "Телефон:";
             // 
@@ -619,7 +619,7 @@
             this.label12.Location = new System.Drawing.Point(485, 76);
             this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(71, 20);
+            this.label12.Size = new System.Drawing.Size(86, 25);
             this.label12.TabIndex = 0;
             this.label12.Text = "Пароль:";
             // 
@@ -630,7 +630,7 @@
             this.label15.Location = new System.Drawing.Point(485, 514);
             this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 20);
+            this.label15.Size = new System.Drawing.Size(55, 25);
             this.label15.TabIndex = 0;
             this.label15.Text = "Пол:";
             // 
@@ -641,7 +641,7 @@
             this.label13.Location = new System.Drawing.Point(485, 146);
             this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 20);
+            this.label13.Size = new System.Drawing.Size(60, 25);
             this.label13.TabIndex = 0;
             this.label13.Text = "Имя:";
             // 
@@ -652,16 +652,16 @@
             this.label14.Location = new System.Drawing.Point(485, 220);
             this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(85, 20);
+            this.label14.Size = new System.Drawing.Size(109, 25);
             this.label14.TabIndex = 0;
             this.label14.Text = "Фамилия:";
             // 
             // officesPage
             // 
-            this.officesPage.Location = new System.Drawing.Point(4, 24);
+            this.officesPage.Location = new System.Drawing.Point(4, 26);
             this.officesPage.Margin = new System.Windows.Forms.Padding(5);
             this.officesPage.Name = "officesPage";
-            this.officesPage.Size = new System.Drawing.Size(1363, 730);
+            this.officesPage.Size = new System.Drawing.Size(1363, 728);
             this.officesPage.TabIndex = 4;
             this.officesPage.Text = "Офисы";
             this.officesPage.UseVisualStyleBackColor = true;
@@ -671,10 +671,10 @@
             this.requestPage.Controls.Add(this.label2);
             this.requestPage.Controls.Add(this.buttonpriob);
             this.requestPage.Controls.Add(this.buttonprod);
-            this.requestPage.Location = new System.Drawing.Point(4, 24);
+            this.requestPage.Location = new System.Drawing.Point(4, 26);
             this.requestPage.Margin = new System.Windows.Forms.Padding(5);
             this.requestPage.Name = "requestPage";
-            this.requestPage.Size = new System.Drawing.Size(1363, 730);
+            this.requestPage.Size = new System.Drawing.Size(1363, 728);
             this.requestPage.TabIndex = 3;
             this.requestPage.Text = "Заявки";
             this.requestPage.UseVisualStyleBackColor = true;
@@ -685,7 +685,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.label2.Location = new System.Drawing.Point(445, 598);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(343, 19);
+            this.label2.Size = new System.Drawing.Size(433, 22);
             this.label2.TabIndex = 2;
             this.label2.Text = "Выберите какой из видов заявок хотите оставить:";
             // 
@@ -726,11 +726,11 @@
             this.flatsPage.Controls.Add(this.pictureBox3);
             this.flatsPage.Controls.Add(this.pictureBox2);
             this.flatsPage.Controls.Add(this.pictureBox1);
-            this.flatsPage.Location = new System.Drawing.Point(4, 24);
+            this.flatsPage.Location = new System.Drawing.Point(4, 26);
             this.flatsPage.Margin = new System.Windows.Forms.Padding(5);
             this.flatsPage.Name = "flatsPage";
             this.flatsPage.Padding = new System.Windows.Forms.Padding(5);
-            this.flatsPage.Size = new System.Drawing.Size(1363, 730);
+            this.flatsPage.Size = new System.Drawing.Size(1363, 728);
             this.flatsPage.TabIndex = 0;
             this.flatsPage.Text = "Картотека квартир";
             this.flatsPage.UseVisualStyleBackColor = true;
@@ -739,14 +739,14 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(138, 486);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(238, 21);
+            this.textBox2.Size = new System.Drawing.Size(238, 25);
             this.textBox2.TabIndex = 10;
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(128, 433);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 21);
+            this.textBox1.Size = new System.Drawing.Size(238, 25);
             this.textBox1.TabIndex = 8;
             // 
             // labelinform3
@@ -755,7 +755,7 @@
             this.labelinform3.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.labelinform3.Location = new System.Drawing.Point(43, 486);
             this.labelinform3.Name = "labelinform3";
-            this.labelinform3.Size = new System.Drawing.Size(70, 19);
+            this.labelinform3.Size = new System.Drawing.Size(89, 22);
             this.labelinform3.TabIndex = 9;
             this.labelinform3.Text = "Размеры:";
             // 
@@ -765,7 +765,7 @@
             this.labelinform1.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.labelinform1.Location = new System.Drawing.Point(43, 434);
             this.labelinform1.Name = "labelinform1";
-            this.labelinform1.Size = new System.Drawing.Size(53, 19);
+            this.labelinform1.Size = new System.Drawing.Size(68, 22);
             this.labelinform1.TabIndex = 7;
             this.labelinform1.Text = "Адрес:";
             // 
@@ -775,7 +775,7 @@
             this.labelinform.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelinform.Location = new System.Drawing.Point(43, 384);
             this.labelinform.Name = "labelinform";
-            this.labelinform.Size = new System.Drawing.Size(257, 19);
+            this.labelinform.Size = new System.Drawing.Size(323, 22);
             this.labelinform.TabIndex = 6;
             this.labelinform.Text = "Информация о выбранной квартире:";
             // 
@@ -830,10 +830,10 @@
             // mainPage
             // 
             this.mainPage.Controls.Add(this.greetingLabel);
-            this.mainPage.Location = new System.Drawing.Point(4, 24);
+            this.mainPage.Location = new System.Drawing.Point(4, 26);
             this.mainPage.Margin = new System.Windows.Forms.Padding(5);
             this.mainPage.Name = "mainPage";
-            this.mainPage.Size = new System.Drawing.Size(1363, 730);
+            this.mainPage.Size = new System.Drawing.Size(1363, 728);
             this.mainPage.TabIndex = 6;
             this.mainPage.Text = "Главная";
             this.mainPage.UseVisualStyleBackColor = true;
@@ -845,7 +845,7 @@
             this.greetingLabel.Location = new System.Drawing.Point(23, 35);
             this.greetingLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.greetingLabel.Name = "greetingLabel";
-            this.greetingLabel.Size = new System.Drawing.Size(175, 31);
+            this.greetingLabel.Size = new System.Drawing.Size(222, 39);
             this.greetingLabel.TabIndex = 0;
             this.greetingLabel.Text = "Приветствие";
             // 
@@ -880,9 +880,9 @@
             this.eventTab.Controls.Add(this.label5);
             this.eventTab.Controls.Add(this.label4);
             this.eventTab.Controls.Add(this.label3);
-            this.eventTab.Location = new System.Drawing.Point(4, 24);
+            this.eventTab.Location = new System.Drawing.Point(4, 26);
             this.eventTab.Name = "eventTab";
-            this.eventTab.Size = new System.Drawing.Size(1363, 730);
+            this.eventTab.Size = new System.Drawing.Size(1363, 728);
             this.eventTab.TabIndex = 8;
             this.eventTab.Text = "Мероприятие";
             this.eventTab.UseVisualStyleBackColor = true;
@@ -904,7 +904,7 @@
             this.eventDateTextBox.Location = new System.Drawing.Point(192, 179);
             this.eventDateTextBox.Mask = "00/00/0000 90:00";
             this.eventDateTextBox.Name = "eventDateTextBox";
-            this.eventDateTextBox.Size = new System.Drawing.Size(156, 29);
+            this.eventDateTextBox.Size = new System.Drawing.Size(156, 35);
             this.eventDateTextBox.TabIndex = 4;
             this.eventDateTextBox.ValidatingType = typeof(System.DateTime);
             // 
@@ -933,7 +933,7 @@
             this.eventTypeTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.eventTypeTextBox.Location = new System.Drawing.Point(192, 127);
             this.eventTypeTextBox.Name = "eventTypeTextBox";
-            this.eventTypeTextBox.Size = new System.Drawing.Size(156, 29);
+            this.eventTypeTextBox.Size = new System.Drawing.Size(156, 35);
             this.eventTypeTextBox.TabIndex = 1;
             // 
             // eventNameTextBox
@@ -941,7 +941,7 @@
             this.eventNameTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.eventNameTextBox.Location = new System.Drawing.Point(192, 75);
             this.eventNameTextBox.Name = "eventNameTextBox";
-            this.eventNameTextBox.Size = new System.Drawing.Size(156, 29);
+            this.eventNameTextBox.Size = new System.Drawing.Size(156, 35);
             this.eventNameTextBox.TabIndex = 1;
             // 
             // eventNameLabel
@@ -950,7 +950,7 @@
             this.eventNameLabel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.eventNameLabel.Location = new System.Drawing.Point(210, 28);
             this.eventNameLabel.Name = "eventNameLabel";
-            this.eventNameLabel.Size = new System.Drawing.Size(294, 21);
+            this.eventNameLabel.Size = new System.Drawing.Size(383, 27);
             this.eventNameLabel.TabIndex = 0;
             this.eventNameLabel.Text = "eventNameLabel начнется через time";
             // 
@@ -960,7 +960,7 @@
             this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(24, 182);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(150, 21);
+            this.label7.Size = new System.Drawing.Size(190, 27);
             this.label7.TabIndex = 0;
             this.label7.Text = "Дата проведения:";
             // 
@@ -970,7 +970,7 @@
             this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(24, 130);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 21);
+            this.label6.Size = new System.Drawing.Size(148, 27);
             this.label6.TabIndex = 0;
             this.label6.Text = "Тип события:";
             // 
@@ -980,7 +980,7 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(24, 241);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 21);
+            this.label5.Size = new System.Drawing.Size(120, 27);
             this.label5.TabIndex = 0;
             this.label5.Text = "Описание:";
             // 
@@ -990,7 +990,7 @@
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(24, 78);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(162, 21);
+            this.label4.Size = new System.Drawing.Size(205, 27);
             this.label4.TabIndex = 0;
             this.label4.Text = "Название события:";
             // 
@@ -1000,13 +1000,13 @@
             this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(24, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 21);
+            this.label3.Size = new System.Drawing.Size(238, 27);
             this.label3.TabIndex = 0;
             this.label3.Text = "Следующее событие -";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 798);
             this.Controls.Add(this.statusStrip1);
@@ -1016,6 +1016,7 @@
             this.Name = "MainForm";
             this.Text = "Недвижимость";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.usersPage.ResumeLayout(false);
