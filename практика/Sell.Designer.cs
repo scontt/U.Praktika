@@ -43,6 +43,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.sendButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.selectImageButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -187,9 +190,9 @@
             // sendButton
             // 
             this.sendButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sendButton.Location = new System.Drawing.Point(17, 246);
+            this.sendButton.Location = new System.Drawing.Point(13, 337);
             this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(335, 29);
+            this.sendButton.Size = new System.Drawing.Size(339, 29);
             this.sendButton.TabIndex = 25;
             this.sendButton.Text = "Отправить";
             this.sendButton.UseVisualStyleBackColor = true;
@@ -198,19 +201,42 @@
             // closeButton
             // 
             this.closeButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.closeButton.Location = new System.Drawing.Point(17, 281);
+            this.closeButton.Location = new System.Drawing.Point(13, 372);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(335, 29);
+            this.closeButton.Size = new System.Drawing.Size(339, 29);
             this.closeButton.TabIndex = 25;
             this.closeButton.Text = "Закрыть";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 228);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(111, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            // 
+            // selectImageButton
+            // 
+            this.selectImageButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectImageButton.Location = new System.Drawing.Point(139, 267);
+            this.selectImageButton.Name = "selectImageButton";
+            this.selectImageButton.Size = new System.Drawing.Size(214, 29);
+            this.selectImageButton.TabIndex = 27;
+            this.selectImageButton.Text = "Выбрать изображение";
+            this.selectImageButton.UseVisualStyleBackColor = true;
+            this.selectImageButton.Click += new System.EventHandler(this.selectImageButton_Click);
+            // 
             // Sell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 321);
+            this.ClientSize = new System.Drawing.Size(364, 409);
+            this.Controls.Add(this.selectImageButton);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.sendButton);
             this.Controls.Add(this.areaTextBox);
@@ -228,7 +254,8 @@
             this.Controls.Add(this.label4);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Sell";
-            this.Text = "Заявка на продажу";
+            this.Text = "Продажа";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,5 +277,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button selectImageButton;
     }
 }

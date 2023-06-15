@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace практика
     {
         readonly string connectionString = DataBase.ConnectionString;
         int id;
+        byte[] imageBytes;
 
         public Sell(int id)
         {
@@ -43,8 +45,8 @@ namespace практика
         private void sendButton_Click(object sender, EventArgs e)
         {
             int flatTypeId = GetFlatTypeId(flatTypeComboBox.Text);
-            string query = "insert into Flats(Address, Area, Price, Level, RoomsAmount, FlatTypeId, UserId, PublishDate) " +
-                "values(@Address, @Area, @Price, @Level, @RoomsAmount, @FlatTypeId, @UserId, @Date)";
+            string query = "insert into Flats(Address, Area, Price, Level, RoomsAmount, FlatTypeId, UserId, PublishDate, Image) " +
+                "values(@Address, @Area, @Price, @Level, @RoomsAmount, @FlatTypeId, @UserId, @Date, @Image)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -58,6 +60,7 @@ namespace практика
                 cmd.Parameters.Add(new SqlParameter("@FlatTypeId", flatTypeId));
                 cmd.Parameters.Add(new SqlParameter("@UserId", id));
                 cmd.Parameters.Add(new SqlParameter("@Date", DateTime.Now));
+                cmd.Parameters.Add(new SqlParameter("@Image", imageBytes));
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Заявка успешно отправлена", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -88,6 +91,14 @@ namespace практика
         private void closeButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void selectImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            pictureBox1.Image = new Bitmap(openFileDialog.FileName);
+            imageBytes = File.ReadAllBytes(openFileDialog.FileName);
         }
     }
 }

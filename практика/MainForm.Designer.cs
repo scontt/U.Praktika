@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Продажа");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Покупка");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Продажа");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Покупка");
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.eventStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -117,12 +117,27 @@
             this.searchUserTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.searchUserButton = new System.Windows.Forms.Button();
+            this.dealsDataGridView = new System.Windows.Forms.DataGridView();
+            this.flatPhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.selectImageButton = new System.Windows.Forms.Button();
+            this.infoAreaTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.infoRoomsAmountTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.infoFloorTextBox = new System.Windows.Forms.TextBox();
+            this.infoPriceTextBox = new System.Windows.Forms.TextBox();
+            this.infoAddressTextBox = new System.Windows.Forms.TextBox();
+            this.infoEditFlatButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.infoPage.SuspendLayout();
             this.infoTabControl.SuspendLayout();
             this.usersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.dealsPage.SuspendLayout();
             this.eventPage.SuspendLayout();
             this.accountPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -137,6 +152,8 @@
             this.mainPage.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flatsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flatPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // timer
@@ -201,15 +218,28 @@
             // usersDataGridView
             // 
             this.usersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.usersDataGridView.Location = new System.Drawing.Point(7, 10);
+            this.usersDataGridView.Location = new System.Drawing.Point(3, 3);
             this.usersDataGridView.Name = "usersDataGridView";
             this.usersDataGridView.RowHeadersWidth = 51;
             this.usersDataGridView.RowTemplate.Height = 24;
-            this.usersDataGridView.Size = new System.Drawing.Size(923, 256);
+            this.usersDataGridView.Size = new System.Drawing.Size(930, 256);
             this.usersDataGridView.TabIndex = 1;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.infoEditFlatButton);
+            this.tabPage2.Controls.Add(this.label30);
+            this.tabPage2.Controls.Add(this.label29);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.infoPriceTextBox);
+            this.tabPage2.Controls.Add(this.infoFloorTextBox);
+            this.tabPage2.Controls.Add(this.infoRoomsAmountTextBox);
+            this.tabPage2.Controls.Add(this.infoAddressTextBox);
+            this.tabPage2.Controls.Add(this.infoAreaTextBox);
+            this.tabPage2.Controls.Add(this.selectImageButton);
+            this.tabPage2.Controls.Add(this.flatPhotoPictureBox);
             this.tabPage2.Controls.Add(this.flatsDataGridView);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
@@ -221,6 +251,7 @@
             // 
             // dealsPage
             // 
+            this.dealsPage.Controls.Add(this.dealsDataGridView);
             this.dealsPage.Location = new System.Drawing.Point(4, 24);
             this.dealsPage.Name = "dealsPage";
             this.dealsPage.Size = new System.Drawing.Size(936, 699);
@@ -824,13 +855,13 @@
             this.treeView1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.treeView1.Location = new System.Drawing.Point(29, 58);
             this.treeView1.Name = "treeView1";
-            treeNode3.Name = "Продажа";
-            treeNode3.Text = "Продажа";
-            treeNode4.Name = "Покупка";
-            treeNode4.Text = "Покупка";
+            treeNode7.Name = "Продажа";
+            treeNode7.Text = "Продажа";
+            treeNode8.Name = "Покупка";
+            treeNode8.Text = "Покупка";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            treeNode7,
+            treeNode8});
             this.treeView1.Size = new System.Drawing.Size(211, 150);
             this.treeView1.TabIndex = 5;
             // 
@@ -1040,12 +1071,13 @@
             // flatsDataGridView
             // 
             this.flatsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.flatsDataGridView.Location = new System.Drawing.Point(6, 6);
+            this.flatsDataGridView.Location = new System.Drawing.Point(3, 3);
             this.flatsDataGridView.Name = "flatsDataGridView";
             this.flatsDataGridView.RowHeadersWidth = 51;
             this.flatsDataGridView.RowTemplate.Height = 24;
-            this.flatsDataGridView.Size = new System.Drawing.Size(923, 256);
+            this.flatsDataGridView.Size = new System.Drawing.Size(930, 256);
             this.flatsDataGridView.TabIndex = 2;
+            this.flatsDataGridView.CurrentCellChanged += new System.EventHandler(this.flatsDataGridView_CurrentCellChanged);
             // 
             // searchUserTextBox
             // 
@@ -1078,6 +1110,138 @@
             this.searchUserButton.UseVisualStyleBackColor = true;
             this.searchUserButton.Click += new System.EventHandler(this.searchUserButton_Click);
             // 
+            // dealsDataGridView
+            // 
+            this.dealsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dealsDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.dealsDataGridView.Name = "dealsDataGridView";
+            this.dealsDataGridView.RowHeadersWidth = 51;
+            this.dealsDataGridView.RowTemplate.Height = 24;
+            this.dealsDataGridView.Size = new System.Drawing.Size(927, 256);
+            this.dealsDataGridView.TabIndex = 3;
+            // 
+            // flatPhotoPictureBox
+            // 
+            this.flatPhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flatPhotoPictureBox.Location = new System.Drawing.Point(48, 314);
+            this.flatPhotoPictureBox.Name = "flatPhotoPictureBox";
+            this.flatPhotoPictureBox.Size = new System.Drawing.Size(177, 154);
+            this.flatPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.flatPhotoPictureBox.TabIndex = 3;
+            this.flatPhotoPictureBox.TabStop = false;
+            // 
+            // selectImageButton
+            // 
+            this.selectImageButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectImageButton.Location = new System.Drawing.Point(48, 487);
+            this.selectImageButton.Name = "selectImageButton";
+            this.selectImageButton.Size = new System.Drawing.Size(177, 43);
+            this.selectImageButton.TabIndex = 4;
+            this.selectImageButton.Text = "Выбрать изображение";
+            this.selectImageButton.UseVisualStyleBackColor = true;
+            this.selectImageButton.Click += new System.EventHandler(this.selectImageButton_Click);
+            // 
+            // infoAreaTextBox
+            // 
+            this.infoAreaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoAreaTextBox.Location = new System.Drawing.Point(434, 334);
+            this.infoAreaTextBox.Name = "infoAreaTextBox";
+            this.infoAreaTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoAreaTextBox.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(288, 300);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 19);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Адрес:";
+            // 
+            // infoRoomsAmountTextBox
+            // 
+            this.infoRoomsAmountTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoRoomsAmountTextBox.Location = new System.Drawing.Point(434, 451);
+            this.infoRoomsAmountTextBox.Name = "infoRoomsAmountTextBox";
+            this.infoRoomsAmountTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoRoomsAmountTextBox.TabIndex = 5;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(288, 337);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 19);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Площадь:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(288, 375);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 19);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Цена:";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label29.Location = new System.Drawing.Point(288, 415);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(48, 19);
+            this.label29.TabIndex = 6;
+            this.label29.Text = "Этаж:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label30.Location = new System.Drawing.Point(288, 454);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(140, 19);
+            this.label30.TabIndex = 6;
+            this.label30.Text = "Количество комнат";
+            // 
+            // infoFloorTextBox
+            // 
+            this.infoFloorTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoFloorTextBox.Location = new System.Drawing.Point(434, 412);
+            this.infoFloorTextBox.Name = "infoFloorTextBox";
+            this.infoFloorTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoFloorTextBox.TabIndex = 5;
+            // 
+            // infoPriceTextBox
+            // 
+            this.infoPriceTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoPriceTextBox.Location = new System.Drawing.Point(434, 372);
+            this.infoPriceTextBox.Name = "infoPriceTextBox";
+            this.infoPriceTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoPriceTextBox.TabIndex = 5;
+            // 
+            // infoAddressTextBox
+            // 
+            this.infoAddressTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoAddressTextBox.Location = new System.Drawing.Point(434, 297);
+            this.infoAddressTextBox.Name = "infoAddressTextBox";
+            this.infoAddressTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoAddressTextBox.TabIndex = 5;
+            // 
+            // infoEditFlatButton
+            // 
+            this.infoEditFlatButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoEditFlatButton.Location = new System.Drawing.Point(408, 487);
+            this.infoEditFlatButton.Name = "infoEditFlatButton";
+            this.infoEditFlatButton.Size = new System.Drawing.Size(177, 43);
+            this.infoEditFlatButton.TabIndex = 7;
+            this.infoEditFlatButton.Text = "Изменить данные";
+            this.infoEditFlatButton.UseVisualStyleBackColor = true;
+            this.infoEditFlatButton.Click += new System.EventHandler(this.infoEditFlatButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1098,6 +1262,8 @@
             this.usersPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.dealsPage.ResumeLayout(false);
             this.eventPage.ResumeLayout(false);
             this.eventPage.PerformLayout();
             this.accountPage.ResumeLayout(false);
@@ -1118,6 +1284,8 @@
             this.mainPage.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.flatsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flatPhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1210,6 +1378,20 @@
         private System.Windows.Forms.Button searchUserButton;
         private System.Windows.Forms.TextBox searchUserTextBox;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dealsDataGridView;
+        private System.Windows.Forms.Button selectImageButton;
+        private System.Windows.Forms.PictureBox flatPhotoPictureBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox infoAreaTextBox;
+        private System.Windows.Forms.Button infoEditFlatButton;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox infoPriceTextBox;
+        private System.Windows.Forms.TextBox infoFloorTextBox;
+        private System.Windows.Forms.TextBox infoRoomsAmountTextBox;
+        private System.Windows.Forms.TextBox infoAddressTextBox;
     }
 }
 

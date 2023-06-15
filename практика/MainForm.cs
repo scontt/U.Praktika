@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.Cache;
 using System.Reflection;
@@ -28,6 +29,7 @@ namespace практика
         string sex = string.Empty;
         string eventTime = string.Empty;
         int id, eventId, index = 0, admin = 0;
+        int flatId = 0;
         DateTime eventDateTime;
         SqlDataAdapter dataAdapter;
         SqlConnection con = new SqlConnection(connectionString);
@@ -149,17 +151,7 @@ namespace практика
 
                 usersDataGridView.DataSource = agency.Tables["AllUsers"];
 
-                using (con = new SqlConnection(connectionString))
-                {
-                    DataTable dataTable = new DataTable();
-                    query = "select * from Flats";
-                    con.Open();
-                    cmd = new SqlCommand(query, con);
-                    dataAdapter = new SqlDataAdapter(cmd);
-                    dataAdapter.Fill(dataTable);
-                    flatsDataGridView.DataSource = dataTable;
-                }
-
+                UpdateDataGridView("Flats");
             }
 
             usersDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -363,6 +355,40 @@ namespace практика
             Show();
         }
 
+        private void flatsDataGridView_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (flatsDataGridView.CurrentCell != null)
+            {
+                int rowIndex = flatsDataGridView.CurrentCell.RowIndex;
+
+                flatId = Convert.ToInt32(flatsDataGridView.Rows[rowIndex].Cells[0].Value);
+                flatPhotoPictureBox.Image = GetFlatImage();
+                infoAddressTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Address"].Value.ToString();
+                infoAreaTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Area"].Value.ToString();
+                infoPriceTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Price"].Value.ToString();
+                infoFloorTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Level"].Value.ToString();
+                infoRoomsAmountTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["RoomsAmount"].Value.ToString();
+            }
+        }
+
+        private void selectImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            byte[] imageBytes = File.ReadAllBytes(openFileDialog.FileName);
+
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                string query = "update Flats set Image = @Image where ID = @Id";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add(new SqlParameter("@Id", flatId));
+                command.Parameters.Add(new SqlParameter("@Image", SqlDbType.Image, 1000000));
+                command.Parameters["@Image"].Value = imageBytes;
+                command.ExecuteNonQuery();
+            }
+        }
+
         private void searchUserButton_Click(object sender, EventArgs e)
         {
             try
@@ -388,6 +414,34 @@ namespace практика
             }
         }
 
+        private void infoEditFlatButton_Click(object sender, EventArgs e)
+        {
+            query = "update Flats set " +
+                "Address = @Address, " +
+                "Area = @Area, " +
+                "Price = @Price, " +
+                "Level = @Level, " +
+                "RoomsAmount = @RoomsAmount " +
+                "where ID = @Id";
+            
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand command = new SqlCommand(query, con);
+
+                command.Parameters.Add(new SqlParameter("@Address", infoAddressTextBox.Text));
+                command.Parameters.Add(new SqlParameter("@Area", Convert.ToInt32(infoAreaTextBox.Text)));
+                command.Parameters.Add(new SqlParameter("@Price", Convert.ToInt32(infoPriceTextBox.Text)));
+                command.Parameters.Add(new SqlParameter("@Level", Convert.ToInt32(infoFloorTextBox.Text)));
+                command.Parameters.Add(new SqlParameter("@RoomsAmount", Convert.ToInt32(infoRoomsAmountTextBox.Text)));
+                command.Parameters.Add(new SqlParameter("@Id", flatId));
+
+                command.ExecuteNonQuery();
+                MessageBox.Show("Данные успешно изменены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            UpdateDataGridView("Flats");
+        }
+
         private void updateEvent(object sender, EventArgs e)
         {
             row = Event.GetLastEvent();
@@ -403,6 +457,54 @@ namespace практика
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
             agency.Tables["User"].Clear();
             dataAdapter.Fill(agency.Tables["User"]);
+        }
+
+        private Image GetFlatImage()
+        {
+            query = "select Image from Flats where ID = @Id";
+
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("@Id", flatId));
+                DataTable dataTable = new DataTable();
+                dataAdapter = new SqlDataAdapter(cmd);
+
+                dataAdapter.Fill(dataTable);
+
+                Image image = null;
+                DataRow row = dataTable.Rows[0];
+                //if (row["Image"] != null)
+                //{
+                //    image = (Bitmap)((new ImageConverter()).ConvertFrom(row["Image"]));
+                //}
+
+                try
+                {
+                    image = (Bitmap)((new ImageConverter()).ConvertFrom(row["Image"]));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return image;
+                }
+                return image;
+            }
+        }
+
+        private void UpdateDataGridView(string tableName)
+        {
+            using (con = new SqlConnection(connectionString))
+            {
+                DataTable dataTable = new DataTable();
+                query = $"select * from {tableName}";
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                dataAdapter = new SqlDataAdapter(cmd);
+                dataAdapter.Fill(dataTable);
+                flatsDataGridView.DataSource = dataTable;
+            }
         }
     }
 
