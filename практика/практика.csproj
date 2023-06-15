@@ -94,6 +94,12 @@
     <Compile Include="cs\Event.cs" />
     <Compile Include="cs\Cryptography.cs" />
     <Compile Include="db\Person.cs" />
+    <Compile Include="Flats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flats.Designer.cs">
+      <DependentUpon>Flats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Purchase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Flats.resx">
+      <DependentUpon>Flats.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

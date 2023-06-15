@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Net.Cache;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace практика
         string name = string.Empty;
         string sex = string.Empty;
         string eventTime = string.Empty;
-        int id, eventId, admin = 0;
+        int id, eventId, index = 0, admin = 0;
         DateTime eventDateTime;
         SqlDataAdapter dataAdapter;
         SqlConnection con = new SqlConnection(connectionString);
@@ -117,7 +118,11 @@ namespace практика
 
             #endregion
 
-            if (admin == 0) tabControl1.TabPages.Remove(usersPage);
+            if (admin == 0)
+            {
+                mainTabControl.TabPages.Remove(eventPage);
+                mainTabControl.TabPages.Remove(infoPage);
+            }
             else
             {
                 agency.Tables.Add("AllUsers");
@@ -142,9 +147,22 @@ namespace практика
                 dataAdapter = new SqlDataAdapter(cmd);
                 dataAdapter.Fill(agency.Tables["AllUsers"]);
 
-                dataGridView1.DataSource = agency.Tables["AllUsers"];
+                usersDataGridView.DataSource = agency.Tables["AllUsers"];
+
+                using (con = new SqlConnection(connectionString))
+                {
+                    DataTable dataTable = new DataTable();
+                    query = "select * from Flats";
+                    con.Open();
+                    cmd = new SqlCommand(query, con);
+                    dataAdapter = new SqlDataAdapter(cmd);
+                    dataAdapter.Fill(dataTable);
+                    flatsDataGridView.DataSource = dataTable;
+                }
+
             }
 
+            usersDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
        /* private void InitializeGMapControl()
         {
@@ -173,7 +191,7 @@ namespace практика
         {
             #region Профиль
 
-            if (tabControl1.SelectedIndex == 4)
+            if (mainTabControl.SelectedIndex == 4)
             {
                 row = agency.Tables["User"].Rows[0];
 
@@ -251,13 +269,12 @@ namespace практика
 
         private void editEventButton_Click(object sender, EventArgs e)
         {
-            if(eventNameTextBox.Text.Length != 0 || eventDateTextBox.Text.Length != 0 ||
-                eventTypeTextBox.Text.Length != 0 || eventDescriptionRichTextBox.Text.Length != 0)
+            if(eventNameTextBox.Text.Length != 0 || eventDateTextBox.Text.Length != 0 || 
+                eventDescriptionRichTextBox.Text.Length != 0)
             {
                 query = "update EventsT set " +
                     "Name = @Name, " +
                     "Description = @Description, " +
-                    "Type = @Type, " +
                     "EventDate = @EventDate " +
                     "where ID = @ID";
 
@@ -268,7 +285,6 @@ namespace практика
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.Add(new SqlParameter("@Name", eventNameTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@Description", eventDescriptionRichTextBox.Text));
-                    cmd.Parameters.Add(new SqlParameter("@Type", eventTypeTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@EventDate", eventDate));
                     cmd.Parameters.Add(new SqlParameter("@ID", eventId));
                     cmd.ExecuteNonQuery();
@@ -290,10 +306,10 @@ namespace практика
         private void scheduleEventButton_Click(object sender, EventArgs e)
         {
             if (eventNameTextBox.Text.Length != 0 || eventDateTextBox.Text.Length != 0 ||
-                eventTypeTextBox.Text.Length != 0 || eventDescriptionRichTextBox.Text.Length != 0)
+                eventDescriptionRichTextBox.Text.Length != 0)
             {
                 query = "insert into EventsT(Name, Description, Type, EventDate) " +
-                    "values(@Name, @Description, @Type, @Date)";
+                    "values(@Name, @Description, @Date)";
 
                 using(con = new SqlConnection(connectionString))
                 {
@@ -302,7 +318,6 @@ namespace практика
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.Add(new SqlParameter("@Name", eventNameTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@Description", eventDescriptionRichTextBox.Text));
-                    cmd.Parameters.Add(new SqlParameter("@Type", eventTypeTextBox.Text));
                     cmd.Parameters.Add(new SqlParameter("@Date", eventDate));
 
                     con.Open();
@@ -343,9 +358,34 @@ namespace практика
 
         private void buyButton_Click(object sender, EventArgs e)
         {
-            Purchase purchase = new Purchase();
+            Flats purchase = new Flats(id);
             purchase.ShowDialog();
             Show();
+        }
+
+        private void searchUserButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string query = $"SecondName like '%{searchUserTextBox.Text.Trim()}%'";
+                DataRowCollection allRows = agency.Tables["AllUsers"].Rows;
+                DataRow[] searchedRows = agency.Tables["AllUsers"].Select(query);
+                if (searchedRows.Length == 0)
+                {
+                    usersDataGridView.CurrentCell = default;
+                    MessageBox.Show("Результатов не найдено", "Поиск");
+                    return;
+                }
+                int rowIndex = allRows.IndexOf(searchedRows[index]);
+                usersDataGridView.CurrentCell = usersDataGridView[0, rowIndex];
+                index++;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Поиск закончен", "Поиск");
+                index = 0;
+                return;
+            }
         }
 
         private void updateEvent(object sender, EventArgs e)

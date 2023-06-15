@@ -29,11 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Продажа");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Покупка");
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.eventStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.infoPage = new System.Windows.Forms.TabPage();
+            this.infoTabControl = new System.Windows.Forms.TabControl();
             this.usersPage = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.usersDataGridView = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dealsPage = new System.Windows.Forms.TabPage();
+            this.eventPage = new System.Windows.Forms.TabPage();
+            this.scheduleEventButton = new System.Windows.Forms.Button();
+            this.eventDateTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.editEventButton = new System.Windows.Forms.Button();
+            this.eventDescriptionRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.eventNameTextBox = new System.Windows.Forms.TextBox();
+            this.eventNameLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.accountPage = new System.Windows.Forms.TabPage();
             this.exitButton = new System.Windows.Forms.Button();
             this.changeProfileButton = new System.Windows.Forms.Button();
@@ -76,6 +93,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.officesPage = new System.Windows.Forms.TabPage();
             this.requestPage = new System.Windows.Forms.TabPage();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buyButton = new System.Windows.Forms.Button();
             this.sellButton = new System.Windows.Forms.Button();
@@ -93,23 +112,18 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainPage = new System.Windows.Forms.TabPage();
             this.greetingLabel = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.eventTab = new System.Windows.Forms.TabPage();
-            this.scheduleEventButton = new System.Windows.Forms.Button();
-            this.eventDateTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.editEventButton = new System.Windows.Forms.Button();
-            this.eventDescriptionRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.eventTypeTextBox = new System.Windows.Forms.TextBox();
-            this.eventNameTextBox = new System.Windows.Forms.TextBox();
-            this.eventNameLabel = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.mainTabControl = new System.Windows.Forms.TabControl();
+            this.flatsDataGridView = new System.Windows.Forms.DataGridView();
+            this.searchUserTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.searchUserButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
+            this.infoPage.SuspendLayout();
+            this.infoTabControl.SuspendLayout();
             this.usersPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.eventPage.SuspendLayout();
             this.accountPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.requestPage.SuspendLayout();
@@ -121,8 +135,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mainPage.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.eventTab.SuspendLayout();
+            this.mainTabControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flatsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // timer
@@ -149,26 +163,188 @@
             this.eventStatusLabel.Size = new System.Drawing.Size(96, 17);
             this.eventStatusLabel.Text = "eventStatusLabel";
             // 
+            // infoPage
+            // 
+            this.infoPage.Controls.Add(this.infoTabControl);
+            this.infoPage.Location = new System.Drawing.Point(4, 24);
+            this.infoPage.Name = "infoPage";
+            this.infoPage.Size = new System.Drawing.Size(952, 730);
+            this.infoPage.TabIndex = 9;
+            this.infoPage.Text = "Информация";
+            this.infoPage.UseVisualStyleBackColor = true;
+            // 
+            // infoTabControl
+            // 
+            this.infoTabControl.Controls.Add(this.usersPage);
+            this.infoTabControl.Controls.Add(this.tabPage2);
+            this.infoTabControl.Controls.Add(this.dealsPage);
+            this.infoTabControl.Location = new System.Drawing.Point(5, 3);
+            this.infoTabControl.Name = "infoTabControl";
+            this.infoTabControl.SelectedIndex = 0;
+            this.infoTabControl.Size = new System.Drawing.Size(944, 727);
+            this.infoTabControl.TabIndex = 0;
+            // 
             // usersPage
             // 
-            this.usersPage.Controls.Add(this.dataGridView1);
+            this.usersPage.Controls.Add(this.searchUserButton);
+            this.usersPage.Controls.Add(this.searchUserTextBox);
+            this.usersPage.Controls.Add(this.label8);
+            this.usersPage.Controls.Add(this.usersDataGridView);
             this.usersPage.Location = new System.Drawing.Point(4, 24);
-            this.usersPage.Margin = new System.Windows.Forms.Padding(5);
             this.usersPage.Name = "usersPage";
-            this.usersPage.Size = new System.Drawing.Size(952, 730);
-            this.usersPage.TabIndex = 7;
+            this.usersPage.Padding = new System.Windows.Forms.Padding(3);
+            this.usersPage.Size = new System.Drawing.Size(936, 699);
+            this.usersPage.TabIndex = 0;
             this.usersPage.Text = "Пользователи";
             this.usersPage.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // usersDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 20);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(923, 678);
-            this.dataGridView1.TabIndex = 0;
+            this.usersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.usersDataGridView.Location = new System.Drawing.Point(7, 10);
+            this.usersDataGridView.Name = "usersDataGridView";
+            this.usersDataGridView.RowHeadersWidth = 51;
+            this.usersDataGridView.RowTemplate.Height = 24;
+            this.usersDataGridView.Size = new System.Drawing.Size(923, 256);
+            this.usersDataGridView.TabIndex = 1;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.flatsDataGridView);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(936, 699);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Квартиры";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dealsPage
+            // 
+            this.dealsPage.Location = new System.Drawing.Point(4, 24);
+            this.dealsPage.Name = "dealsPage";
+            this.dealsPage.Size = new System.Drawing.Size(936, 699);
+            this.dealsPage.TabIndex = 2;
+            this.dealsPage.Text = "Сделки";
+            this.dealsPage.UseVisualStyleBackColor = true;
+            // 
+            // eventPage
+            // 
+            this.eventPage.Controls.Add(this.scheduleEventButton);
+            this.eventPage.Controls.Add(this.eventDateTextBox);
+            this.eventPage.Controls.Add(this.editEventButton);
+            this.eventPage.Controls.Add(this.eventDescriptionRichTextBox);
+            this.eventPage.Controls.Add(this.eventNameTextBox);
+            this.eventPage.Controls.Add(this.eventNameLabel);
+            this.eventPage.Controls.Add(this.label7);
+            this.eventPage.Controls.Add(this.label5);
+            this.eventPage.Controls.Add(this.label4);
+            this.eventPage.Controls.Add(this.label3);
+            this.eventPage.Location = new System.Drawing.Point(4, 24);
+            this.eventPage.Name = "eventPage";
+            this.eventPage.Size = new System.Drawing.Size(952, 730);
+            this.eventPage.TabIndex = 8;
+            this.eventPage.Text = "Мероприятие";
+            this.eventPage.UseVisualStyleBackColor = true;
+            // 
+            // scheduleEventButton
+            // 
+            this.scheduleEventButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scheduleEventButton.Location = new System.Drawing.Point(28, 406);
+            this.scheduleEventButton.Name = "scheduleEventButton";
+            this.scheduleEventButton.Size = new System.Drawing.Size(243, 59);
+            this.scheduleEventButton.TabIndex = 5;
+            this.scheduleEventButton.Text = "Запланировать событие";
+            this.scheduleEventButton.UseVisualStyleBackColor = true;
+            this.scheduleEventButton.Click += new System.EventHandler(this.scheduleEventButton_Click);
+            // 
+            // eventDateTextBox
+            // 
+            this.eventDateTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.eventDateTextBox.Location = new System.Drawing.Point(192, 129);
+            this.eventDateTextBox.Mask = "00/00/0000 90:00";
+            this.eventDateTextBox.Name = "eventDateTextBox";
+            this.eventDateTextBox.Size = new System.Drawing.Size(156, 29);
+            this.eventDateTextBox.TabIndex = 4;
+            this.eventDateTextBox.ValidatingType = typeof(System.DateTime);
+            // 
+            // editEventButton
+            // 
+            this.editEventButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editEventButton.Location = new System.Drawing.Point(331, 406);
+            this.editEventButton.Name = "editEventButton";
+            this.editEventButton.Size = new System.Drawing.Size(243, 59);
+            this.editEventButton.TabIndex = 3;
+            this.editEventButton.Text = "Изменить событие";
+            this.editEventButton.UseVisualStyleBackColor = true;
+            this.editEventButton.Click += new System.EventHandler(this.editEventButton_Click);
+            // 
+            // eventDescriptionRichTextBox
+            // 
+            this.eventDescriptionRichTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.eventDescriptionRichTextBox.Location = new System.Drawing.Point(192, 188);
+            this.eventDescriptionRichTextBox.Name = "eventDescriptionRichTextBox";
+            this.eventDescriptionRichTextBox.Size = new System.Drawing.Size(382, 196);
+            this.eventDescriptionRichTextBox.TabIndex = 2;
+            this.eventDescriptionRichTextBox.Text = "";
+            // 
+            // eventNameTextBox
+            // 
+            this.eventNameTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.eventNameTextBox.Location = new System.Drawing.Point(192, 75);
+            this.eventNameTextBox.Name = "eventNameTextBox";
+            this.eventNameTextBox.Size = new System.Drawing.Size(156, 29);
+            this.eventNameTextBox.TabIndex = 1;
+            // 
+            // eventNameLabel
+            // 
+            this.eventNameLabel.AutoSize = true;
+            this.eventNameLabel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.eventNameLabel.Location = new System.Drawing.Point(210, 28);
+            this.eventNameLabel.Name = "eventNameLabel";
+            this.eventNameLabel.Size = new System.Drawing.Size(294, 21);
+            this.eventNameLabel.TabIndex = 0;
+            this.eventNameLabel.Text = "eventNameLabel начнется через time";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(24, 132);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(150, 21);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Дата проведения:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(24, 191);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 21);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Описание:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(24, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(162, 21);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Название события:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(24, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(187, 21);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Следующее событие -";
             // 
             // accountPage
             // 
@@ -630,6 +806,8 @@
             // 
             // requestPage
             // 
+            this.requestPage.Controls.Add(this.treeView1);
+            this.requestPage.Controls.Add(this.label6);
             this.requestPage.Controls.Add(this.label2);
             this.requestPage.Controls.Add(this.buyButton);
             this.requestPage.Controls.Add(this.sellButton);
@@ -640,6 +818,31 @@
             this.requestPage.TabIndex = 3;
             this.requestPage.Text = "Заявки";
             this.requestPage.UseVisualStyleBackColor = true;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.treeView1.Location = new System.Drawing.Point(29, 58);
+            this.treeView1.Name = "treeView1";
+            treeNode3.Name = "Продажа";
+            treeNode3.Text = "Продажа";
+            treeNode4.Name = "Покупка";
+            treeNode4.Text = "Покупка";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4});
+            this.treeView1.Size = new System.Drawing.Size(211, 150);
+            this.treeView1.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(25, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 21);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Ваши заявки";
             // 
             // label2
             // 
@@ -746,6 +949,7 @@
             this.pictureBox6.Location = new System.Drawing.Point(801, 27);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(101, 93);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 5;
             this.pictureBox6.TabStop = false;
             // 
@@ -754,6 +958,7 @@
             this.pictureBox5.Location = new System.Drawing.Point(651, 106);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(101, 93);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 4;
             this.pictureBox5.TabStop = false;
             // 
@@ -762,6 +967,7 @@
             this.pictureBox4.Location = new System.Drawing.Point(497, 183);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(101, 93);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
             // 
@@ -770,6 +976,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(309, 183);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(101, 93);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             // 
@@ -778,6 +985,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(163, 106);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(101, 93);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
@@ -786,6 +994,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(23, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(101, 93);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -811,160 +1020,63 @@
             this.greetingLabel.TabIndex = 0;
             this.greetingLabel.Text = "Приветствие";
             // 
-            // tabControl1
+            // mainTabControl
             // 
-            this.tabControl1.Controls.Add(this.mainPage);
-            this.tabControl1.Controls.Add(this.flatsPage);
-            this.tabControl1.Controls.Add(this.requestPage);
-            this.tabControl1.Controls.Add(this.officesPage);
-            this.tabControl1.Controls.Add(this.accountPage);
-            this.tabControl1.Controls.Add(this.usersPage);
-            this.tabControl1.Controls.Add(this.eventTab);
-            this.tabControl1.Location = new System.Drawing.Point(3, -2);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(5);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(960, 758);
-            this.tabControl1.TabIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.mainTabControl.Controls.Add(this.mainPage);
+            this.mainTabControl.Controls.Add(this.flatsPage);
+            this.mainTabControl.Controls.Add(this.requestPage);
+            this.mainTabControl.Controls.Add(this.officesPage);
+            this.mainTabControl.Controls.Add(this.accountPage);
+            this.mainTabControl.Controls.Add(this.eventPage);
+            this.mainTabControl.Controls.Add(this.infoPage);
+            this.mainTabControl.Location = new System.Drawing.Point(3, -2);
+            this.mainTabControl.Margin = new System.Windows.Forms.Padding(5);
+            this.mainTabControl.Name = "mainTabControl";
+            this.mainTabControl.SelectedIndex = 0;
+            this.mainTabControl.Size = new System.Drawing.Size(960, 758);
+            this.mainTabControl.TabIndex = 0;
+            this.mainTabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // eventTab
+            // flatsDataGridView
             // 
-            this.eventTab.Controls.Add(this.scheduleEventButton);
-            this.eventTab.Controls.Add(this.eventDateTextBox);
-            this.eventTab.Controls.Add(this.editEventButton);
-            this.eventTab.Controls.Add(this.eventDescriptionRichTextBox);
-            this.eventTab.Controls.Add(this.eventTypeTextBox);
-            this.eventTab.Controls.Add(this.eventNameTextBox);
-            this.eventTab.Controls.Add(this.eventNameLabel);
-            this.eventTab.Controls.Add(this.label7);
-            this.eventTab.Controls.Add(this.label6);
-            this.eventTab.Controls.Add(this.label5);
-            this.eventTab.Controls.Add(this.label4);
-            this.eventTab.Controls.Add(this.label3);
-            this.eventTab.Location = new System.Drawing.Point(4, 24);
-            this.eventTab.Name = "eventTab";
-            this.eventTab.Size = new System.Drawing.Size(952, 730);
-            this.eventTab.TabIndex = 8;
-            this.eventTab.Text = "Мероприятие";
-            this.eventTab.UseVisualStyleBackColor = true;
+            this.flatsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.flatsDataGridView.Location = new System.Drawing.Point(6, 6);
+            this.flatsDataGridView.Name = "flatsDataGridView";
+            this.flatsDataGridView.RowHeadersWidth = 51;
+            this.flatsDataGridView.RowTemplate.Height = 24;
+            this.flatsDataGridView.Size = new System.Drawing.Size(923, 256);
+            this.flatsDataGridView.TabIndex = 2;
             // 
-            // scheduleEventButton
+            // searchUserTextBox
             // 
-            this.scheduleEventButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.scheduleEventButton.Location = new System.Drawing.Point(28, 456);
-            this.scheduleEventButton.Name = "scheduleEventButton";
-            this.scheduleEventButton.Size = new System.Drawing.Size(243, 59);
-            this.scheduleEventButton.TabIndex = 5;
-            this.scheduleEventButton.Text = "Запланировать событие";
-            this.scheduleEventButton.UseVisualStyleBackColor = true;
-            this.scheduleEventButton.Click += new System.EventHandler(this.scheduleEventButton_Click);
+            this.searchUserTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.searchUserTextBox.Location = new System.Drawing.Point(83, 299);
+            this.searchUserTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.searchUserTextBox.Name = "searchUserTextBox";
+            this.searchUserTextBox.Size = new System.Drawing.Size(271, 29);
+            this.searchUserTextBox.TabIndex = 5;
             // 
-            // eventDateTextBox
+            // label8
             // 
-            this.eventDateTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.eventDateTextBox.Location = new System.Drawing.Point(192, 179);
-            this.eventDateTextBox.Mask = "00/00/0000 90:00";
-            this.eventDateTextBox.Name = "eventDateTextBox";
-            this.eventDateTextBox.Size = new System.Drawing.Size(156, 29);
-            this.eventDateTextBox.TabIndex = 4;
-            this.eventDateTextBox.ValidatingType = typeof(System.DateTime);
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(25, 306);
+            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 19);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "ФИО:";
             // 
-            // editEventButton
+            // searchUserButton
             // 
-            this.editEventButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editEventButton.Location = new System.Drawing.Point(331, 456);
-            this.editEventButton.Name = "editEventButton";
-            this.editEventButton.Size = new System.Drawing.Size(243, 59);
-            this.editEventButton.TabIndex = 3;
-            this.editEventButton.Text = "Изменить событие";
-            this.editEventButton.UseVisualStyleBackColor = true;
-            this.editEventButton.Click += new System.EventHandler(this.editEventButton_Click);
-            // 
-            // eventDescriptionRichTextBox
-            // 
-            this.eventDescriptionRichTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.eventDescriptionRichTextBox.Location = new System.Drawing.Point(192, 238);
-            this.eventDescriptionRichTextBox.Name = "eventDescriptionRichTextBox";
-            this.eventDescriptionRichTextBox.Size = new System.Drawing.Size(382, 196);
-            this.eventDescriptionRichTextBox.TabIndex = 2;
-            this.eventDescriptionRichTextBox.Text = "";
-            // 
-            // eventTypeTextBox
-            // 
-            this.eventTypeTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.eventTypeTextBox.Location = new System.Drawing.Point(192, 127);
-            this.eventTypeTextBox.Name = "eventTypeTextBox";
-            this.eventTypeTextBox.Size = new System.Drawing.Size(156, 29);
-            this.eventTypeTextBox.TabIndex = 1;
-            // 
-            // eventNameTextBox
-            // 
-            this.eventNameTextBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.eventNameTextBox.Location = new System.Drawing.Point(192, 75);
-            this.eventNameTextBox.Name = "eventNameTextBox";
-            this.eventNameTextBox.Size = new System.Drawing.Size(156, 29);
-            this.eventNameTextBox.TabIndex = 1;
-            // 
-            // eventNameLabel
-            // 
-            this.eventNameLabel.AutoSize = true;
-            this.eventNameLabel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.eventNameLabel.Location = new System.Drawing.Point(210, 28);
-            this.eventNameLabel.Name = "eventNameLabel";
-            this.eventNameLabel.Size = new System.Drawing.Size(294, 21);
-            this.eventNameLabel.TabIndex = 0;
-            this.eventNameLabel.Text = "eventNameLabel начнется через time";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(24, 182);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(150, 21);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Дата проведения:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(24, 130);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 21);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Тип события:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(24, 241);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 21);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Описание:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(24, 78);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(162, 21);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Название события:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(24, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 21);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Следующее событие -";
+            this.searchUserButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.searchUserButton.Location = new System.Drawing.Point(362, 298);
+            this.searchUserButton.Name = "searchUserButton";
+            this.searchUserButton.Size = new System.Drawing.Size(87, 30);
+            this.searchUserButton.TabIndex = 6;
+            this.searchUserButton.Text = "Поиск";
+            this.searchUserButton.UseVisualStyleBackColor = true;
+            this.searchUserButton.Click += new System.EventHandler(this.searchUserButton_Click);
             // 
             // MainForm
             // 
@@ -972,7 +1084,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 798);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MainForm";
@@ -980,8 +1092,14 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.infoPage.ResumeLayout(false);
+            this.infoTabControl.ResumeLayout(false);
             this.usersPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.usersPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.eventPage.ResumeLayout(false);
+            this.eventPage.PerformLayout();
             this.accountPage.ResumeLayout(false);
             this.accountPage.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -998,9 +1116,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.mainPage.ResumeLayout(false);
             this.mainPage.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.eventTab.ResumeLayout(false);
-            this.eventTab.PerformLayout();
+            this.mainTabControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.flatsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1010,8 +1127,22 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel eventStatusLabel;
+        private System.Windows.Forms.TabPage infoPage;
+        private System.Windows.Forms.TabControl infoTabControl;
         private System.Windows.Forms.TabPage usersPage;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView usersDataGridView;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage eventPage;
+        private System.Windows.Forms.Button scheduleEventButton;
+        private System.Windows.Forms.MaskedTextBox eventDateTextBox;
+        private System.Windows.Forms.Button editEventButton;
+        private System.Windows.Forms.RichTextBox eventDescriptionRichTextBox;
+        private System.Windows.Forms.TextBox eventNameTextBox;
+        private System.Windows.Forms.Label eventNameLabel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage accountPage;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button changeProfileButton;
@@ -1054,10 +1185,17 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TabPage officesPage;
         private System.Windows.Forms.TabPage requestPage;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buyButton;
         private System.Windows.Forms.Button sellButton;
         private System.Windows.Forms.TabPage flatsPage;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelinform3;
+        private System.Windows.Forms.Label labelinform1;
+        private System.Windows.Forms.Label labelinform;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -1066,25 +1204,12 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabPage mainPage;
         private System.Windows.Forms.Label greetingLabel;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label labelinform3;
-        private System.Windows.Forms.Label labelinform1;
-        private System.Windows.Forms.Label labelinform;
-        private System.Windows.Forms.TabPage eventTab;
-        private System.Windows.Forms.Label eventNameLabel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox eventNameTextBox;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button editEventButton;
-        private System.Windows.Forms.RichTextBox eventDescriptionRichTextBox;
-        private System.Windows.Forms.TextBox eventTypeTextBox;
-        private System.Windows.Forms.MaskedTextBox eventDateTextBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button scheduleEventButton;
+        private System.Windows.Forms.TabControl mainTabControl;
+        private System.Windows.Forms.TabPage dealsPage;
+        private System.Windows.Forms.DataGridView flatsDataGridView;
+        private System.Windows.Forms.Button searchUserButton;
+        private System.Windows.Forms.TextBox searchUserTextBox;
+        private System.Windows.Forms.Label label8;
     }
 }
 
