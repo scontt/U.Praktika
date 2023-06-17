@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection\Crypt.cs" />
+    <Compile Include="cs\Flats.cs" />
     <Compile Include="db\Users.cs" />
     <Compile Include="Connection\DataBase.cs" />
     <Compile Include="Connection\Hash.cs" />

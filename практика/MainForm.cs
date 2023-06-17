@@ -155,6 +155,26 @@ namespace практика
             }
 
             usersDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            query = "select * from Flats where UserId = @Id";
+            DataTable flatsTable = new DataTable();
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("@Id", id));
+
+                dataAdapter = new SqlDataAdapter(cmd);
+                dataAdapter.Fill(flatsTable);
+            }
+            if (flatsTable.Rows.Count > 0)
+            {
+                foreach (DataRow r in flatsTable.Rows)
+                {
+                    treeView1.Nodes["Продажа"].Nodes.Add(r.Field<string>("Address"));
+                }
+            }
+
         }
        /* private void InitializeGMapControl()
         {
