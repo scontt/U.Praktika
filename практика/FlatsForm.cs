@@ -12,11 +12,11 @@ using практика.Connection;
 
 namespace практика
 {
-    public partial class Flats : Form
+    public partial class FlatsForm : Form
     {
         string connectionString = DataBase.ConnectionString;
 
-        public Flats(int id)
+        public FlatsForm(int id)
         {
             InitializeComponent();
 

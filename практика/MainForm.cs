@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,8 @@ using System.Xml.Linq;
 using практика.Connection;
 using практика.cs;
 using практика.db;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+//using static System.Net.Mime.MediaTypeNames;
 
 namespace практика
 {
@@ -29,11 +32,11 @@ namespace практика
         string sex = string.Empty;
         string eventTime = string.Empty;
         int id, eventId, index = 0, admin = 0;
-        int flatId = 0;
+        int animationStep = 0;
+        int animationDuration = 20;
         DateTime eventDateTime;
         SqlDataAdapter dataAdapter;
         SqlConnection con = new SqlConnection(connectionString);
-        //DataTable dataTable = new DataTable();
         DataSet agency = new DataSet();
         DataRow row;
 
@@ -46,8 +49,15 @@ namespace практика
         public MainForm(int id)
         {
             InitializeComponent();
-
+            LoadFlats();
             this.id = id;
+            SqlCommand cmd;
+
+            carouselPanel.AutoScroll = true;
+            carouselPanel.WrapContents = false;
+            timer.Interval = 10;
+            timer.Tick += CarouselTimer_Tick;
+            timer.Start();
             // InitializeGMapControl();
 
             #region dataset
@@ -80,10 +90,15 @@ namespace практика
 
             query = "select * from Users where ID = @ID";
 
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter("@ID", id));
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-            dataAdapter.Fill(agency.Tables["User"]);
+
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("@ID", id));
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                dataAdapter.Fill(agency.Tables["User"]);
+            }
 
             DataRow row;
             if (agency.Tables["User"].Rows.Count == 1)
@@ -120,6 +135,8 @@ namespace практика
 
             #endregion
 
+            usersDataGridView.AllowUserToAddRows = false;
+
             if (admin == 0)
             {
                 mainTabControl.TabPages.Remove(eventPage);
@@ -143,15 +160,21 @@ namespace практика
 
                 query = "select * from Users where ID <> @ID";
 
-                cmd = new SqlCommand(query, con);
-                cmd.Parameters.Add(new SqlParameter("@ID", id));
+                using (con = new SqlConnection(connectionString))
+                {
+                    con.Open();
 
-                dataAdapter = new SqlDataAdapter(cmd);
-                dataAdapter.Fill(agency.Tables["AllUsers"]);
+                    cmd = new SqlCommand(query, con);
+                    cmd.Parameters.Add(new SqlParameter("@ID", id));
+
+                    dataAdapter = new SqlDataAdapter(cmd);
+                    dataAdapter.Fill(agency.Tables["AllUsers"]);
+                }
 
                 usersDataGridView.DataSource = agency.Tables["AllUsers"];
 
-                UpdateDataGridView("Flats");
+                DataTable dt = GetTable("Flats");
+                flatsDataGridView.DataSource = dt;
             }
 
             usersDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -274,7 +297,7 @@ namespace практика
             finally
             {
                 con.Close();
-                UpdateUserTable();
+                UpdateActiveUserTable();
                 tabControl1_SelectedIndexChanged(sender, e);
             }
         }
@@ -370,7 +393,7 @@ namespace практика
 
         private void buyButton_Click(object sender, EventArgs e)
         {
-            Flats purchase = new Flats(id);
+            FlatsForm purchase = new FlatsForm(id);
             purchase.ShowDialog();
             Show();
         }
@@ -381,8 +404,8 @@ namespace практика
             {
                 int rowIndex = flatsDataGridView.CurrentCell.RowIndex;
 
-                flatId = Convert.ToInt32(flatsDataGridView.Rows[rowIndex].Cells[0].Value);
-                flatPhotoPictureBox.Image = GetFlatImage();
+                int flatId = Convert.ToInt32(flatsDataGridView.Rows[rowIndex].Cells[0].Value);
+                flatPhotoPictureBox.Image = GetFlatImage(flatId);
                 infoAddressTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Address"].Value.ToString();
                 infoAreaTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Area"].Value.ToString();
                 infoPriceTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Price"].Value.ToString();
@@ -393,6 +416,9 @@ namespace практика
 
         private void selectImageButton_Click(object sender, EventArgs e)
         {
+            int rowIndex = flatsDataGridView.CurrentCell.RowIndex;
+            int flatId = Convert.ToInt32(flatsDataGridView.Rows[rowIndex].Cells["ID"].Value);
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.ShowDialog();
             byte[] imageBytes = File.ReadAllBytes(openFileDialog.FileName);
@@ -413,7 +439,7 @@ namespace практика
         {
             try
             {
-                string query = $"SecondName like '%{searchUserTextBox.Text.Trim()}%'";
+                string query = $"(FirstName + SecondName) like '%{userInfoSearchUserTextBox.Text.Trim()}%'";
                 DataRowCollection allRows = agency.Tables["AllUsers"].Rows;
                 DataRow[] searchedRows = agency.Tables["AllUsers"].Select(query);
                 if (searchedRows.Length == 0)
@@ -436,6 +462,9 @@ namespace практика
 
         private void infoEditFlatButton_Click(object sender, EventArgs e)
         {
+            int rowIndex = flatsDataGridView.CurrentCell.RowIndex;
+            int flatId = Convert.ToInt32(flatsDataGridView.Rows[rowIndex].Cells[0].Value);
+
             query = "update Flats set " +
                 "Address = @Address, " +
                 "Area = @Area, " +
@@ -459,7 +488,8 @@ namespace практика
                 command.ExecuteNonQuery();
                 MessageBox.Show("Данные успешно изменены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            UpdateDataGridView("Flats");
+            DataTable dt = GetTable("Flats");
+            flatsDataGridView.DataSource = dt;
         }
 
         private void updateEvent(object sender, EventArgs e)
@@ -469,7 +499,93 @@ namespace практика
             eventDateTime = Convert.ToDateTime(row["EventDate"]);
         }
 
-        private void UpdateUserTable()
+        private void deleteFlatButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = 
+                MessageBox.Show("Вы действительно хотите удалить эту квартиру?", "Удаление", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return;
+
+            int rowIndex = flatsDataGridView.CurrentCell.RowIndex;
+            int flatId = Convert.ToInt32(flatsDataGridView.Rows[rowIndex].Cells[0].Value);
+
+            query = "delete from Flats where ID = @Id";
+
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("@Id", flatId));
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Квартира успешно удалена", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            DataTable dt = GetTable("Flats");
+            flatsDataGridView.DataSource = dt;
+        }
+
+        private void usersDataGridView_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (usersDataGridView.CurrentCell != null)
+            {
+                int gridRow = usersDataGridView.CurrentCell.RowIndex;
+
+                userInfoSecondNameTextBox.Text = usersDataGridView.Rows[gridRow].Cells["SecondName"].Value.ToString();
+                userInfoFirstNameTextBox.Text = usersDataGridView.Rows[gridRow].Cells["FirstName"].Value.ToString();
+                userInfoPhoneTextBox.Text = usersDataGridView.Rows[gridRow].Cells["Phone"].Value.ToString();
+                userInfoPassportTextBox.Text = usersDataGridView.Rows[gridRow].Cells["Passport"].Value.ToString();
+                userInfoAddressTextBox.Text = usersDataGridView.Rows[gridRow].Cells["Address"].Value.ToString();
+                userInfoEmailTextBox.Text = usersDataGridView.Rows[gridRow].Cells["Email"].Value.ToString();
+                userInfoLoginTextBox.Text = usersDataGridView.Rows[gridRow].Cells["Login"].Value.ToString();
+                userInfoSexComboBox.Text = usersDataGridView.Rows[gridRow].Cells["Sex"].Value.ToString();
+            }
+        }
+
+        private void userInfoEditUserButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result =
+                MessageBox.Show("Вы действительно хотите изменить данные этого пользователя?", "Удаление",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return;
+
+            int gridRow = usersDataGridView.CurrentCell.RowIndex;
+            int userId = Convert.ToInt32(usersDataGridView.Rows[gridRow].Cells["ID"].Value);
+
+            query = "update Users set " +
+                "SecondName = @SecondName, " +
+                "FirstName = @FirstName, " +
+                "Phone = @Phone, " +
+                "Passport = @Passport, " +
+                "Address = @Address, " +
+                "Email = @Email, " +
+                "Login = @Login, " +
+                "Sex = @Sex " +
+                "where ID = @Id";
+
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("@SecondName", userInfoSecondNameTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@FirstName", userInfoFirstNameTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@Phone", userInfoPhoneTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@Passport", userInfoPassportTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@Address", userInfoAddressTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@Email", userInfoEmailTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@Login", userInfoLoginTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@Sex", userInfoSexComboBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@Id", userId));
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Данные успешно изменены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            DataTable dt = GetTable("Users");
+            usersDataGridView.DataSource = dt;
+        }
+
+        private void UpdateActiveUserTable()
         {
             query = "select * from Users where ID = @ID";
             SqlCommand cmd = new SqlCommand(query, con);
@@ -479,7 +595,7 @@ namespace практика
             dataAdapter.Fill(agency.Tables["User"]);
         }
 
-        private Image GetFlatImage()
+        private Image GetFlatImage(int id)
         {
             query = "select Image from Flats where ID = @Id";
 
@@ -487,7 +603,7 @@ namespace практика
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.Add(new SqlParameter("@Id", flatId));
+                cmd.Parameters.Add(new SqlParameter("@Id", id));
                 DataTable dataTable = new DataTable();
                 dataAdapter = new SqlDataAdapter(cmd);
 
@@ -495,11 +611,6 @@ namespace практика
 
                 Image image = null;
                 DataRow row = dataTable.Rows[0];
-                //if (row["Image"] != null)
-                //{
-                //    image = (Bitmap)((new ImageConverter()).ConvertFrom(row["Image"]));
-                //}
-
                 try
                 {
                     image = (Bitmap)((new ImageConverter()).ConvertFrom(row["Image"]));
@@ -513,7 +624,7 @@ namespace практика
             }
         }
 
-        private void UpdateDataGridView(string tableName)
+        private DataTable GetTable(string tableName)
         {
             using (con = new SqlConnection(connectionString))
             {
@@ -523,9 +634,112 @@ namespace практика
                 SqlCommand cmd = new SqlCommand(query, con);
                 dataAdapter = new SqlDataAdapter(cmd);
                 dataAdapter.Fill(dataTable);
-                flatsDataGridView.DataSource = dataTable;
+                return dataTable;
+            }
+        }
+
+        private void LoadFlats()
+        {
+            DataTable flatsTable = GetTable("Flats");
+            
+            for (int i = 0; i < flatsTable.Rows.Count; i++)
+            {
+                Flats flat = new Flats
+                {
+                    Id = flatsTable.Rows[i].Field<int>("ID"),
+                    Area = flatsTable.Rows[i].Field<int>("Area"),
+                    Price = flatsTable.Rows[i].Field<int>("Price"),
+                    Level = flatsTable.Rows[i].Field<int>("Level"),
+                    RoomsAmount = flatsTable.Rows[i].Field<int>("RoomsAmount"),
+                    FlatTypeId = flatsTable.Rows[i].Field<int>("FlatTypeId"),
+                    UserId = flatsTable.Rows[i].Field<int>("UserId"),
+                    PublishDate = flatsTable.Rows[i].Field<DateTime>("PublishDate"),
+                    Image = GetFlatImage(flatsTable.Rows[i].Field<int>("ID"))
+                };
+
+                if (flat.Image != null)
+                {
+                    Image image = flat.Image;
+                    AddImageToCarousel(image, flat);
+                }
+            }
+        }
+
+        private void AddImageToCarousel(Image image, Flats flat)
+        {
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Image = image;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Width = 150;
+            pictureBox.Height = 150;
+
+            pictureBox.Tag = flat;
+
+            pictureBox.Click += PictureBox_Click;
+
+            carouselPanel.Controls.Add(pictureBox);
+        }
+
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            Flats selectedTovar = (Flats)pictureBox.Tag;
+
+            Purchase purchase = new Purchase(selectedTovar.Id);
+
+            purchase.ShowDialog();
+        }
+
+        private void CarouselTimer_Tick(object sender, EventArgs e)
+        {
+            // Проверяем, если есть элементы в карусели
+            if (carouselPanel.Controls.Count > 0)
+            {
+                // Получаем горизонтальную прокрутку панели
+                int scrollPosition = carouselPanel.HorizontalScroll.Value;
+                int maxScrollPosition = carouselPanel.HorizontalScroll.Maximum;
+                int scrollStep = 5; // Шаг прокрутки (значение получено с помощью trackBar)
+
+                // Проверяем, если прокрутка достигла конца
+                if (scrollPosition + carouselPanel.Width == maxScrollPosition)
+                {
+                    if (carouselPanel.Controls.Count > 0)
+                    {
+                        // Получаем первый элемент
+                        Control firstItem = carouselPanel.Controls[0];
+
+                        // Удаляем первый элемент из начала списка
+                        carouselPanel.Controls.RemoveAt(0);
+
+                        // Добавляем первый элемент в конец списка
+                        carouselPanel.Controls.Add(firstItem);
+                    }
+
+                    // Устанавливаем прокрутку в начало
+                    carouselPanel.HorizontalScroll.Value = 0;
+                }
+                else
+                {
+
+                    // Плавно изменяем прокрутку на каждом шаге таймера
+                    if (animationStep < animationDuration)
+                    {
+                        // Вычисляем новое значение прокрутки с учетом анимации
+                        int newScrollPosition = scrollPosition + (scrollStep * animationStep / animationDuration);
+
+                        // Устанавливаем новое значение прокрутки
+                        carouselPanel.HorizontalScroll.Value = newScrollPosition;
+
+                        // Увеличиваем счетчик шагов анимации
+                        animationStep++;
+                    }
+                    else
+                    {
+                        // Прокручиваем панель на шаг прокрутки
+                        carouselPanel.HorizontalScroll.Value += scrollStep;
+                    }
+                }
             }
         }
     }
-
 }

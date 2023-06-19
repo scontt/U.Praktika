@@ -1,6 +1,6 @@
 ﻿namespace практика
 {
-    partial class Flats
+    partial class FlatsForm
     {
         /// <summary>
         /// Required designer variable.

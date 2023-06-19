@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +38,20 @@ namespace практика.Connection
             DataBaseName = database;
             connection = $"Server={ServerName};Database={DataBaseName};Trusted_Connection=True;Integrated Security=true;Column Encryption Setting=enabled";
             return connection;
+        }
+
+        public static DataTable GetTable(string tableName)
+        {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                DataTable dataTable = new DataTable();
+                string query = $"select * from {tableName}";
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                dataAdapter.Fill(dataTable);
+                return dataTable;
+            }
         }
     }
 }

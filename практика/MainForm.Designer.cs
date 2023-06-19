@@ -29,17 +29,55 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Продажа");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Покупка");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Продажа");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Покупка");
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.eventStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.infoPage = new System.Windows.Forms.TabPage();
             this.infoTabControl = new System.Windows.Forms.TabControl();
             this.usersPage = new System.Windows.Forms.TabPage();
+            this.userInfoDeleteUserButton = new System.Windows.Forms.Button();
+            this.userInfoEditUserButton = new System.Windows.Forms.Button();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.userInfoSexComboBox = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.userInfoSecondNameTextBox = new System.Windows.Forms.TextBox();
+            this.userInfoFirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.userInfoPhoneTextBox = new System.Windows.Forms.TextBox();
+            this.userInfoPassportTextBox = new System.Windows.Forms.TextBox();
+            this.userInfoLoginTextBox = new System.Windows.Forms.TextBox();
+            this.userInfoEmailTextBox = new System.Windows.Forms.TextBox();
+            this.userInfoAddressTextBox = new System.Windows.Forms.TextBox();
+            this.userInfoSearchUserButton = new System.Windows.Forms.Button();
+            this.userInfoSearchUserTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.usersDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.deleteFlatButton = new System.Windows.Forms.Button();
+            this.infoEditFlatButton = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.infoPriceTextBox = new System.Windows.Forms.TextBox();
+            this.infoFloorTextBox = new System.Windows.Forms.TextBox();
+            this.infoRoomsAmountTextBox = new System.Windows.Forms.TextBox();
+            this.infoAddressTextBox = new System.Windows.Forms.TextBox();
+            this.infoAreaTextBox = new System.Windows.Forms.TextBox();
+            this.selectImageButton = new System.Windows.Forms.Button();
+            this.flatPhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.flatsDataGridView = new System.Windows.Forms.DataGridView();
             this.dealsPage = new System.Windows.Forms.TabPage();
+            this.dealsDataGridView = new System.Windows.Forms.DataGridView();
             this.eventPage = new System.Windows.Forms.TabPage();
             this.scheduleEventButton = new System.Windows.Forms.Button();
             this.eventDateTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -99,61 +137,32 @@
             this.buyButton = new System.Windows.Forms.Button();
             this.sellButton = new System.Windows.Forms.Button();
             this.flatsPage = new System.Windows.Forms.TabPage();
+            this.carouselPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelinform3 = new System.Windows.Forms.Label();
             this.labelinform1 = new System.Windows.Forms.Label();
             this.labelinform = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainPage = new System.Windows.Forms.TabPage();
             this.greetingLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
-            this.flatsDataGridView = new System.Windows.Forms.DataGridView();
-            this.searchUserTextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.searchUserButton = new System.Windows.Forms.Button();
-            this.dealsDataGridView = new System.Windows.Forms.DataGridView();
-            this.flatPhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.selectImageButton = new System.Windows.Forms.Button();
-            this.infoAreaTextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.infoRoomsAmountTextBox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.infoFloorTextBox = new System.Windows.Forms.TextBox();
-            this.infoPriceTextBox = new System.Windows.Forms.TextBox();
-            this.infoAddressTextBox = new System.Windows.Forms.TextBox();
-            this.infoEditFlatButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.infoPage.SuspendLayout();
             this.infoTabControl.SuspendLayout();
             this.usersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flatPhotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flatsDataGridView)).BeginInit();
             this.dealsPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dealsDataGridView)).BeginInit();
             this.eventPage.SuspendLayout();
             this.accountPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.requestPage.SuspendLayout();
             this.flatsPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mainPage.SuspendLayout();
             this.mainTabControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flatsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dealsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.flatPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // timer
@@ -167,7 +176,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eventStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 776);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 669);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
             this.statusStrip1.Size = new System.Drawing.Size(963, 22);
@@ -203,8 +212,27 @@
             // 
             // usersPage
             // 
-            this.usersPage.Controls.Add(this.searchUserButton);
-            this.usersPage.Controls.Add(this.searchUserTextBox);
+            this.usersPage.Controls.Add(this.userInfoDeleteUserButton);
+            this.usersPage.Controls.Add(this.userInfoEditUserButton);
+            this.usersPage.Controls.Add(this.label40);
+            this.usersPage.Controls.Add(this.label39);
+            this.usersPage.Controls.Add(this.userInfoSexComboBox);
+            this.usersPage.Controls.Add(this.label37);
+            this.usersPage.Controls.Add(this.label36);
+            this.usersPage.Controls.Add(this.label35);
+            this.usersPage.Controls.Add(this.label34);
+            this.usersPage.Controls.Add(this.label33);
+            this.usersPage.Controls.Add(this.label32);
+            this.usersPage.Controls.Add(this.label31);
+            this.usersPage.Controls.Add(this.userInfoSecondNameTextBox);
+            this.usersPage.Controls.Add(this.userInfoFirstNameTextBox);
+            this.usersPage.Controls.Add(this.userInfoPhoneTextBox);
+            this.usersPage.Controls.Add(this.userInfoPassportTextBox);
+            this.usersPage.Controls.Add(this.userInfoLoginTextBox);
+            this.usersPage.Controls.Add(this.userInfoEmailTextBox);
+            this.usersPage.Controls.Add(this.userInfoAddressTextBox);
+            this.usersPage.Controls.Add(this.userInfoSearchUserButton);
+            this.usersPage.Controls.Add(this.userInfoSearchUserTextBox);
             this.usersPage.Controls.Add(this.label8);
             this.usersPage.Controls.Add(this.usersDataGridView);
             this.usersPage.Location = new System.Drawing.Point(4, 24);
@@ -215,6 +243,230 @@
             this.usersPage.Text = "Пользователи";
             this.usersPage.UseVisualStyleBackColor = true;
             // 
+            // userInfoDeleteUserButton
+            // 
+            this.userInfoDeleteUserButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoDeleteUserButton.Location = new System.Drawing.Point(632, 545);
+            this.userInfoDeleteUserButton.Name = "userInfoDeleteUserButton";
+            this.userInfoDeleteUserButton.Size = new System.Drawing.Size(176, 30);
+            this.userInfoDeleteUserButton.TabIndex = 29;
+            this.userInfoDeleteUserButton.Text = "Удалить пользователя";
+            this.userInfoDeleteUserButton.UseVisualStyleBackColor = true;
+            // 
+            // userInfoEditUserButton
+            // 
+            this.userInfoEditUserButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoEditUserButton.Location = new System.Drawing.Point(448, 545);
+            this.userInfoEditUserButton.Name = "userInfoEditUserButton";
+            this.userInfoEditUserButton.Size = new System.Drawing.Size(176, 30);
+            this.userInfoEditUserButton.TabIndex = 28;
+            this.userInfoEditUserButton.Text = "Изменить данные";
+            this.userInfoEditUserButton.UseVisualStyleBackColor = true;
+            this.userInfoEditUserButton.Click += new System.EventHandler(this.userInfoEditUserButton_Click);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label40.Location = new System.Drawing.Point(472, 461);
+            this.label40.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(55, 19);
+            this.label40.TabIndex = 27;
+            this.label40.Text = "Логин:";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label39.Location = new System.Drawing.Point(488, 498);
+            this.label39.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(39, 19);
+            this.label39.TabIndex = 26;
+            this.label39.Text = "Пол:";
+            // 
+            // userInfoSexComboBox
+            // 
+            this.userInfoSexComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoSexComboBox.FormattingEnabled = true;
+            this.userInfoSexComboBox.Location = new System.Drawing.Point(537, 495);
+            this.userInfoSexComboBox.Name = "userInfoSexComboBox";
+            this.userInfoSexComboBox.Size = new System.Drawing.Size(271, 27);
+            this.userInfoSexComboBox.TabIndex = 25;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label37.Location = new System.Drawing.Point(444, 340);
+            this.label37.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(0, 19);
+            this.label37.TabIndex = 23;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label36.Location = new System.Drawing.Point(476, 422);
+            this.label36.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(51, 19);
+            this.label36.TabIndex = 22;
+            this.label36.Text = "E-mail:";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label35.Location = new System.Drawing.Point(75, 383);
+            this.label35.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(75, 19);
+            this.label35.TabIndex = 21;
+            this.label35.Text = "Фамилия:";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label34.Location = new System.Drawing.Point(110, 422);
+            this.label34.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(40, 19);
+            this.label34.TabIndex = 20;
+            this.label34.Text = "Имя:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label33.Location = new System.Drawing.Point(45, 461);
+            this.label33.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(105, 19);
+            this.label33.TabIndex = 19;
+            this.label33.Text = "Моб. телефон:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label32.Location = new System.Drawing.Point(33, 500);
+            this.label32.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(120, 19);
+            this.label32.TabIndex = 18;
+            this.label32.Text = "Папорт. данные:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label31.Location = new System.Drawing.Point(474, 383);
+            this.label31.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(53, 19);
+            this.label31.TabIndex = 17;
+            this.label31.Text = "Адрес:";
+            // 
+            // userInfoSecondNameTextBox
+            // 
+            this.userInfoSecondNameTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoSecondNameTextBox.Location = new System.Drawing.Point(160, 376);
+            this.userInfoSecondNameTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.userInfoSecondNameTextBox.Name = "userInfoSecondNameTextBox";
+            this.userInfoSecondNameTextBox.Size = new System.Drawing.Size(271, 26);
+            this.userInfoSecondNameTextBox.TabIndex = 16;
+            // 
+            // userInfoFirstNameTextBox
+            // 
+            this.userInfoFirstNameTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoFirstNameTextBox.Location = new System.Drawing.Point(160, 415);
+            this.userInfoFirstNameTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.userInfoFirstNameTextBox.Name = "userInfoFirstNameTextBox";
+            this.userInfoFirstNameTextBox.Size = new System.Drawing.Size(271, 26);
+            this.userInfoFirstNameTextBox.TabIndex = 15;
+            // 
+            // userInfoPhoneTextBox
+            // 
+            this.userInfoPhoneTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoPhoneTextBox.Location = new System.Drawing.Point(160, 454);
+            this.userInfoPhoneTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.userInfoPhoneTextBox.Name = "userInfoPhoneTextBox";
+            this.userInfoPhoneTextBox.Size = new System.Drawing.Size(271, 26);
+            this.userInfoPhoneTextBox.TabIndex = 14;
+            // 
+            // userInfoPassportTextBox
+            // 
+            this.userInfoPassportTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoPassportTextBox.Location = new System.Drawing.Point(160, 493);
+            this.userInfoPassportTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.userInfoPassportTextBox.Name = "userInfoPassportTextBox";
+            this.userInfoPassportTextBox.Size = new System.Drawing.Size(271, 26);
+            this.userInfoPassportTextBox.TabIndex = 13;
+            // 
+            // userInfoLoginTextBox
+            // 
+            this.userInfoLoginTextBox.Enabled = false;
+            this.userInfoLoginTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoLoginTextBox.Location = new System.Drawing.Point(537, 454);
+            this.userInfoLoginTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.userInfoLoginTextBox.Name = "userInfoLoginTextBox";
+            this.userInfoLoginTextBox.Size = new System.Drawing.Size(271, 26);
+            this.userInfoLoginTextBox.TabIndex = 10;
+            // 
+            // userInfoEmailTextBox
+            // 
+            this.userInfoEmailTextBox.Enabled = false;
+            this.userInfoEmailTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoEmailTextBox.Location = new System.Drawing.Point(537, 415);
+            this.userInfoEmailTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.userInfoEmailTextBox.Name = "userInfoEmailTextBox";
+            this.userInfoEmailTextBox.Size = new System.Drawing.Size(271, 26);
+            this.userInfoEmailTextBox.TabIndex = 9;
+            // 
+            // userInfoAddressTextBox
+            // 
+            this.userInfoAddressTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoAddressTextBox.Location = new System.Drawing.Point(537, 376);
+            this.userInfoAddressTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.userInfoAddressTextBox.Name = "userInfoAddressTextBox";
+            this.userInfoAddressTextBox.Size = new System.Drawing.Size(271, 26);
+            this.userInfoAddressTextBox.TabIndex = 8;
+            // 
+            // userInfoSearchUserButton
+            // 
+            this.userInfoSearchUserButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoSearchUserButton.Location = new System.Drawing.Point(362, 298);
+            this.userInfoSearchUserButton.Name = "userInfoSearchUserButton";
+            this.userInfoSearchUserButton.Size = new System.Drawing.Size(87, 30);
+            this.userInfoSearchUserButton.TabIndex = 6;
+            this.userInfoSearchUserButton.Text = "Поиск";
+            this.userInfoSearchUserButton.UseVisualStyleBackColor = true;
+            this.userInfoSearchUserButton.Click += new System.EventHandler(this.searchUserButton_Click);
+            // 
+            // userInfoSearchUserTextBox
+            // 
+            this.userInfoSearchUserTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userInfoSearchUserTextBox.Location = new System.Drawing.Point(83, 299);
+            this.userInfoSearchUserTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.userInfoSearchUserTextBox.Name = "userInfoSearchUserTextBox";
+            this.userInfoSearchUserTextBox.Size = new System.Drawing.Size(271, 29);
+            this.userInfoSearchUserTextBox.TabIndex = 5;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(25, 306);
+            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 19);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "ФИО:";
+            // 
             // usersDataGridView
             // 
             this.usersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -224,9 +476,11 @@
             this.usersDataGridView.RowTemplate.Height = 24;
             this.usersDataGridView.Size = new System.Drawing.Size(930, 256);
             this.usersDataGridView.TabIndex = 1;
+            this.usersDataGridView.CurrentCellChanged += new System.EventHandler(this.usersDataGridView_CurrentCellChanged);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.deleteFlatButton);
             this.tabPage2.Controls.Add(this.infoEditFlatButton);
             this.tabPage2.Controls.Add(this.label30);
             this.tabPage2.Controls.Add(this.label29);
@@ -249,6 +503,150 @@
             this.tabPage2.Text = "Квартиры";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // deleteFlatButton
+            // 
+            this.deleteFlatButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteFlatButton.Location = new System.Drawing.Point(498, 487);
+            this.deleteFlatButton.Name = "deleteFlatButton";
+            this.deleteFlatButton.Size = new System.Drawing.Size(177, 43);
+            this.deleteFlatButton.TabIndex = 8;
+            this.deleteFlatButton.Text = "Удалить квартиру";
+            this.deleteFlatButton.UseVisualStyleBackColor = true;
+            this.deleteFlatButton.Click += new System.EventHandler(this.deleteFlatButton_Click);
+            // 
+            // infoEditFlatButton
+            // 
+            this.infoEditFlatButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoEditFlatButton.Location = new System.Drawing.Point(292, 487);
+            this.infoEditFlatButton.Name = "infoEditFlatButton";
+            this.infoEditFlatButton.Size = new System.Drawing.Size(177, 43);
+            this.infoEditFlatButton.TabIndex = 7;
+            this.infoEditFlatButton.Text = "Изменить данные";
+            this.infoEditFlatButton.UseVisualStyleBackColor = true;
+            this.infoEditFlatButton.Click += new System.EventHandler(this.infoEditFlatButton_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label30.Location = new System.Drawing.Point(288, 454);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(140, 19);
+            this.label30.TabIndex = 6;
+            this.label30.Text = "Количество комнат";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label29.Location = new System.Drawing.Point(288, 415);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(48, 19);
+            this.label29.TabIndex = 6;
+            this.label29.Text = "Этаж:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(288, 375);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 19);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Цена:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(288, 337);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 19);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Площадь:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(288, 300);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 19);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Адрес:";
+            // 
+            // infoPriceTextBox
+            // 
+            this.infoPriceTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoPriceTextBox.Location = new System.Drawing.Point(434, 372);
+            this.infoPriceTextBox.Name = "infoPriceTextBox";
+            this.infoPriceTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoPriceTextBox.TabIndex = 5;
+            // 
+            // infoFloorTextBox
+            // 
+            this.infoFloorTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoFloorTextBox.Location = new System.Drawing.Point(434, 412);
+            this.infoFloorTextBox.Name = "infoFloorTextBox";
+            this.infoFloorTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoFloorTextBox.TabIndex = 5;
+            // 
+            // infoRoomsAmountTextBox
+            // 
+            this.infoRoomsAmountTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoRoomsAmountTextBox.Location = new System.Drawing.Point(434, 451);
+            this.infoRoomsAmountTextBox.Name = "infoRoomsAmountTextBox";
+            this.infoRoomsAmountTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoRoomsAmountTextBox.TabIndex = 5;
+            // 
+            // infoAddressTextBox
+            // 
+            this.infoAddressTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoAddressTextBox.Location = new System.Drawing.Point(434, 297);
+            this.infoAddressTextBox.Name = "infoAddressTextBox";
+            this.infoAddressTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoAddressTextBox.TabIndex = 5;
+            // 
+            // infoAreaTextBox
+            // 
+            this.infoAreaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoAreaTextBox.Location = new System.Drawing.Point(434, 334);
+            this.infoAreaTextBox.Name = "infoAreaTextBox";
+            this.infoAreaTextBox.Size = new System.Drawing.Size(241, 26);
+            this.infoAreaTextBox.TabIndex = 5;
+            // 
+            // selectImageButton
+            // 
+            this.selectImageButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectImageButton.Location = new System.Drawing.Point(48, 487);
+            this.selectImageButton.Name = "selectImageButton";
+            this.selectImageButton.Size = new System.Drawing.Size(177, 43);
+            this.selectImageButton.TabIndex = 4;
+            this.selectImageButton.Text = "Выбрать изображение";
+            this.selectImageButton.UseVisualStyleBackColor = true;
+            this.selectImageButton.Click += new System.EventHandler(this.selectImageButton_Click);
+            // 
+            // flatPhotoPictureBox
+            // 
+            this.flatPhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flatPhotoPictureBox.Location = new System.Drawing.Point(48, 314);
+            this.flatPhotoPictureBox.Name = "flatPhotoPictureBox";
+            this.flatPhotoPictureBox.Size = new System.Drawing.Size(177, 154);
+            this.flatPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.flatPhotoPictureBox.TabIndex = 3;
+            this.flatPhotoPictureBox.TabStop = false;
+            // 
+            // flatsDataGridView
+            // 
+            this.flatsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.flatsDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.flatsDataGridView.Name = "flatsDataGridView";
+            this.flatsDataGridView.RowHeadersWidth = 51;
+            this.flatsDataGridView.RowTemplate.Height = 24;
+            this.flatsDataGridView.Size = new System.Drawing.Size(930, 256);
+            this.flatsDataGridView.TabIndex = 2;
+            this.flatsDataGridView.CurrentCellChanged += new System.EventHandler(this.flatsDataGridView_CurrentCellChanged);
+            // 
             // dealsPage
             // 
             this.dealsPage.Controls.Add(this.dealsDataGridView);
@@ -258,6 +656,16 @@
             this.dealsPage.TabIndex = 2;
             this.dealsPage.Text = "Сделки";
             this.dealsPage.UseVisualStyleBackColor = true;
+            // 
+            // dealsDataGridView
+            // 
+            this.dealsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dealsDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.dealsDataGridView.Name = "dealsDataGridView";
+            this.dealsDataGridView.RowHeadersWidth = 51;
+            this.dealsDataGridView.RowTemplate.Height = 24;
+            this.dealsDataGridView.Size = new System.Drawing.Size(927, 256);
+            this.dealsDataGridView.TabIndex = 3;
             // 
             // eventPage
             // 
@@ -412,10 +820,10 @@
             // 
             this.exitButton.BackColor = System.Drawing.Color.MistyRose;
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exitButton.Location = new System.Drawing.Point(487, 643);
+            this.exitButton.Location = new System.Drawing.Point(473, 581);
             this.exitButton.Margin = new System.Windows.Forms.Padding(5);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(397, 66);
+            this.exitButton.Size = new System.Drawing.Size(469, 44);
             this.exitButton.TabIndex = 6;
             this.exitButton.Text = "Выйти";
             this.exitButton.UseVisualStyleBackColor = false;
@@ -424,7 +832,7 @@
             // changeProfileButton
             // 
             this.changeProfileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.changeProfileButton.Location = new System.Drawing.Point(487, 589);
+            this.changeProfileButton.Location = new System.Drawing.Point(21, 581);
             this.changeProfileButton.Margin = new System.Windows.Forms.Padding(5);
             this.changeProfileButton.Name = "changeProfileButton";
             this.changeProfileButton.Size = new System.Drawing.Size(397, 44);
@@ -436,7 +844,7 @@
             // passportTextBox
             // 
             this.passportTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passportTextBox.Location = new System.Drawing.Point(681, 544);
+            this.passportTextBox.Location = new System.Drawing.Point(211, 538);
             this.passportTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.passportTextBox.Name = "passportTextBox";
             this.passportTextBox.Size = new System.Drawing.Size(205, 29);
@@ -445,7 +853,7 @@
             // addressTextBox
             // 
             this.addressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addressTextBox.Location = new System.Drawing.Point(491, 470);
+            this.addressTextBox.Location = new System.Drawing.Point(21, 464);
             this.addressTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(395, 29);
@@ -454,7 +862,7 @@
             // emailTextBox
             // 
             this.emailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.emailTextBox.Location = new System.Drawing.Point(489, 400);
+            this.emailTextBox.Location = new System.Drawing.Point(19, 394);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(395, 29);
@@ -463,7 +871,7 @@
             // phoneTextBox
             // 
             this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.phoneTextBox.Location = new System.Drawing.Point(491, 326);
+            this.phoneTextBox.Location = new System.Drawing.Point(21, 320);
             this.phoneTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(395, 29);
@@ -472,7 +880,7 @@
             // sexTextBox
             // 
             this.sexTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sexTextBox.Location = new System.Drawing.Point(491, 545);
+            this.sexTextBox.Location = new System.Drawing.Point(21, 539);
             this.sexTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.sexTextBox.Name = "sexTextBox";
             this.sexTextBox.Size = new System.Drawing.Size(180, 29);
@@ -481,7 +889,7 @@
             // secondNameTextBox
             // 
             this.secondNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.secondNameTextBox.Location = new System.Drawing.Point(491, 248);
+            this.secondNameTextBox.Location = new System.Drawing.Point(21, 242);
             this.secondNameTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.secondNameTextBox.Name = "secondNameTextBox";
             this.secondNameTextBox.Size = new System.Drawing.Size(395, 29);
@@ -490,7 +898,7 @@
             // firstNameTextBox
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(491, 178);
+            this.firstNameTextBox.Location = new System.Drawing.Point(21, 172);
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(395, 29);
@@ -499,7 +907,7 @@
             // passwordTextBox
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordTextBox.Location = new System.Drawing.Point(491, 107);
+            this.passwordTextBox.Location = new System.Drawing.Point(21, 101);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(395, 29);
@@ -508,7 +916,7 @@
             // loginTextBox
             // 
             this.loginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginTextBox.Location = new System.Drawing.Point(491, 34);
+            this.loginTextBox.Location = new System.Drawing.Point(21, 28);
             this.loginTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(395, 29);
@@ -518,7 +926,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(679, 511);
+            this.label28.Location = new System.Drawing.Point(209, 505);
             this.label28.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(169, 20);
@@ -530,7 +938,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(485, 442);
+            this.label26.Location = new System.Drawing.Point(15, 436);
             this.label26.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(61, 20);
@@ -558,7 +966,7 @@
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(8, 5);
+            this.groupBox2.Location = new System.Drawing.Point(473, 22);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
@@ -752,7 +1160,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(485, 368);
+            this.label24.Location = new System.Drawing.Point(15, 362);
             this.label24.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(57, 20);
@@ -763,7 +1171,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(485, 5);
+            this.label1.Location = new System.Drawing.Point(15, -1);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 20);
@@ -774,7 +1182,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label22.Location = new System.Drawing.Point(485, 297);
+            this.label22.Location = new System.Drawing.Point(15, 291);
             this.label22.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(83, 20);
@@ -785,7 +1193,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(485, 76);
+            this.label12.Location = new System.Drawing.Point(15, 70);
             this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(71, 20);
@@ -796,7 +1204,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(485, 514);
+            this.label15.Location = new System.Drawing.Point(15, 508);
             this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(44, 20);
@@ -807,7 +1215,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(485, 146);
+            this.label13.Location = new System.Drawing.Point(15, 140);
             this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(44, 20);
@@ -818,7 +1226,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(485, 220);
+            this.label14.Location = new System.Drawing.Point(15, 214);
             this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(85, 20);
@@ -855,13 +1263,13 @@
             this.treeView1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.treeView1.Location = new System.Drawing.Point(29, 58);
             this.treeView1.Name = "treeView1";
-            treeNode7.Name = "Продажа";
-            treeNode7.Text = "Продажа";
-            treeNode8.Name = "Покупка";
-            treeNode8.Text = "Покупка";
+            treeNode1.Name = "Продажа";
+            treeNode1.Text = "Продажа";
+            treeNode2.Name = "Покупка";
+            treeNode2.Text = "Покупка";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8});
+            treeNode1,
+            treeNode2});
             this.treeView1.Size = new System.Drawing.Size(211, 150);
             this.treeView1.TabIndex = 5;
             // 
@@ -879,7 +1287,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label2.Location = new System.Drawing.Point(445, 598);
+            this.label2.Location = new System.Drawing.Point(448, 473);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(343, 19);
             this.label2.TabIndex = 2;
@@ -911,17 +1319,12 @@
             // 
             // flatsPage
             // 
+            this.flatsPage.Controls.Add(this.carouselPanel);
             this.flatsPage.Controls.Add(this.textBox2);
             this.flatsPage.Controls.Add(this.textBox1);
             this.flatsPage.Controls.Add(this.labelinform3);
             this.flatsPage.Controls.Add(this.labelinform1);
             this.flatsPage.Controls.Add(this.labelinform);
-            this.flatsPage.Controls.Add(this.pictureBox6);
-            this.flatsPage.Controls.Add(this.pictureBox5);
-            this.flatsPage.Controls.Add(this.pictureBox4);
-            this.flatsPage.Controls.Add(this.pictureBox3);
-            this.flatsPage.Controls.Add(this.pictureBox2);
-            this.flatsPage.Controls.Add(this.pictureBox1);
             this.flatsPage.Location = new System.Drawing.Point(4, 24);
             this.flatsPage.Margin = new System.Windows.Forms.Padding(5);
             this.flatsPage.Name = "flatsPage";
@@ -930,6 +1333,14 @@
             this.flatsPage.TabIndex = 0;
             this.flatsPage.Text = "Картотека квартир";
             this.flatsPage.UseVisualStyleBackColor = true;
+            // 
+            // carouselPanel
+            // 
+            this.carouselPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.carouselPanel.Location = new System.Drawing.Point(47, 31);
+            this.carouselPanel.Name = "carouselPanel";
+            this.carouselPanel.Size = new System.Drawing.Size(860, 177);
+            this.carouselPanel.TabIndex = 11;
             // 
             // textBox2
             // 
@@ -975,60 +1386,6 @@
             this.labelinform.TabIndex = 6;
             this.labelinform.Text = "Информация о выбранной квартире:";
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Location = new System.Drawing.Point(801, 27);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(101, 93);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 5;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Location = new System.Drawing.Point(651, 106);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(101, 93);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 4;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Location = new System.Drawing.Point(497, 183);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(101, 93);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 3;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(309, 183);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(101, 93);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(163, 106);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(101, 93);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(23, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(101, 93);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // mainPage
             // 
             this.mainPage.Controls.Add(this.greetingLabel);
@@ -1068,185 +1425,11 @@
             this.mainTabControl.TabIndex = 0;
             this.mainTabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // flatsDataGridView
-            // 
-            this.flatsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.flatsDataGridView.Location = new System.Drawing.Point(3, 3);
-            this.flatsDataGridView.Name = "flatsDataGridView";
-            this.flatsDataGridView.RowHeadersWidth = 51;
-            this.flatsDataGridView.RowTemplate.Height = 24;
-            this.flatsDataGridView.Size = new System.Drawing.Size(930, 256);
-            this.flatsDataGridView.TabIndex = 2;
-            this.flatsDataGridView.CurrentCellChanged += new System.EventHandler(this.flatsDataGridView_CurrentCellChanged);
-            // 
-            // searchUserTextBox
-            // 
-            this.searchUserTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchUserTextBox.Location = new System.Drawing.Point(83, 299);
-            this.searchUserTextBox.Margin = new System.Windows.Forms.Padding(5);
-            this.searchUserTextBox.Name = "searchUserTextBox";
-            this.searchUserTextBox.Size = new System.Drawing.Size(271, 29);
-            this.searchUserTextBox.TabIndex = 5;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(25, 306);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 19);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "ФИО:";
-            // 
-            // searchUserButton
-            // 
-            this.searchUserButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchUserButton.Location = new System.Drawing.Point(362, 298);
-            this.searchUserButton.Name = "searchUserButton";
-            this.searchUserButton.Size = new System.Drawing.Size(87, 30);
-            this.searchUserButton.TabIndex = 6;
-            this.searchUserButton.Text = "Поиск";
-            this.searchUserButton.UseVisualStyleBackColor = true;
-            this.searchUserButton.Click += new System.EventHandler(this.searchUserButton_Click);
-            // 
-            // dealsDataGridView
-            // 
-            this.dealsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dealsDataGridView.Location = new System.Drawing.Point(3, 3);
-            this.dealsDataGridView.Name = "dealsDataGridView";
-            this.dealsDataGridView.RowHeadersWidth = 51;
-            this.dealsDataGridView.RowTemplate.Height = 24;
-            this.dealsDataGridView.Size = new System.Drawing.Size(927, 256);
-            this.dealsDataGridView.TabIndex = 3;
-            // 
-            // flatPhotoPictureBox
-            // 
-            this.flatPhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flatPhotoPictureBox.Location = new System.Drawing.Point(48, 314);
-            this.flatPhotoPictureBox.Name = "flatPhotoPictureBox";
-            this.flatPhotoPictureBox.Size = new System.Drawing.Size(177, 154);
-            this.flatPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.flatPhotoPictureBox.TabIndex = 3;
-            this.flatPhotoPictureBox.TabStop = false;
-            // 
-            // selectImageButton
-            // 
-            this.selectImageButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.selectImageButton.Location = new System.Drawing.Point(48, 487);
-            this.selectImageButton.Name = "selectImageButton";
-            this.selectImageButton.Size = new System.Drawing.Size(177, 43);
-            this.selectImageButton.TabIndex = 4;
-            this.selectImageButton.Text = "Выбрать изображение";
-            this.selectImageButton.UseVisualStyleBackColor = true;
-            this.selectImageButton.Click += new System.EventHandler(this.selectImageButton_Click);
-            // 
-            // infoAreaTextBox
-            // 
-            this.infoAreaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoAreaTextBox.Location = new System.Drawing.Point(434, 334);
-            this.infoAreaTextBox.Name = "infoAreaTextBox";
-            this.infoAreaTextBox.Size = new System.Drawing.Size(241, 26);
-            this.infoAreaTextBox.TabIndex = 5;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(288, 300);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 19);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Адрес:";
-            // 
-            // infoRoomsAmountTextBox
-            // 
-            this.infoRoomsAmountTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoRoomsAmountTextBox.Location = new System.Drawing.Point(434, 451);
-            this.infoRoomsAmountTextBox.Name = "infoRoomsAmountTextBox";
-            this.infoRoomsAmountTextBox.Size = new System.Drawing.Size(241, 26);
-            this.infoRoomsAmountTextBox.TabIndex = 5;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(288, 337);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 19);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Площадь:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(288, 375);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 19);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Цена:";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(288, 415);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(48, 19);
-            this.label29.TabIndex = 6;
-            this.label29.Text = "Этаж:";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(288, 454);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(140, 19);
-            this.label30.TabIndex = 6;
-            this.label30.Text = "Количество комнат";
-            // 
-            // infoFloorTextBox
-            // 
-            this.infoFloorTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoFloorTextBox.Location = new System.Drawing.Point(434, 412);
-            this.infoFloorTextBox.Name = "infoFloorTextBox";
-            this.infoFloorTextBox.Size = new System.Drawing.Size(241, 26);
-            this.infoFloorTextBox.TabIndex = 5;
-            // 
-            // infoPriceTextBox
-            // 
-            this.infoPriceTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoPriceTextBox.Location = new System.Drawing.Point(434, 372);
-            this.infoPriceTextBox.Name = "infoPriceTextBox";
-            this.infoPriceTextBox.Size = new System.Drawing.Size(241, 26);
-            this.infoPriceTextBox.TabIndex = 5;
-            // 
-            // infoAddressTextBox
-            // 
-            this.infoAddressTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoAddressTextBox.Location = new System.Drawing.Point(434, 297);
-            this.infoAddressTextBox.Name = "infoAddressTextBox";
-            this.infoAddressTextBox.Size = new System.Drawing.Size(241, 26);
-            this.infoAddressTextBox.TabIndex = 5;
-            // 
-            // infoEditFlatButton
-            // 
-            this.infoEditFlatButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoEditFlatButton.Location = new System.Drawing.Point(408, 487);
-            this.infoEditFlatButton.Name = "infoEditFlatButton";
-            this.infoEditFlatButton.Size = new System.Drawing.Size(177, 43);
-            this.infoEditFlatButton.TabIndex = 7;
-            this.infoEditFlatButton.Text = "Изменить данные";
-            this.infoEditFlatButton.UseVisualStyleBackColor = true;
-            this.infoEditFlatButton.Click += new System.EventHandler(this.infoEditFlatButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 798);
+            this.ClientSize = new System.Drawing.Size(963, 691);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1263,7 +1446,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flatPhotoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flatsDataGridView)).EndInit();
             this.dealsPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dealsDataGridView)).EndInit();
             this.eventPage.ResumeLayout(false);
             this.eventPage.PerformLayout();
             this.accountPage.ResumeLayout(false);
@@ -1274,25 +1460,15 @@
             this.requestPage.PerformLayout();
             this.flatsPage.ResumeLayout(false);
             this.flatsPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.mainPage.ResumeLayout(false);
             this.mainPage.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.flatsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dealsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.flatPhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel eventStatusLabel;
         private System.Windows.Forms.TabPage infoPage;
@@ -1364,19 +1540,13 @@
         private System.Windows.Forms.Label labelinform3;
         private System.Windows.Forms.Label labelinform1;
         private System.Windows.Forms.Label labelinform;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabPage mainPage;
         private System.Windows.Forms.Label greetingLabel;
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage dealsPage;
         private System.Windows.Forms.DataGridView flatsDataGridView;
-        private System.Windows.Forms.Button searchUserButton;
-        private System.Windows.Forms.TextBox searchUserTextBox;
+        private System.Windows.Forms.Button userInfoSearchUserButton;
+        private System.Windows.Forms.TextBox userInfoSearchUserTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dealsDataGridView;
         private System.Windows.Forms.Button selectImageButton;
@@ -1392,6 +1562,28 @@
         private System.Windows.Forms.TextBox infoFloorTextBox;
         private System.Windows.Forms.TextBox infoRoomsAmountTextBox;
         private System.Windows.Forms.TextBox infoAddressTextBox;
+        private System.Windows.Forms.Button deleteFlatButton;
+        private System.Windows.Forms.Button userInfoDeleteUserButton;
+        private System.Windows.Forms.Button userInfoEditUserButton;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.ComboBox userInfoSexComboBox;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox userInfoSecondNameTextBox;
+        private System.Windows.Forms.TextBox userInfoFirstNameTextBox;
+        private System.Windows.Forms.TextBox userInfoPhoneTextBox;
+        private System.Windows.Forms.TextBox userInfoPassportTextBox;
+        private System.Windows.Forms.TextBox userInfoLoginTextBox;
+        private System.Windows.Forms.TextBox userInfoEmailTextBox;
+        private System.Windows.Forms.TextBox userInfoAddressTextBox;
+        private System.Windows.Forms.FlowLayoutPanel carouselPanel;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

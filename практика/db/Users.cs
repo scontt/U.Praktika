@@ -10,8 +10,6 @@ namespace практика.db
 {
     public class Users : Person
     {
-        DataSet agency = new DataSet();
-
         public Users (int id, string name, string password, string email, string phone, string sex, string passport, string address)
         {
             Id = id;

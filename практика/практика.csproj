@@ -86,7 +86,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connection\Crypt.cs" />
     <Compile Include="cs\Flats.cs" />
     <Compile Include="db\Users.cs" />
     <Compile Include="Connection\DataBase.cs" />
@@ -95,11 +94,11 @@
     <Compile Include="cs\Event.cs" />
     <Compile Include="cs\Cryptography.cs" />
     <Compile Include="db\Person.cs" />
-    <Compile Include="Flats.cs">
+    <Compile Include="FlatsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Flats.Designer.cs">
-      <DependentUpon>Flats.cs</DependentUpon>
+    <Compile Include="FlatsForm.Designer.cs">
+      <DependentUpon>FlatsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Purchase.cs">
       <SubType>Form</SubType>
@@ -133,8 +132,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Flats.resx">
-      <DependentUpon>Flats.cs</DependentUpon>
+    <EmbeddedResource Include="FlatsForm.resx">
+      <DependentUpon>FlatsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

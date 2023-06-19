@@ -22,12 +22,15 @@ namespace практика
         int cap = 0;
         int tries = 0;
         readonly string connectonString = DataBase.ConnectionString;
-
+        
         public SignIn()
         {
             InitializeComponent();
-            signInButton.Enabled = false;
+            signInButton.Enabled = true;
             passwordTextBox.UseSystemPasswordChar = true;
+
+            loginTextBox.Text = "admin";
+            passwordTextBox.Text = "admin";
         }
 
         private void SignIn_FormClosed(object sender, FormClosedEventArgs e)
