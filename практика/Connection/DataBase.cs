@@ -16,7 +16,7 @@ namespace практика.Connection
         string connection = string.Empty;
 
         static string server = "(localdb)\\MSSQLLocalDB";
-        static string db = "agency";
+        static string db = "agency3";
         static DataSet agency = new DataSet("Agency");
 
         public string ServerName { get; set; }

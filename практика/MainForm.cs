@@ -198,7 +198,11 @@ namespace практика
                 }
             }
 
+            //query = "select * from Trade where "
+            //requestsListBox.Items.Add();
+
         }
+
        /* private void InitializeGMapControl()
         {
             gMapControl1 = new GMapControl();
@@ -698,7 +702,7 @@ namespace практика
                 // Получаем горизонтальную прокрутку панели
                 int scrollPosition = carouselPanel.HorizontalScroll.Value;
                 int maxScrollPosition = carouselPanel.HorizontalScroll.Maximum;
-                int scrollStep = 5; // Шаг прокрутки (значение получено с помощью trackBar)
+                int scrollStep = 10; // Шаг прокрутки (значение получено с помощью trackBar)
 
                 // Проверяем, если прокрутка достигла конца
                 if (scrollPosition + carouselPanel.Width == maxScrollPosition)

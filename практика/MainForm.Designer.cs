@@ -144,6 +144,10 @@
             this.labelinform1 = new System.Windows.Forms.Label();
             this.labelinform = new System.Windows.Forms.Label();
             this.mainPage = new System.Windows.Forms.TabPage();
+            this.label41 = new System.Windows.Forms.Label();
+            this.tradeListBox = new System.Windows.Forms.ListBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.requestsListBox = new System.Windows.Forms.ListBox();
             this.greetingLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.statusStrip1.SuspendLayout();
@@ -176,7 +180,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eventStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 669);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 788);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
             this.statusStrip1.Size = new System.Drawing.Size(963, 22);
@@ -1388,6 +1392,10 @@
             // 
             // mainPage
             // 
+            this.mainPage.Controls.Add(this.label41);
+            this.mainPage.Controls.Add(this.tradeListBox);
+            this.mainPage.Controls.Add(this.label38);
+            this.mainPage.Controls.Add(this.requestsListBox);
             this.mainPage.Controls.Add(this.greetingLabel);
             this.mainPage.Location = new System.Drawing.Point(4, 24);
             this.mainPage.Margin = new System.Windows.Forms.Padding(5);
@@ -1396,6 +1404,46 @@
             this.mainPage.TabIndex = 6;
             this.mainPage.Text = "Главная";
             this.mainPage.UseVisualStyleBackColor = true;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label41.Location = new System.Drawing.Point(364, 99);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(172, 19);
+            this.label41.TabIndex = 4;
+            this.label41.Text = "Предложения о покупке";
+            // 
+            // tradeListBox
+            // 
+            this.tradeListBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tradeListBox.FormattingEnabled = true;
+            this.tradeListBox.ItemHeight = 19;
+            this.tradeListBox.Location = new System.Drawing.Point(364, 118);
+            this.tradeListBox.Name = "tradeListBox";
+            this.tradeListBox.Size = new System.Drawing.Size(288, 175);
+            this.tradeListBox.TabIndex = 3;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label38.Location = new System.Drawing.Point(29, 99);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(94, 19);
+            this.label38.TabIndex = 2;
+            this.label38.Text = "Ваши заявки";
+            // 
+            // requestsListBox
+            // 
+            this.requestsListBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.requestsListBox.FormattingEnabled = true;
+            this.requestsListBox.ItemHeight = 19;
+            this.requestsListBox.Location = new System.Drawing.Point(29, 118);
+            this.requestsListBox.Name = "requestsListBox";
+            this.requestsListBox.Size = new System.Drawing.Size(288, 175);
+            this.requestsListBox.TabIndex = 1;
             // 
             // greetingLabel
             // 
@@ -1429,7 +1477,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 691);
+            this.ClientSize = new System.Drawing.Size(963, 810);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1584,6 +1632,11 @@
         private System.Windows.Forms.TextBox userInfoAddressTextBox;
         private System.Windows.Forms.FlowLayoutPanel carouselPanel;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.ListBox tradeListBox;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.ListBox requestsListBox;
+        //private GMap.NET.WindowsForms.GMapControl gMapControl1;
     }
 }
 
