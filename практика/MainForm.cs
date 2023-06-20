@@ -1,4 +1,5 @@
-﻿using Microsoft.Ajax.Utilities;
+﻿using map;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -175,12 +176,12 @@ namespace практика
 
                 usersDataGridView.DataSource = agency.Tables["AllUsers"];
 
-                DataTable dt = GetTable("Flats");
+                DataTable dt = DataBase.GetTable("Flats");
                 flatsDataGridView.DataSource = dt;
             }
 
             usersDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            agency.Tables.Add(GetTable("Users"));
+            agency.Tables.Add(DataBase.GetTable("Users"));
             bindingSource1.DataSource = agency.Tables["Table1"];
             usersDataGridView.DataSource = bindingSource1.DataSource;
 
@@ -414,7 +415,7 @@ namespace практика
                 int rowIndex = flatsDataGridView.CurrentCell.RowIndex;
 
                 int flatId = Convert.ToInt32(flatsDataGridView.Rows[rowIndex].Cells[0].Value);
-                flatPhotoPictureBox.Image = GetFlatImage(flatId);
+                flatPhotoPictureBox.Image = Flats.GetFlatImage(flatId);
                 infoAddressTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Address"].Value.ToString();
                 infoAreaTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Area"].Value.ToString();
                 infoPriceTextBox.Text = flatsDataGridView.Rows[rowIndex].Cells["Price"].Value.ToString();
@@ -497,7 +498,7 @@ namespace практика
                 command.ExecuteNonQuery();
                 MessageBox.Show("Данные успешно изменены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            DataTable dt = GetTable("Flats");
+            DataTable dt = DataBase.GetTable("Flats");
             flatsDataGridView.DataSource = dt;
         }
 
@@ -529,7 +530,7 @@ namespace практика
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Квартира успешно удалена", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            DataTable dt = GetTable("Flats");
+            DataTable dt = DataBase.GetTable("Flats");
             flatsDataGridView.DataSource = dt;
         }
 
@@ -590,7 +591,7 @@ namespace практика
 
                 MessageBox.Show("Данные успешно изменены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            DataTable dt = GetTable("Users");
+            DataTable dt = DataBase.GetTable("Users");
             usersDataGridView.DataSource = dt;
         }
 
@@ -604,52 +605,11 @@ namespace практика
             dataAdapter.Fill(agency.Tables["User"]);
         }
 
-        private Image GetFlatImage(int id)
-        {
-            query = "select Image from Flats where ID = @Id";
-
-            using (con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.Add(new SqlParameter("@Id", id));
-                DataTable dataTable = new DataTable();
-                dataAdapter = new SqlDataAdapter(cmd);
-
-                dataAdapter.Fill(dataTable);
-
-                Image image = null;
-                DataRow row = dataTable.Rows[0];
-                try
-                {
-                    image = (Bitmap)((new ImageConverter()).ConvertFrom(row["Image"]));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return image;
-                }
-                return image;
-            }
-        }
-
-        private DataTable GetTable(string tableName)
-        {
-            using (con = new SqlConnection(connectionString))
-            {
-                DataTable dataTable = new DataTable();
-                query = $"select * from {tableName}";
-                con.Open();
-                SqlCommand cmd = new SqlCommand(query, con);
-                dataAdapter = new SqlDataAdapter(cmd);
-                dataAdapter.Fill(dataTable);
-                return dataTable;
-            }
-        }
+        
 
         private void LoadFlats()
         {
-            DataTable flatsTable = GetTable("Flats");
+            DataTable flatsTable = DataBase.GetTable("Flats");
             
             for (int i = 0; i < flatsTable.Rows.Count; i++)
             {
@@ -663,7 +623,7 @@ namespace практика
                     FlatTypeId = flatsTable.Rows[i].Field<int>("FlatTypeId"),
                     UserId = flatsTable.Rows[i].Field<int>("UserId"),
                     PublishDate = flatsTable.Rows[i].Field<DateTime>("PublishDate"),
-                    Image = GetFlatImage(flatsTable.Rows[i].Field<int>("ID"))
+                    Image = Flats.GetFlatImage(flatsTable.Rows[i].Field<int>("ID"))
                 };
 
                 if (flat.Image != null)
@@ -765,6 +725,12 @@ namespace практика
             }
         }
 
+        private void showMapButton_Click(object sender, EventArgs e)
+        {
+            var form1 = new map.Map();
+            form1.ShowDialog();
+        }
+
         private void PictureBox_Click(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
@@ -827,7 +793,7 @@ namespace практика
             }
         }
 
-        public DataTable GetDeals()
+        private DataTable GetDeals()
         {
             query = "select * from Trade";
             DataTable dataTable = new DataTable();
@@ -835,6 +801,21 @@ namespace практика
             {
                 con.Open();
                 SqlCommand command = new SqlCommand(query, con);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
+
+        private DataTable GetDeals(int id)
+        {
+            query = "select * from Trade where ID = @Id";
+            DataTable dataTable = new DataTable();
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.Add(new SqlParameter("@Id", id));
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 dataAdapter.Fill(dataTable);
             }

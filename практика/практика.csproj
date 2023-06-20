@@ -51,9 +51,6 @@
     <Reference Include="GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.Core.dll</HintPath>
     </Reference>
-    <Reference Include="GMap.NET.WindowsForms, Version=2.1.7.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
-      <HintPath>..\packages\GMap.NET.WinForms.2.1.7\lib\net48\GMap.NET.WindowsForms.dll</HintPath>
-    </Reference>
     <Reference Include="GMap.NET.WindowsPresentation, Version=2.1.7.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.NET.WinPresentation.2.1.7\lib\net48\GMap.NET.WindowsPresentation.dll</HintPath>
     </Reference>
@@ -175,6 +172,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\map\map.csproj">
+      <Project>{f1d87c0e-68cf-47a3-a9e4-6323e2c7bcea}</Project>
+      <Name>map</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

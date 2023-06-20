@@ -37,6 +37,8 @@
             this.infoPage = new System.Windows.Forms.TabPage();
             this.infoTabControl = new System.Windows.Forms.TabControl();
             this.usersPage = new System.Windows.Forms.TabPage();
+            this.xmlImportButton = new System.Windows.Forms.Button();
+            this.xmlExportButton = new System.Windows.Forms.Button();
             this.cancelFilterButton = new System.Windows.Forms.Button();
             this.sexFilterComboBox = new System.Windows.Forms.ComboBox();
             this.filterButton = new System.Windows.Forms.Button();
@@ -81,6 +83,8 @@
             this.flatPhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.flatsDataGridView = new System.Windows.Forms.DataGridView();
             this.dealsPage = new System.Windows.Forms.TabPage();
+            this.saveDealButton = new System.Windows.Forms.Button();
+            this.deleteDealButton = new System.Windows.Forms.Button();
             this.dealsDataGridView = new System.Windows.Forms.DataGridView();
             this.eventPage = new System.Windows.Forms.TabPage();
             this.scheduleEventButton = new System.Windows.Forms.Button();
@@ -153,10 +157,7 @@
             this.greetingLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.xmlImportButton = new System.Windows.Forms.Button();
-            this.xmlExportButton = new System.Windows.Forms.Button();
-            this.deleteDealButton = new System.Windows.Forms.Button();
-            this.saveDealButton = new System.Windows.Forms.Button();
+            this.showMapButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.infoPage.SuspendLayout();
             this.infoTabControl.SuspendLayout();
@@ -170,6 +171,7 @@
             this.eventPage.SuspendLayout();
             this.accountPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.officesPage.SuspendLayout();
             this.requestPage.SuspendLayout();
             this.flatsPage.SuspendLayout();
             this.mainPage.SuspendLayout();
@@ -260,6 +262,28 @@
             this.usersPage.TabIndex = 0;
             this.usersPage.Text = "Пользователи";
             this.usersPage.UseVisualStyleBackColor = true;
+            // 
+            // xmlImportButton
+            // 
+            this.xmlImportButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.xmlImportButton.Location = new System.Drawing.Point(247, 546);
+            this.xmlImportButton.Name = "xmlImportButton";
+            this.xmlImportButton.Size = new System.Drawing.Size(176, 30);
+            this.xmlImportButton.TabIndex = 36;
+            this.xmlImportButton.Text = "Импорт из XML";
+            this.xmlImportButton.UseVisualStyleBackColor = true;
+            this.xmlImportButton.Click += new System.EventHandler(this.xmlImportButton_Click);
+            // 
+            // xmlExportButton
+            // 
+            this.xmlExportButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.xmlExportButton.Location = new System.Drawing.Point(63, 546);
+            this.xmlExportButton.Name = "xmlExportButton";
+            this.xmlExportButton.Size = new System.Drawing.Size(176, 30);
+            this.xmlExportButton.TabIndex = 35;
+            this.xmlExportButton.Text = "Экспорт в XML";
+            this.xmlExportButton.UseVisualStyleBackColor = true;
+            this.xmlExportButton.Click += new System.EventHandler(this.xmlExportButton_Click);
             // 
             // cancelFilterButton
             // 
@@ -719,6 +743,27 @@
             this.dealsPage.Text = "Сделки";
             this.dealsPage.UseVisualStyleBackColor = true;
             // 
+            // saveDealButton
+            // 
+            this.saveDealButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveDealButton.Location = new System.Drawing.Point(283, 341);
+            this.saveDealButton.Name = "saveDealButton";
+            this.saveDealButton.Size = new System.Drawing.Size(253, 63);
+            this.saveDealButton.TabIndex = 5;
+            this.saveDealButton.Text = "Сохранить в файл";
+            this.saveDealButton.UseVisualStyleBackColor = true;
+            this.saveDealButton.Click += new System.EventHandler(this.saveDealButton_Click);
+            // 
+            // deleteDealButton
+            // 
+            this.deleteDealButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteDealButton.Location = new System.Drawing.Point(283, 410);
+            this.deleteDealButton.Name = "deleteDealButton";
+            this.deleteDealButton.Size = new System.Drawing.Size(253, 63);
+            this.deleteDealButton.TabIndex = 4;
+            this.deleteDealButton.Text = "Удалить";
+            this.deleteDealButton.UseVisualStyleBackColor = true;
+            // 
             // dealsDataGridView
             // 
             this.dealsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -743,7 +788,7 @@
             this.eventPage.Controls.Add(this.label3);
             this.eventPage.Location = new System.Drawing.Point(4, 24);
             this.eventPage.Name = "eventPage";
-            this.eventPage.Size = new System.Drawing.Size(952, 730);
+            this.eventPage.Size = new System.Drawing.Size(952, 837);
             this.eventPage.TabIndex = 8;
             this.eventPage.Text = "Мероприятие";
             this.eventPage.UseVisualStyleBackColor = true;
@@ -1297,6 +1342,7 @@
             // 
             // officesPage
             // 
+            this.officesPage.Controls.Add(this.showMapButton);
             this.officesPage.Location = new System.Drawing.Point(4, 24);
             this.officesPage.Margin = new System.Windows.Forms.Padding(5);
             this.officesPage.Name = "officesPage";
@@ -1507,48 +1553,15 @@
             this.mainTabControl.TabIndex = 0;
             this.mainTabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // xmlImportButton
+            // showMapButton
             // 
-            this.xmlImportButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.xmlImportButton.Location = new System.Drawing.Point(247, 546);
-            this.xmlImportButton.Name = "xmlImportButton";
-            this.xmlImportButton.Size = new System.Drawing.Size(176, 30);
-            this.xmlImportButton.TabIndex = 36;
-            this.xmlImportButton.Text = "Импорт из XML";
-            this.xmlImportButton.UseVisualStyleBackColor = true;
-            this.xmlImportButton.Click += new System.EventHandler(this.xmlImportButton_Click);
-            // 
-            // xmlExportButton
-            // 
-            this.xmlExportButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.xmlExportButton.Location = new System.Drawing.Point(63, 546);
-            this.xmlExportButton.Name = "xmlExportButton";
-            this.xmlExportButton.Size = new System.Drawing.Size(176, 30);
-            this.xmlExportButton.TabIndex = 35;
-            this.xmlExportButton.Text = "Экспорт в XML";
-            this.xmlExportButton.UseVisualStyleBackColor = true;
-            this.xmlExportButton.Click += new System.EventHandler(this.xmlExportButton_Click);
-            // 
-            // deleteDealButton
-            // 
-            this.deleteDealButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteDealButton.Location = new System.Drawing.Point(283, 410);
-            this.deleteDealButton.Name = "deleteDealButton";
-            this.deleteDealButton.Size = new System.Drawing.Size(253, 63);
-            this.deleteDealButton.TabIndex = 4;
-            this.deleteDealButton.Text = "Удалить";
-            this.deleteDealButton.UseVisualStyleBackColor = true;
-            // 
-            // saveDealButton
-            // 
-            this.saveDealButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveDealButton.Location = new System.Drawing.Point(283, 341);
-            this.saveDealButton.Name = "saveDealButton";
-            this.saveDealButton.Size = new System.Drawing.Size(253, 63);
-            this.saveDealButton.TabIndex = 5;
-            this.saveDealButton.Text = "Сохранить в файл";
-            this.saveDealButton.UseVisualStyleBackColor = true;
-            this.saveDealButton.Click += new System.EventHandler(this.saveDealButton_Click);
+            this.showMapButton.Location = new System.Drawing.Point(414, 218);
+            this.showMapButton.Name = "showMapButton";
+            this.showMapButton.Size = new System.Drawing.Size(75, 23);
+            this.showMapButton.TabIndex = 0;
+            this.showMapButton.Text = "button1";
+            this.showMapButton.UseVisualStyleBackColor = true;
+            this.showMapButton.Click += new System.EventHandler(this.showMapButton_Click);
             // 
             // MainForm
             // 
@@ -1581,6 +1594,7 @@
             this.accountPage.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.officesPage.ResumeLayout(false);
             this.requestPage.ResumeLayout(false);
             this.requestPage.PerformLayout();
             this.flatsPage.ResumeLayout(false);
@@ -1721,6 +1735,7 @@
         private System.Windows.Forms.Button xmlExportButton;
         private System.Windows.Forms.Button saveDealButton;
         private System.Windows.Forms.Button deleteDealButton;
+        private System.Windows.Forms.Button showMapButton;
         //private GMap.NET.WindowsForms.GMapControl gMapControl1;
     }
 }
