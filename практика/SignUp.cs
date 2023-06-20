@@ -74,7 +74,7 @@ namespace практика
                 return; 
             }
 
-            if (firstNameTextBox.Text.Length != 0 || lastNameTextbox.Text.Length != 0 || sexComboBox.Text.Length != 0 ||
+            if (firstNameTextBox.Text.Length != 0 || lastNameTextBox.Text.Length != 0 || sexComboBox.Text.Length != 0 ||
                     passwordTextBox.Text.Length != 0 || confirmPasswordTextBox.Text.Length != 0 || phoneTextBox.Text.Length != 0 ||
                     passportTextBox.Text.Length != 0 || addressTextBox.Text.Length != 0)
             {
@@ -109,13 +109,13 @@ namespace практика
 
             using (conn = new SqlConnection(connectonString))
             {
-                string name = firstNameTextBox.Text + " " + lastNameTextbox.Text;
-                query = "insert into Users(Login, Name, Phone, Email, Passport, Address, Password, Admin, Sex) " +
-                    "values(@Login, @Name, @Phone, @Email, @Passport, @Address, @Password, @Admin, @Sex)";
+                query = "insert into Users(Login, FirstName, SecondName, Phone, Email, Passport, Address, Password, Admin, Sex) " +
+                    "values(@Login, @FirstName, @SecondName, @Phone, @Email, @Passport, @Address, @Password, @Admin, @Sex)";
 
                 cmd = new SqlCommand(query, conn);
                 cmd.Parameters.Add(new SqlParameter("@Login", login));
-                cmd.Parameters.Add(new SqlParameter("@Name", name));
+                cmd.Parameters.Add(new SqlParameter("@FirstName", firstNameTextBox.Text));
+                cmd.Parameters.Add(new SqlParameter("@SecondName", lastNameTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@Phone", phoneTextBox.Text));
                 cmd.Parameters.Add(new SqlParameter("@Email", email));
                 cmd.Parameters.Add(new SqlParameter("@Passport", passportTextBox.Text));

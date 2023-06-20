@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -142,6 +143,16 @@ namespace практика
         private void closeButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void saveImageMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap jpgSave = (Bitmap)pictureBox1.Image;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.DefaultExt = "jpg";
+            sfd.Filter = "Image files (*.jpg)|*.jpg|All files (*.*)|*.*";
+            if (sfd.ShowDialog() == DialogResult.OK)
+                jpgSave.Save(sfd.FileName, ImageFormat.Bmp);
         }
     }
 }

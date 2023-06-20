@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Cache;
 using System.Reflection;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,8 +18,6 @@ using System.Xml.Linq;
 using практика.Connection;
 using практика.cs;
 using практика.db;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-//using static System.Net.Mime.MediaTypeNames;
 
 namespace практика
 {
@@ -59,6 +58,10 @@ namespace практика
             timer.Tick += CarouselTimer_Tick;
             timer.Start();
             // InitializeGMapControl();
+
+            dealsDataGridView.DataSource = GetDeals();
+            dealsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dealsDataGridView.AllowUserToAddRows = false;
 
             #region dataset
 
@@ -158,14 +161,13 @@ namespace практика
                 agency.Tables["AllUsers"].Columns.Add("Login", typeof(String));
                 agency.Tables["AllUsers"].Columns.Add("SecondName", typeof(String));
 
-                query = "select * from Users where ID <> @ID";
+                query = "select * from Users";
 
                 using (con = new SqlConnection(connectionString))
                 {
                     con.Open();
 
                     cmd = new SqlCommand(query, con);
-                    cmd.Parameters.Add(new SqlParameter("@ID", id));
 
                     dataAdapter = new SqlDataAdapter(cmd);
                     dataAdapter.Fill(agency.Tables["AllUsers"]);
@@ -178,6 +180,9 @@ namespace практика
             }
 
             usersDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            agency.Tables.Add(GetTable("Users"));
+            bindingSource1.DataSource = agency.Tables["Table1"];
+            usersDataGridView.DataSource = bindingSource1.DataSource;
 
             query = "select * from Flats where UserId = @Id";
             DataTable flatsTable = new DataTable();
@@ -669,6 +674,42 @@ namespace практика
             }
         }
 
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            bindingSource1.Filter = $"Sex = '{sexFilterComboBox.Text}'";
+            usersDataGridView.DataSource = bindingSource1.DataSource;
+        }
+
+        private void cancelFilterButton_Click(object sender, EventArgs e)
+        {
+            bindingSource1.Filter = default;
+            usersDataGridView.DataSource = bindingSource1.DataSource;
+        }
+
+        private void xmlExportButton_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter writer = new StreamWriter("../../users.xml"))
+            {
+                agency.Tables["Table1"].WriteXml(writer);
+                MessageBox.Show("XML-файл успешно экспортирован", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void xmlImportButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы действительно хотите импортировать файл?", "Импорт", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return;
+            var dataSet = new DataSet();
+            if (File.Exists("../../users.xml"))
+            {
+                usersDataGridView.DataSource = null;
+                usersDataGridView.Rows.Clear();
+                dataSet.ReadXml("../../users.xml");
+                usersDataGridView.DataSource = dataSet.Tables[0];
+                MessageBox.Show("XML-файл успешно импортирован", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void AddImageToCarousel(Image image, Flats flat)
         {
             PictureBox pictureBox = new PictureBox();
@@ -682,6 +723,46 @@ namespace практика
             pictureBox.Click += PictureBox_Click;
 
             carouselPanel.Controls.Add(pictureBox);
+        }
+
+        private void saveDealButton_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dealsDataGridView.CurrentCell.RowIndex;
+            int selectedRowID = Convert.ToInt32(dealsDataGridView.Rows[rowIndex].Cells["ID"].Value);
+
+            query = "select * from Trade where ID = @Id";
+            string dealString = string.Empty;
+            var sb = new StringBuilder(dealString);
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("@Id", selectedRowID));
+                sb.AppendLine("ID\tUserId\tFlatId\tPaymentType\tTradeDate\t\tTradeType\n");
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    sb.Append(reader["ID"].ToString() + "\t");
+                    sb.Append(reader["UserId"].ToString() + "\t");
+                    sb.Append(reader["FlatId"].ToString() + "\t");
+                    sb.Append(reader["PaymentType"].ToString() + "\t");
+                    sb.Append(reader["TradeDate"].ToString() + "\t");
+                    sb.Append(reader["TradeType"].ToString() + "\t");
+                    //dealString += reader["ID"].ToString() + "\t";
+                    //dealString += reader["UserId"].ToString() + "\t";
+                    //dealString += reader["FlatId"].ToString() + "\t";
+                    //dealString += reader["PaymentType"].ToString() + "\t";
+                    //dealString += reader["TradeDate"].ToString() + "\t";
+                    //dealString += reader["TradeType"].ToString();
+                }
+            }
+            string fileName = "../../покупка.txt";
+            var fs = new FileStream(fileName, FileMode.Create);
+            using (StreamWriter writer = new StreamWriter(fs, Encoding.Default))
+            {
+                writer.Write(sb.ToString());
+            }
         }
 
         private void PictureBox_Click(object sender, EventArgs e)
@@ -744,6 +825,20 @@ namespace практика
                     }
                 }
             }
+        }
+
+        public DataTable GetDeals()
+        {
+            query = "select * from Trade";
+            DataTable dataTable = new DataTable();
+            using (con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand command = new SqlCommand(query, con);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(dataTable);
+            }
+            return dataTable;
         }
     }
 }

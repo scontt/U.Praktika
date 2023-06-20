@@ -37,6 +37,10 @@
             this.infoPage = new System.Windows.Forms.TabPage();
             this.infoTabControl = new System.Windows.Forms.TabControl();
             this.usersPage = new System.Windows.Forms.TabPage();
+            this.cancelFilterButton = new System.Windows.Forms.Button();
+            this.sexFilterComboBox = new System.Windows.Forms.ComboBox();
+            this.filterButton = new System.Windows.Forms.Button();
+            this.label42 = new System.Windows.Forms.Label();
             this.userInfoDeleteUserButton = new System.Windows.Forms.Button();
             this.userInfoEditUserButton = new System.Windows.Forms.Button();
             this.label40 = new System.Windows.Forms.Label();
@@ -133,8 +137,6 @@
             this.requestPage = new System.Windows.Forms.TabPage();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.label6 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.buyButton = new System.Windows.Forms.Button();
             this.sellButton = new System.Windows.Forms.Button();
             this.flatsPage = new System.Windows.Forms.TabPage();
             this.carouselPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -150,6 +152,11 @@
             this.requestsListBox = new System.Windows.Forms.ListBox();
             this.greetingLabel = new System.Windows.Forms.Label();
             this.mainTabControl = new System.Windows.Forms.TabControl();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.xmlImportButton = new System.Windows.Forms.Button();
+            this.xmlExportButton = new System.Windows.Forms.Button();
+            this.deleteDealButton = new System.Windows.Forms.Button();
+            this.saveDealButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.infoPage.SuspendLayout();
             this.infoTabControl.SuspendLayout();
@@ -167,6 +174,7 @@
             this.flatsPage.SuspendLayout();
             this.mainPage.SuspendLayout();
             this.mainTabControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer
@@ -180,7 +188,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eventStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 788);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 661);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
             this.statusStrip1.Size = new System.Drawing.Size(963, 22);
@@ -198,7 +206,7 @@
             this.infoPage.Controls.Add(this.infoTabControl);
             this.infoPage.Location = new System.Drawing.Point(4, 24);
             this.infoPage.Name = "infoPage";
-            this.infoPage.Size = new System.Drawing.Size(952, 730);
+            this.infoPage.Size = new System.Drawing.Size(952, 837);
             this.infoPage.TabIndex = 9;
             this.infoPage.Text = "Информация";
             this.infoPage.UseVisualStyleBackColor = true;
@@ -216,6 +224,12 @@
             // 
             // usersPage
             // 
+            this.usersPage.Controls.Add(this.xmlImportButton);
+            this.usersPage.Controls.Add(this.xmlExportButton);
+            this.usersPage.Controls.Add(this.cancelFilterButton);
+            this.usersPage.Controls.Add(this.sexFilterComboBox);
+            this.usersPage.Controls.Add(this.filterButton);
+            this.usersPage.Controls.Add(this.label42);
             this.usersPage.Controls.Add(this.userInfoDeleteUserButton);
             this.usersPage.Controls.Add(this.userInfoEditUserButton);
             this.usersPage.Controls.Add(this.label40);
@@ -247,10 +261,52 @@
             this.usersPage.Text = "Пользователи";
             this.usersPage.UseVisualStyleBackColor = true;
             // 
+            // cancelFilterButton
+            // 
+            this.cancelFilterButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cancelFilterButton.Location = new System.Drawing.Point(720, 333);
+            this.cancelFilterButton.Name = "cancelFilterButton";
+            this.cancelFilterButton.Size = new System.Drawing.Size(114, 30);
+            this.cancelFilterButton.TabIndex = 34;
+            this.cancelFilterButton.Text = "Отмена";
+            this.cancelFilterButton.UseVisualStyleBackColor = true;
+            this.cancelFilterButton.Click += new System.EventHandler(this.cancelFilterButton_Click);
+            // 
+            // sexFilterComboBox
+            // 
+            this.sexFilterComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sexFilterComboBox.FormattingEnabled = true;
+            this.sexFilterComboBox.Location = new System.Drawing.Point(563, 298);
+            this.sexFilterComboBox.Name = "sexFilterComboBox";
+            this.sexFilterComboBox.Size = new System.Drawing.Size(271, 27);
+            this.sexFilterComboBox.TabIndex = 33;
+            // 
+            // filterButton
+            // 
+            this.filterButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.filterButton.Location = new System.Drawing.Point(563, 333);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(114, 30);
+            this.filterButton.TabIndex = 32;
+            this.filterButton.Text = "Фильтрация";
+            this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label42.Location = new System.Drawing.Point(505, 304);
+            this.label42.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(39, 19);
+            this.label42.TabIndex = 30;
+            this.label42.Text = "Пол:";
+            // 
             // userInfoDeleteUserButton
             // 
             this.userInfoDeleteUserButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoDeleteUserButton.Location = new System.Drawing.Point(632, 545);
+            this.userInfoDeleteUserButton.Location = new System.Drawing.Point(658, 546);
             this.userInfoDeleteUserButton.Name = "userInfoDeleteUserButton";
             this.userInfoDeleteUserButton.Size = new System.Drawing.Size(176, 30);
             this.userInfoDeleteUserButton.TabIndex = 29;
@@ -260,7 +316,7 @@
             // userInfoEditUserButton
             // 
             this.userInfoEditUserButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoEditUserButton.Location = new System.Drawing.Point(448, 545);
+            this.userInfoEditUserButton.Location = new System.Drawing.Point(474, 546);
             this.userInfoEditUserButton.Name = "userInfoEditUserButton";
             this.userInfoEditUserButton.Size = new System.Drawing.Size(176, 30);
             this.userInfoEditUserButton.TabIndex = 28;
@@ -272,7 +328,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label40.Location = new System.Drawing.Point(472, 461);
+            this.label40.Location = new System.Drawing.Point(498, 460);
             this.label40.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(55, 19);
@@ -283,7 +339,7 @@
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label39.Location = new System.Drawing.Point(488, 498);
+            this.label39.Location = new System.Drawing.Point(514, 497);
             this.label39.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(39, 19);
@@ -294,7 +350,7 @@
             // 
             this.userInfoSexComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.userInfoSexComboBox.FormattingEnabled = true;
-            this.userInfoSexComboBox.Location = new System.Drawing.Point(537, 495);
+            this.userInfoSexComboBox.Location = new System.Drawing.Point(563, 494);
             this.userInfoSexComboBox.Name = "userInfoSexComboBox";
             this.userInfoSexComboBox.Size = new System.Drawing.Size(271, 27);
             this.userInfoSexComboBox.TabIndex = 25;
@@ -303,7 +359,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label37.Location = new System.Drawing.Point(444, 340);
+            this.label37.Location = new System.Drawing.Point(470, 339);
             this.label37.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(0, 19);
@@ -313,7 +369,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label36.Location = new System.Drawing.Point(476, 422);
+            this.label36.Location = new System.Drawing.Point(502, 421);
             this.label36.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(51, 19);
@@ -324,7 +380,7 @@
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label35.Location = new System.Drawing.Point(75, 383);
+            this.label35.Location = new System.Drawing.Point(101, 382);
             this.label35.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(75, 19);
@@ -335,7 +391,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label34.Location = new System.Drawing.Point(110, 422);
+            this.label34.Location = new System.Drawing.Point(136, 421);
             this.label34.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(40, 19);
@@ -346,7 +402,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(45, 461);
+            this.label33.Location = new System.Drawing.Point(71, 460);
             this.label33.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(105, 19);
@@ -357,7 +413,7 @@
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label32.Location = new System.Drawing.Point(33, 500);
+            this.label32.Location = new System.Drawing.Point(59, 499);
             this.label32.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(120, 19);
@@ -368,7 +424,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label31.Location = new System.Drawing.Point(474, 383);
+            this.label31.Location = new System.Drawing.Point(500, 382);
             this.label31.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(53, 19);
@@ -378,7 +434,7 @@
             // userInfoSecondNameTextBox
             // 
             this.userInfoSecondNameTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoSecondNameTextBox.Location = new System.Drawing.Point(160, 376);
+            this.userInfoSecondNameTextBox.Location = new System.Drawing.Point(186, 375);
             this.userInfoSecondNameTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.userInfoSecondNameTextBox.Name = "userInfoSecondNameTextBox";
             this.userInfoSecondNameTextBox.Size = new System.Drawing.Size(271, 26);
@@ -387,7 +443,7 @@
             // userInfoFirstNameTextBox
             // 
             this.userInfoFirstNameTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoFirstNameTextBox.Location = new System.Drawing.Point(160, 415);
+            this.userInfoFirstNameTextBox.Location = new System.Drawing.Point(186, 414);
             this.userInfoFirstNameTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.userInfoFirstNameTextBox.Name = "userInfoFirstNameTextBox";
             this.userInfoFirstNameTextBox.Size = new System.Drawing.Size(271, 26);
@@ -396,7 +452,7 @@
             // userInfoPhoneTextBox
             // 
             this.userInfoPhoneTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoPhoneTextBox.Location = new System.Drawing.Point(160, 454);
+            this.userInfoPhoneTextBox.Location = new System.Drawing.Point(186, 453);
             this.userInfoPhoneTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.userInfoPhoneTextBox.Name = "userInfoPhoneTextBox";
             this.userInfoPhoneTextBox.Size = new System.Drawing.Size(271, 26);
@@ -405,7 +461,7 @@
             // userInfoPassportTextBox
             // 
             this.userInfoPassportTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoPassportTextBox.Location = new System.Drawing.Point(160, 493);
+            this.userInfoPassportTextBox.Location = new System.Drawing.Point(186, 492);
             this.userInfoPassportTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.userInfoPassportTextBox.Name = "userInfoPassportTextBox";
             this.userInfoPassportTextBox.Size = new System.Drawing.Size(271, 26);
@@ -415,7 +471,7 @@
             // 
             this.userInfoLoginTextBox.Enabled = false;
             this.userInfoLoginTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoLoginTextBox.Location = new System.Drawing.Point(537, 454);
+            this.userInfoLoginTextBox.Location = new System.Drawing.Point(563, 453);
             this.userInfoLoginTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.userInfoLoginTextBox.Name = "userInfoLoginTextBox";
             this.userInfoLoginTextBox.Size = new System.Drawing.Size(271, 26);
@@ -425,7 +481,7 @@
             // 
             this.userInfoEmailTextBox.Enabled = false;
             this.userInfoEmailTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoEmailTextBox.Location = new System.Drawing.Point(537, 415);
+            this.userInfoEmailTextBox.Location = new System.Drawing.Point(563, 414);
             this.userInfoEmailTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.userInfoEmailTextBox.Name = "userInfoEmailTextBox";
             this.userInfoEmailTextBox.Size = new System.Drawing.Size(271, 26);
@@ -434,7 +490,7 @@
             // userInfoAddressTextBox
             // 
             this.userInfoAddressTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoAddressTextBox.Location = new System.Drawing.Point(537, 376);
+            this.userInfoAddressTextBox.Location = new System.Drawing.Point(563, 375);
             this.userInfoAddressTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.userInfoAddressTextBox.Name = "userInfoAddressTextBox";
             this.userInfoAddressTextBox.Size = new System.Drawing.Size(271, 26);
@@ -443,7 +499,7 @@
             // userInfoSearchUserButton
             // 
             this.userInfoSearchUserButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoSearchUserButton.Location = new System.Drawing.Point(362, 298);
+            this.userInfoSearchUserButton.Location = new System.Drawing.Point(281, 333);
             this.userInfoSearchUserButton.Name = "userInfoSearchUserButton";
             this.userInfoSearchUserButton.Size = new System.Drawing.Size(87, 30);
             this.userInfoSearchUserButton.TabIndex = 6;
@@ -454,7 +510,7 @@
             // userInfoSearchUserTextBox
             // 
             this.userInfoSearchUserTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userInfoSearchUserTextBox.Location = new System.Drawing.Point(83, 299);
+            this.userInfoSearchUserTextBox.Location = new System.Drawing.Point(186, 295);
             this.userInfoSearchUserTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.userInfoSearchUserTextBox.Name = "userInfoSearchUserTextBox";
             this.userInfoSearchUserTextBox.Size = new System.Drawing.Size(271, 29);
@@ -464,7 +520,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(25, 306);
+            this.label8.Location = new System.Drawing.Point(128, 298);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 19);
@@ -653,6 +709,8 @@
             // 
             // dealsPage
             // 
+            this.dealsPage.Controls.Add(this.saveDealButton);
+            this.dealsPage.Controls.Add(this.deleteDealButton);
             this.dealsPage.Controls.Add(this.dealsDataGridView);
             this.dealsPage.Location = new System.Drawing.Point(4, 24);
             this.dealsPage.Name = "dealsPage";
@@ -815,7 +873,7 @@
             this.accountPage.Location = new System.Drawing.Point(4, 24);
             this.accountPage.Margin = new System.Windows.Forms.Padding(5);
             this.accountPage.Name = "accountPage";
-            this.accountPage.Size = new System.Drawing.Size(952, 730);
+            this.accountPage.Size = new System.Drawing.Size(952, 837);
             this.accountPage.TabIndex = 5;
             this.accountPage.Text = "Профиль";
             this.accountPage.UseVisualStyleBackColor = true;
@@ -1242,7 +1300,7 @@
             this.officesPage.Location = new System.Drawing.Point(4, 24);
             this.officesPage.Margin = new System.Windows.Forms.Padding(5);
             this.officesPage.Name = "officesPage";
-            this.officesPage.Size = new System.Drawing.Size(952, 730);
+            this.officesPage.Size = new System.Drawing.Size(952, 837);
             this.officesPage.TabIndex = 4;
             this.officesPage.Text = "Офисы";
             this.officesPage.UseVisualStyleBackColor = true;
@@ -1251,13 +1309,11 @@
             // 
             this.requestPage.Controls.Add(this.treeView1);
             this.requestPage.Controls.Add(this.label6);
-            this.requestPage.Controls.Add(this.label2);
-            this.requestPage.Controls.Add(this.buyButton);
             this.requestPage.Controls.Add(this.sellButton);
             this.requestPage.Location = new System.Drawing.Point(4, 24);
             this.requestPage.Margin = new System.Windows.Forms.Padding(5);
             this.requestPage.Name = "requestPage";
-            this.requestPage.Size = new System.Drawing.Size(952, 730);
+            this.requestPage.Size = new System.Drawing.Size(952, 837);
             this.requestPage.TabIndex = 3;
             this.requestPage.Text = "Заявки";
             this.requestPage.UseVisualStyleBackColor = true;
@@ -1274,7 +1330,7 @@
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-            this.treeView1.Size = new System.Drawing.Size(211, 150);
+            this.treeView1.Size = new System.Drawing.Size(915, 150);
             this.treeView1.TabIndex = 5;
             // 
             // label6
@@ -1287,37 +1343,15 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "Ваши заявки";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label2.Location = new System.Drawing.Point(448, 473);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(343, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Выберите какой из видов заявок хотите оставить:";
-            // 
-            // buyButton
-            // 
-            this.buyButton.BackColor = System.Drawing.Color.Yellow;
-            this.buyButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buyButton.Location = new System.Drawing.Point(691, 653);
-            this.buyButton.Name = "buyButton";
-            this.buyButton.Size = new System.Drawing.Size(253, 58);
-            this.buyButton.TabIndex = 1;
-            this.buyButton.Text = "Приобритение";
-            this.buyButton.UseVisualStyleBackColor = false;
-            this.buyButton.Click += new System.EventHandler(this.buyButton_Click);
-            // 
             // sellButton
             // 
             this.sellButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.sellButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sellButton.Location = new System.Drawing.Point(401, 653);
+            this.sellButton.Location = new System.Drawing.Point(29, 229);
             this.sellButton.Name = "sellButton";
-            this.sellButton.Size = new System.Drawing.Size(253, 58);
+            this.sellButton.Size = new System.Drawing.Size(915, 58);
             this.sellButton.TabIndex = 0;
-            this.sellButton.Text = "Продажа";
+            this.sellButton.Text = "Создать заявку на продажу квартиры";
             this.sellButton.UseVisualStyleBackColor = false;
             this.sellButton.Click += new System.EventHandler(this.sellButton_Click);
             // 
@@ -1333,7 +1367,7 @@
             this.flatsPage.Margin = new System.Windows.Forms.Padding(5);
             this.flatsPage.Name = "flatsPage";
             this.flatsPage.Padding = new System.Windows.Forms.Padding(5);
-            this.flatsPage.Size = new System.Drawing.Size(952, 730);
+            this.flatsPage.Size = new System.Drawing.Size(952, 837);
             this.flatsPage.TabIndex = 0;
             this.flatsPage.Text = "Картотека квартир";
             this.flatsPage.UseVisualStyleBackColor = true;
@@ -1400,7 +1434,7 @@
             this.mainPage.Location = new System.Drawing.Point(4, 24);
             this.mainPage.Margin = new System.Windows.Forms.Padding(5);
             this.mainPage.Name = "mainPage";
-            this.mainPage.Size = new System.Drawing.Size(952, 730);
+            this.mainPage.Size = new System.Drawing.Size(952, 837);
             this.mainPage.TabIndex = 6;
             this.mainPage.Text = "Главная";
             this.mainPage.UseVisualStyleBackColor = true;
@@ -1409,7 +1443,7 @@
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label41.Location = new System.Drawing.Point(364, 99);
+            this.label41.Location = new System.Drawing.Point(499, 99);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(172, 19);
             this.label41.TabIndex = 4;
@@ -1420,16 +1454,16 @@
             this.tradeListBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tradeListBox.FormattingEnabled = true;
             this.tradeListBox.ItemHeight = 19;
-            this.tradeListBox.Location = new System.Drawing.Point(364, 118);
+            this.tradeListBox.Location = new System.Drawing.Point(503, 121);
             this.tradeListBox.Name = "tradeListBox";
-            this.tradeListBox.Size = new System.Drawing.Size(288, 175);
+            this.tradeListBox.Size = new System.Drawing.Size(407, 175);
             this.tradeListBox.TabIndex = 3;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label38.Location = new System.Drawing.Point(29, 99);
+            this.label38.Location = new System.Drawing.Point(25, 99);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(94, 19);
             this.label38.TabIndex = 2;
@@ -1442,7 +1476,7 @@
             this.requestsListBox.ItemHeight = 19;
             this.requestsListBox.Location = new System.Drawing.Point(29, 118);
             this.requestsListBox.Name = "requestsListBox";
-            this.requestsListBox.Size = new System.Drawing.Size(288, 175);
+            this.requestsListBox.Size = new System.Drawing.Size(407, 175);
             this.requestsListBox.TabIndex = 1;
             // 
             // greetingLabel
@@ -1469,15 +1503,58 @@
             this.mainTabControl.Margin = new System.Windows.Forms.Padding(5);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(960, 758);
+            this.mainTabControl.Size = new System.Drawing.Size(960, 865);
             this.mainTabControl.TabIndex = 0;
             this.mainTabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // xmlImportButton
+            // 
+            this.xmlImportButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.xmlImportButton.Location = new System.Drawing.Point(247, 546);
+            this.xmlImportButton.Name = "xmlImportButton";
+            this.xmlImportButton.Size = new System.Drawing.Size(176, 30);
+            this.xmlImportButton.TabIndex = 36;
+            this.xmlImportButton.Text = "Импорт из XML";
+            this.xmlImportButton.UseVisualStyleBackColor = true;
+            this.xmlImportButton.Click += new System.EventHandler(this.xmlImportButton_Click);
+            // 
+            // xmlExportButton
+            // 
+            this.xmlExportButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.xmlExportButton.Location = new System.Drawing.Point(63, 546);
+            this.xmlExportButton.Name = "xmlExportButton";
+            this.xmlExportButton.Size = new System.Drawing.Size(176, 30);
+            this.xmlExportButton.TabIndex = 35;
+            this.xmlExportButton.Text = "Экспорт в XML";
+            this.xmlExportButton.UseVisualStyleBackColor = true;
+            this.xmlExportButton.Click += new System.EventHandler(this.xmlExportButton_Click);
+            // 
+            // deleteDealButton
+            // 
+            this.deleteDealButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteDealButton.Location = new System.Drawing.Point(283, 410);
+            this.deleteDealButton.Name = "deleteDealButton";
+            this.deleteDealButton.Size = new System.Drawing.Size(253, 63);
+            this.deleteDealButton.TabIndex = 4;
+            this.deleteDealButton.Text = "Удалить";
+            this.deleteDealButton.UseVisualStyleBackColor = true;
+            // 
+            // saveDealButton
+            // 
+            this.saveDealButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveDealButton.Location = new System.Drawing.Point(283, 341);
+            this.saveDealButton.Name = "saveDealButton";
+            this.saveDealButton.Size = new System.Drawing.Size(253, 63);
+            this.saveDealButton.TabIndex = 5;
+            this.saveDealButton.Text = "Сохранить в файл";
+            this.saveDealButton.UseVisualStyleBackColor = true;
+            this.saveDealButton.Click += new System.EventHandler(this.saveDealButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 810);
+            this.ClientSize = new System.Drawing.Size(963, 683);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1511,6 +1588,7 @@
             this.mainPage.ResumeLayout(false);
             this.mainPage.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1579,8 +1657,6 @@
         private System.Windows.Forms.TabPage requestPage;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button buyButton;
         private System.Windows.Forms.Button sellButton;
         private System.Windows.Forms.TabPage flatsPage;
         private System.Windows.Forms.TextBox textBox2;
@@ -1636,6 +1712,15 @@
         private System.Windows.Forms.ListBox tradeListBox;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.ListBox requestsListBox;
+        private System.Windows.Forms.Button cancelFilterButton;
+        private System.Windows.Forms.ComboBox sexFilterComboBox;
+        private System.Windows.Forms.Button filterButton;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Button xmlImportButton;
+        private System.Windows.Forms.Button xmlExportButton;
+        private System.Windows.Forms.Button saveDealButton;
+        private System.Windows.Forms.Button deleteDealButton;
         //private GMap.NET.WindowsForms.GMapControl gMapControl1;
     }
 }

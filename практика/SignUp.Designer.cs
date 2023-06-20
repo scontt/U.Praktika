@@ -33,7 +33,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.signUpButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.lastNameTextbox = new System.Windows.Forms.TextBox();
+            this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -114,12 +114,12 @@
             // 
             // lastNameTextbox
             // 
-            this.lastNameTextbox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lastNameTextbox.Location = new System.Drawing.Point(210, 273);
-            this.lastNameTextbox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lastNameTextbox.Name = "lastNameTextbox";
-            this.lastNameTextbox.Size = new System.Drawing.Size(342, 32);
-            this.lastNameTextbox.TabIndex = 33;
+            this.lastNameTextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lastNameTextBox.Location = new System.Drawing.Point(210, 273);
+            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.lastNameTextBox.Name = "lastNameTextbox";
+            this.lastNameTextBox.Size = new System.Drawing.Size(342, 32);
+            this.lastNameTextBox.TabIndex = 33;
             // 
             // label5
             // 
@@ -322,7 +322,7 @@
             this.Controls.Add(this.phoneTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.lastNameTextbox);
+            this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.label4);
@@ -350,7 +350,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button signUpButton;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox lastNameTextbox;
+        private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.Label label4;
